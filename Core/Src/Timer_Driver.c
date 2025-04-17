@@ -1,0 +1,77 @@
+#include "Timer_Driver.h"
+
+
+void Timer_Init(GPTIMR_RegDef_t* TIMER_REGISTER, GPTimer_Config_t TIMER_CONFIG){
+	TIMER_REGISTER->CR1 &= ~(0x3 << TIMER_CR1_OFFSET_CKD);
+	TIMER_REGISTER->CR1 |= (TIMER_CONFIG.ClockDivisionSelect << TIMER_CR1_OFFSET_CKD);
+	TIMER_REGISTER->CR1 &= ~(0x3 << TIMER_CR1_OFFSET_CMS);
+	TIMER_REGISTER->CR1 |= (TIMER_CONFIG.CenterAlignedModeSelect << TIMER_CR1_OFFSET_CMS);
+	TIMER_REGISTER->CR1 &= ~(0x1 << TIMER_CR1_OFFSET_DIR);
+	if (TIMER_CONFIG.Direction){
+		TIMER_REGISTER->CR1 |= (0x1 << TIMER_CR1_OFFSET_DIR);
+	}
+	TIMER_REGISTER->CR1 &= ~(0x1 << TIMER_CR1_OFFSET_OPM);
+	if (TIMER_CONFIG.OnePulseModeEnable){
+		TIMER_REGISTER->CR1 |= (0x1 << TIMER_CR1_OFFSET_OPM);
+	}
+	TIMER_REGISTER->CR1 &= ~(0x1 << TIMER_CR1_OFFSET_UDIS);
+	if (TIMER_CONFIG.DisableUpdateEvent){
+		TIMER_REGISTER->CR1 |= (0x1 << TIMER_CR1_OFFSET_UDIS);
+	}
+	TIMER_REGISTER->DIER &= ~(0x1 << TIMER_DIER_OFFSET_UIE);
+	if (TIMER_CONFIG.InterruptUpdateEnable){
+		TIMER_REGISTER->DIER |= (0x1 << TIMER_DIER_OFFSET_UIE);
+	}
+	TIMER_REGISTER->PSC = TIMER_CONFIG.PrescalerValue;
+
+	TIMER_REGISTER->ARR = TIMER_CONFIG.AutoReloadValue;
+
+	TIMER_REGISTER->CR2 &= ~(0x8 << TIMER_CR2_OFFSET_MMS);
+	TIMER_REGISTER->CR2 |= (TIMER_CONFIG.MasterModeSelect << TIMER_CR2_OFFSET_MMS);
+
+	Timer_Interrupt_Enable_Disable(TIMER_REGISTER, TIMER_CONFIG.InterruptUpdateEnable);
+}
+
+
+void Timer_ClockControl(GPTIMR_RegDef_t* TIMER_REGISTER, uint8_t ENABLE_DISABLE){
+	if(ENABLE_DISABLE == ENABLE){
+		if(TIMER_REGISTER == TIM2){
+			TIM2_CLK_ENABLE();
+		}
+	}
+	else{
+		if(TIMER_REGISTER == TIM2){
+			TIM2_CLK_DISABLE();
+		}
+	}
+}
+void Start_Timer(GPTIMR_RegDef_t* TIMER_REGISTER){
+	TIMER_REGISTER->CR1 |= (TIMER_CEN_ENABLE << TIMER_CR1_OFFSET_CEN);
+}
+void Stop_Timer(GPTIMR_RegDef_t* TIMER_REGISTER){
+	TIMER_REGISTER->CR1 |= (TIMER_CEN_DISABLE << TIMER_CR1_OFFSET_CEN);
+}
+void Reset_Timer(GPTIMR_RegDef_t* TIMER_REGISTER){
+	TIMER_REGISTER->CNT = 0;
+}
+uint32_t getTimerValue(GPTIMR_RegDef_t* TIMER_REGISTER){
+	return TIMER_REGISTER->CNT;
+}
+
+void Timer_Interrupt_Enable_Disable(GPTIMR_RegDef_t* TIMER_REGISTER, uint8_t ENABLE_DISABLE){
+	if(ENABLE_DISABLE == ENABLE){
+		if(TIMER_REGISTER == TIM2){
+			EnableInterrupt(28);
+
+		}
+	}
+	else{
+		if(TIMER_REGISTER == TIM2){
+			DisableInterrupt(28);
+		}
+	}
+}
+
+uint32_t getTimerAutoReloadValue(GPTIMR_RegDef_t* TIMER_REGISTER){
+	return TIMER_REGISTER->ARR;
+}
