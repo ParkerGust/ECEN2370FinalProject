@@ -8,11 +8,12 @@
 
 /* Static variables */
 
+#define FIRST_NAME_LENGTH 6
 
 extern void initialise_monitor_handles(void); 
 
-static bool playing = false;
-static bool OnePlayerMode = false;
+static bool playing;
+static bool OnePlayerMode;
 
 static STMPE811_TouchData StaticTouchData;
 
@@ -25,6 +26,7 @@ void ApplicationInit(void)
 	InitializeLCDTouch();
 	startGame();
 }
+
 void startGame(void){
 	Screen1_Display();
 	checkPlayerMode();

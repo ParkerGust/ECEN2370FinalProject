@@ -1,9 +1,3 @@
-/*
- * ApplicationCode.h
- *
- *  Created on: Dec 30, 2023
- *      Author: Xavion
- */
 
 
 #include "stm32f4xx_hal.h"
@@ -19,7 +13,8 @@
 void ApplicationInit(void);
 void LCD_Visual_Demo(void);
 
-void startGame(void)
+void startGame(void);
+void checkPlayerMode(void);
 void appDelay(uint32_t delayTime);
 
 

@@ -4,7 +4,7 @@
 void Screen1_Display(void){
     LCD_Clear(0, LCD_COLOR_GREY);
     
-    LCD_SetFont(Font16x24);
+    LCD_SetFont(&Font16x24);
     LCD_SetTextColor(LCD_COLOR_BLACK);
     LCD_DisplayChar(20, 20, 'C');
     LCD_DisplayChar(40, 20, 'O');

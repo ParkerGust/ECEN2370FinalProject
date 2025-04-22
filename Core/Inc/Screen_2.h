@@ -13,8 +13,6 @@ static uint8_t column;
 
 void Screen2_NewGame(void);
 
-void Screen2_StartTimer(void);
-
 void Screen2_Display(void);
 
 void Screen2_StartTimer(void);
