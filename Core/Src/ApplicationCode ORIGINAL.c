@@ -55,5 +55,10 @@ void LCD_Touch_Polling_Demo(void)
 		}
 	}
 }
+
+
+
+
+
 #endif // COMPILE_TOUCH_FUNCTIONS
 

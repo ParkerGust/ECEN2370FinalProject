@@ -110,15 +110,13 @@ int main(void)
   LCD_Visual_Demo();
   HAL_Delay(5000);
   /* USER CODE END 2 */
-#if COMPILE_TOUCH_FUNCTIONS == 1 // This block will need to be deleted
-  LCD_Touch_Polling_Demo(); // This function Will not return
-#endif
+  
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
+    
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

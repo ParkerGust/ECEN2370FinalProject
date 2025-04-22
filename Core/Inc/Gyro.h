@@ -3,9 +3,9 @@
 #define INC_GYRO_H_
 
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
-#include "ErrorHandling.h"
 
 #define GYRO_WHO_AM_I 0x0f
 #define GYRO_CR1 0x20

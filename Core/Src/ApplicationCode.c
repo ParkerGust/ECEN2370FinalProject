@@ -1,8 +1,7 @@
 /*
  * ApplicationCode.c
  *
- *  Created on: Dec 30, 2023 (updated 11/12/2024) Thanks Donavon! 
- *      Author: Xavion
+ *      Author: Parker
  */
 
 #include "ApplicationCode.h"
@@ -12,9 +11,10 @@
 
 extern void initialise_monitor_handles(void); 
 
-#if COMPILE_TOUCH_FUNCTIONS == 1
+static bool playing = false;
+static bool OnePlayerMode = false;
+
 static STMPE811_TouchData StaticTouchData;
-#endif // COMPILE_TOUCH_FUNCTIONS
 
 void ApplicationInit(void)
 {
@@ -22,38 +22,44 @@ void ApplicationInit(void)
     LTCD__Init();
     LTCD_Layer_Init(0);
     LCD_Clear(0,LCD_COLOR_WHITE);
-
-    #if COMPILE_TOUCH_FUNCTIONS == 1
 	InitializeLCDTouch();
-
-	// This is the orientation for the board to be direclty up where the buttons are vertically above the screen
-	// Top left would be low x value, high y value. Bottom right would be low x value, low y value.
-	StaticTouchData.orientation = STMPE811_Orientation_Portrait_2;
-
-	#endif // COMPILE_TOUCH_FUNCTIONS
+	startGame();
+}
+void startGame(void){
+	Screen1_Display();
+	checkPlayerMode();
+	Screen2_StartTimer();
+	playing = true;
 }
 
-void LCD_Visual_Demo(void)
-{
-	visualDemo();
+void checkPlayerMode(void){
+	while(Screen1_Poll == 0){
+		
+	}
 }
 
-#if COMPILE_TOUCH_FUNCTIONS == 1
-void LCD_Touch_Polling_Demo(void)
-{
-	LCD_Clear(0,LCD_COLOR_GREEN);
-	while (1) {
-		/* If touch pressed */
-		if (returnTouchStateAndLocation(&StaticTouchData) == STMPE811_State_Pressed) {
-			/* Touch valid */
-			printf("\nX: %03d\nY: %03d\n", StaticTouchData.x, StaticTouchData.y);
-			LCD_Clear(0, LCD_COLOR_RED);
-		} else {
-			/* Touch not pressed */
-			printf("Not Pressed\n\n");
-			LCD_Clear(0, LCD_COLOR_GREEN);
+void appDelay(uint32_t delayTime){
+	char name[] = {'p','a','r','k','e','r'};
+	[[maybe_unused]]char destinationArray[FIRST_NAME_LENGTH];
+	for (int i = 0; i <delayTime; i++){
+		for (int j = 0; j < FIRST_NAME_LENGTH; j++){
+			destinationArray[j] = name[j];
 		}
 	}
 }
-#endif // COMPILE_TOUCH_FUNCTIONS
+	
+void EXTI0_IRQHandler(){
+	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
+	if(playing){
+		Screen2_Drop();
+	}
+	else{
+		playing = true;
+		Screen2_NewGame();
+		Screen2_Display();
+	}
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
+	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+}
+	
 
