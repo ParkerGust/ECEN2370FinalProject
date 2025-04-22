@@ -12,9 +12,6 @@
 
 extern void initialise_monitor_handles(void); 
 
-static bool playing;
-static bool OnePlayerMode;
-
 static STMPE811_TouchData StaticTouchData;
 
 void ApplicationInit(void)
@@ -32,13 +29,27 @@ void startGame(void){
 	checkPlayerMode();
 	Screen2_StartTimer();
 	playing = true;
+	Screen2_NewGame();
+	playGame();
+}
+
+void playGame(){
+	Screen2_Display();
+	Screen2_Move();
 }
 
 void checkPlayerMode(void){
-	while(Screen1_Poll == 0){
-		
+	STMPE811_TouchData touch;
+	touch.pressed = STMPE811_State_Released;
+	while(touch.pressed == STMPE811_State_Released){
+		returnTouchStateAndLocation(&touch);
 	}
+	if (touch.x < LCD_PIXEL_WIDTH/2){
+		TwoPlayerMode = LEFT_TOUCH;
+	}
+	TwoPlayerMode = RIGHT_TOUCH;
 }
+
 
 void appDelay(uint32_t delayTime){
 	char name[] = {'p','a','r','k','e','r'};
@@ -49,6 +60,7 @@ void appDelay(uint32_t delayTime){
 		}
 	}
 }
+
 	
 void EXTI0_IRQHandler(){
 	HAL_NVIC_DisableIRQ(EXTI0_IRQn);

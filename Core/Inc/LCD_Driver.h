@@ -89,5 +89,9 @@ void WriteDataToTouchModule(uint8_t RegToWrite, uint8_t writeData);
 
 /*        APPLICATION SPECIFIC FUNCTION DECLARATION - PUT YOUR NEWLY CREATED FUNCTIONS HERE       */
 
+#define LEFT_TOUCH 0
+#define RIGHT_TOUCH 1 
+
+bool getTouchSide(void);
 
 #endif /* INC_LCD_DRIVER_H_ */

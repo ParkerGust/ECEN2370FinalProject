@@ -379,3 +379,6 @@ void WriteDataToTouchModule(uint8_t RegToWrite, uint8_t writeData)
 }
 
 #endif // COMPILE_TOUCH_FUNCTIONS
+
+
+  

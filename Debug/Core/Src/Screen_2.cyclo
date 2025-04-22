@@ -1,7 +1,7 @@
-../Core/Src/Screen_2.c:3:6:Screen2_NewGame	1
-../Core/Src/Screen_2.c:7:6:Screen2_Display	1
-../Core/Src/Screen_2.c:11:6:Screen2_StartTimer	1
-../Core/Src/Screen_2.c:15:6:Screen2_Drop	1
-../Core/Src/Screen_2.c:19:6:Screen2_Move	1
-../Core/Src/Screen_2.c:23:6:Screen2_MoveAI	1
-../Core/Src/Screen_2.c:27:6:Screen2_CheckState	1
+../Core/Src/Screen_2.c:3:6:Screen2_NewGame	3
+../Core/Src/Screen_2.c:11:6:Screen2_Display	8
+../Core/Src/Screen_2.c:53:6:Screen2_StartTimer	1
+../Core/Src/Screen_2.c:57:6:Screen2_Drop	1
+../Core/Src/Screen_2.c:61:6:Screen2_Move	1
+../Core/Src/Screen_2.c:65:6:Screen2_MoveAI	1
+../Core/Src/Screen_2.c:69:6:Screen2_CheckState	1

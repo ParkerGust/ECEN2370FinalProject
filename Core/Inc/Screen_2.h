@@ -7,9 +7,15 @@
 #include "Gyro.h"
 #include "AI.h"
 
+#define boardColumns 7
+#define boardRows 6
+
+static int chipLoc = 4;
 static bool player1turn = true;
 static bool startPlayer1 = true;
-static uint8_t column;
+static bool playing = false;
+static bool TwoPlayerMode;
+static int gameBoard[boardColumns][boardRows];
 
 void Screen2_NewGame(void);
 
