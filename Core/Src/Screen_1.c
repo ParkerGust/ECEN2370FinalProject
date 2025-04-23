@@ -44,3 +44,16 @@ void Screen1_Display(void){
     LCD_Draw_Circle_Fill(60, (LCD_PIXEL_HEIGHT/2)+20, 40, LCD_COLOR_RED);
     LCD_Draw_Circle_Fill(LCD_PIXEL_WIDTH-60, (LCD_PIXEL_HEIGHT/2)+20, 40, LCD_COLOR_BLUE);
 }
+
+
+void Screen1_CheckPlayerMode(void){
+	STMPE811_TouchData touch;
+	touch.pressed = STMPE811_State_Released;
+	while(touch.pressed == STMPE811_State_Released){
+		returnTouchStateAndLocation(&touch);
+	}
+	if (touch.x < LCD_PIXEL_WIDTH/2){
+		TwoPlayerMode = LEFT_TOUCH;
+	}
+	TwoPlayerMode = RIGHT_TOUCH;
+}

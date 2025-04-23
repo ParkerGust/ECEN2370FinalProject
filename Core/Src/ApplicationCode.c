@@ -8,11 +8,11 @@
 
 /* Static variables */
 
+static bool playing = false;
+
 #define FIRST_NAME_LENGTH 6
 
 extern void initialise_monitor_handles(void); 
-
-static STMPE811_TouchData StaticTouchData;
 
 void ApplicationInit(void)
 {
@@ -26,7 +26,7 @@ void ApplicationInit(void)
 
 void startGame(void){
 	Screen1_Display();
-	checkPlayerMode();
+	Screen1_CheckPlayerMode();
 	Screen2_StartTimer();
 	playing = true;
 	Screen2_NewGame();
@@ -34,20 +34,17 @@ void startGame(void){
 }
 
 void playGame(){
-	Screen2_Display();
-	Screen2_Move();
-}
-
-void checkPlayerMode(void){
-	STMPE811_TouchData touch;
-	touch.pressed = STMPE811_State_Released;
-	while(touch.pressed == STMPE811_State_Released){
-		returnTouchStateAndLocation(&touch);
+	while (playing == true){
+		Screen2_Display();
+		if(TwoPlayerMode == false && player1turn == false){
+			Screen2_MoveAI();
+		}
+		else{
+			Screen2_Move();
+		}
+		Screen2_Display();
+		playing = Screen2_CheckState();
 	}
-	if (touch.x < LCD_PIXEL_WIDTH/2){
-		TwoPlayerMode = LEFT_TOUCH;
-	}
-	TwoPlayerMode = RIGHT_TOUCH;
 }
 
 

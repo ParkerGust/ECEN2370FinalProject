@@ -5,10 +5,11 @@
 #include "stm32f4xx_hal.h"
 #include "LCD_Driver.h"
 
-#define ONE_PLAYER_MODE 1
-#define TWO_PLAYER_MODE 2 
+static bool TwoPlayerMode;
+#define ONE_PLAYER_MODE 0
+#define TWO_PLAYER_MODE 1 
 
 void Screen1_Display(void);
-
+void Screen1_CheckPlayerMode(void);
 
 #endif

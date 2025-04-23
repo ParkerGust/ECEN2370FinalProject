@@ -10,11 +10,10 @@
 #define boardColumns 7
 #define boardRows 6
 
-static int chipLoc = 4;
+static int chipLoc = 3;
 static bool player1turn = true;
 static bool startPlayer1 = true;
-static bool playing = false;
-static bool TwoPlayerMode;
+static bool dropped = false;
 static int gameBoard[boardColumns][boardRows];
 
 void Screen2_NewGame(void);
@@ -29,7 +28,7 @@ void Screen2_Move(void);
 
 void Screen2_MoveAI(uint8_t);
 
-void Screen2_CheckState(void);
+bool Screen2_CheckState(void);
 
 
 #endif

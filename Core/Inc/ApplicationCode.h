@@ -14,10 +14,7 @@ void ApplicationInit(void);
 void LCD_Visual_Demo(void);
 
 void startGame(void);
-void checkPlayerMode(void);
 void appDelay(uint32_t delayTime);
-
-
 
 #if (COMPILE_TOUCH_FUNCTIONS == 1)
 void LCD_Touch_Polling_Demo(void);

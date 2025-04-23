@@ -1,5 +1,6 @@
 #include "Screen_2.h"
 
+
 void Screen2_NewGame(void){
 	for (int i = 0; i<boardRows; i++){
 		for (int j = 0; j<boardColumns; j++){
@@ -55,11 +56,36 @@ void Screen2_StartTimer(void){
 }
 
 void Screen2_Drop(void){
-
+    int j = 0;
+    while (gameBoard[chipLoc][j] == 0){
+        j++;
+    }
+    if (player1turn){
+        gameBoard[chipLoc][j-1] = 1;
+    }
+    else{
+        gameBoard[chipLoc][j-1] = 2;
+    }
+    player1turn != player1turn;
+    chipLoc = 3;
+    dropped = true;
 }
 
 void Screen2_Move(void){
-
+    if ()
+    STMPE811_TouchData touch;
+    touch.pressed = STMPE811_State_Released;
+    while(touch.pressed == STMPE811_State_Released && dropped == false){
+        returnTouchStateAndLocation(&touch);
+    }
+    if(touch.pressed == STMPE811_State_Pressed){
+        if (touch.x < LCD_PIXEL_WIDTH/2){
+            chipLoc--;
+        }
+        else{
+            chipLoc++
+        }
+    }
 }
 
 void Screen2_MoveAI(uint8_t){
