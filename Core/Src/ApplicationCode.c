@@ -8,7 +8,9 @@
 
 /* Static variables */
 
-static bool playing = false;
+static uint8_t winner;
+static uint8_t player1_Score;
+static uint8_t player2_Score;
 
 #define FIRST_NAME_LENGTH 6
 
@@ -21,6 +23,7 @@ void ApplicationInit(void)
     LTCD_Layer_Init(0);
     LCD_Clear(0,LCD_COLOR_WHITE);
 	InitializeLCDTouch();
+	Button_Init_Interrupt();
 	startGame();
 }
 
@@ -28,23 +31,31 @@ void startGame(void){
 	Screen1_Display();
 	Screen1_CheckPlayerMode();
 	Screen2_StartTimer();
-	playing = true;
+	winner = 0;
 	Screen2_NewGame();
 	playGame();
 }
 
-void playGame(){
-	while (playing == true){
+void playGame(void){
+	while (winner == 0){
 		Screen2_Display();
 		if(TwoPlayerMode == false && player1turn == false){
 			Screen2_MoveAI();
+			Screen2_Drop();
 		}
 		else{
 			Screen2_Move();
 		}
 		Screen2_Display();
-		playing = Screen2_CheckState();
+		winner = Screen2_CheckState();
 	}
+	if(winner == 1){
+		player1_Score++;
+	}
+	else{
+		player2_Score++;
+	}
+	Screen3_Display();
 }
 
 
@@ -61,13 +72,13 @@ void appDelay(uint32_t delayTime){
 	
 void EXTI0_IRQHandler(){
 	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
-	if(playing){
+	if(winner == 0){
 		Screen2_Drop();
 	}
 	else{
-		playing = true;
+		winner = 0;
 		Screen2_NewGame();
-		Screen2_Display();
+		playGame();
 	}
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);

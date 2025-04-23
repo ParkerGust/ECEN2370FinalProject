@@ -2,6 +2,7 @@
 #define SCREEN_2_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "stm32f4xx_hal.h"
 #include "LCD_Driver.h"
 #include "Gyro.h"
@@ -26,9 +27,11 @@ void Screen2_Drop(void);
 
 void Screen2_Move(void);
 
-void Screen2_MoveAI(uint8_t);
+void Screen2_MoveAI(void);
 
-bool Screen2_CheckState(void);
+uint8_t Screen2_CheckState(void);
+
+bool checkDirection(int i, int j, int dir_i, int dir_j);
 
 
 #endif

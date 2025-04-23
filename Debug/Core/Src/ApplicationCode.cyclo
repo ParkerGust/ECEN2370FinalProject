@@ -1,6 +1,5 @@
-../Core/Src/ApplicationCode.c:17:6:ApplicationInit	1
-../Core/Src/ApplicationCode.c:27:6:startGame	1
-../Core/Src/ApplicationCode.c:36:6:playGame	1
-../Core/Src/ApplicationCode.c:41:6:checkPlayerMode	3
-../Core/Src/ApplicationCode.c:54:6:appDelay	3
-../Core/Src/ApplicationCode.c:65:6:EXTI0_IRQHandler	2
+../Core/Src/ApplicationCode.c:19:6:ApplicationInit	1
+../Core/Src/ApplicationCode.c:30:6:startGame	1
+../Core/Src/ApplicationCode.c:39:6:playGame	5
+../Core/Src/ApplicationCode.c:62:6:appDelay	3
+../Core/Src/ApplicationCode.c:73:6:EXTI0_IRQHandler	2

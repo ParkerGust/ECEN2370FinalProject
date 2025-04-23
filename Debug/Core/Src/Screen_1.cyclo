@@ -1,1 +1,2 @@
 ../Core/Src/Screen_1.c:4:6:Screen1_Display	1
+../Core/Src/Screen_1.c:49:6:Screen1_CheckPlayerMode	3

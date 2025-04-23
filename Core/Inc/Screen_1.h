@@ -2,6 +2,7 @@
 #define SCREEN_1_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "stm32f4xx_hal.h"
 #include "LCD_Driver.h"
 

@@ -6,8 +6,6 @@
 #include "LCD_Driver.h"
 #include "Button_Driver.h"
 
-static 
-
 void Screen3_Display(void);
 void Screen3_EndTimer();
 
