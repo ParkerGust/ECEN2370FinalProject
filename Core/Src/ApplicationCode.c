@@ -36,10 +36,10 @@ void ApplicationInit(void)
 
 void startGame(void){
 	Screen1_Display();
-	Screen1_CheckPlayerMode();
-	Screen2_StartTimer();
+	checkPlayerMode();
+	startTimer();
 	winner = 0;
-	Screen2_NewGame();
+	newGame();
 	playGame();
 }
 
@@ -47,14 +47,14 @@ void playGame(void){
 	while (winner == 0){
 		Screen2_Display();
 		if(TwoPlayerMode == false && player1turn == false){
-			Screen2_MoveAI();
-			Screen2_Drop();
+			moveAI();
+			drop();
 		}
 		else{
-			Screen2_Move();
+			move();
 		}
 		Screen2_Display();
-		winner = Screen2_CheckState();
+		winner = checkState();
 	}
 	if(winner == 1){
 		player1_Score++;
@@ -67,7 +67,7 @@ void playGame(void){
 
 
 
-void Screen1_CheckPlayerMode(void){
+void checkPlayerMode(void){
 	STMPE811_TouchData touch;
 	touch.pressed = STMPE811_State_Released;
 	while(touch.pressed == STMPE811_State_Released){
@@ -79,8 +79,15 @@ void Screen1_CheckPlayerMode(void){
 	TwoPlayerMode = RIGHT_TOUCH;
 }
 
-void Screen2_NewGame(void){
+void newGame(void){
 	LCD_Clear(0, LCD_COLOR_GREY);
+	if (startPlayer1 == true){
+		startPlayer1 = false;
+	}
+	else{
+		startPlayer1 = true;
+	}
+	winner = 0;
 	for (int i = 0; i<boardColumns; i++){
 		for (int j = 0; j<boardRows; j++){
 	        gameBoard[i][j] = 0;
@@ -89,11 +96,7 @@ void Screen2_NewGame(void){
 }
 
 
-void Screen2_StartTimer(void){
-
-}
-
-void Screen2_Drop(void){
+void drop(void){
     int j = 0;
     while (gameBoard[chipLoc][j] == 0 && j<6){
         j++;
@@ -112,7 +115,7 @@ void Screen2_Drop(void){
     }
 }
 
-void Screen2_Move(void){
+void move(void){
     STMPE811_TouchData touch;
     touch.pressed = STMPE811_State_Released;
     while(touch.pressed == STMPE811_State_Released && dropped == false){
@@ -128,11 +131,11 @@ void Screen2_Move(void){
     }
 }
 
-void Screen2_MoveAI(void){
+void moveAI(void){
 
 }
 
-uint8_t Screen2_CheckState(void){
+uint8_t checkState(void){
     int playerChecking = 0;
     dropped = false;
     for (int i = 0; i< boardColumns; i++){
@@ -167,7 +170,11 @@ bool checkDirection(int i, int j, int dir_i, int dir_j){
 
 }
 
-void Screen3_EndTimer(){
+void startTimer(void){
+
+}
+
+void endTimer(){
     
 }
 
@@ -289,6 +296,8 @@ void Screen3_Display(void){
             }
         }
     }
+    while (winner != 0);
+    playGame();
 }
 
 void appDelay(uint32_t delayTime){
@@ -305,12 +314,10 @@ void appDelay(uint32_t delayTime){
 void EXTI0_IRQHandler(){
 	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
 	if(winner == 0){
-		Screen2_Drop();
+		drop();
 	}
 	else{
-		winner = 0;
-		Screen2_NewGame();
-		playGame();
+		newGame();
 	}
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);

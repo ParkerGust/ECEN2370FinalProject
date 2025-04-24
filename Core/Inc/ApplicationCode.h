@@ -16,35 +16,35 @@ void ApplicationInit(void);
 void LCD_Visual_Demo(void);
 
 
+#define boardColumns 7
+#define boardRows 6
 #define ONE_PLAYER_MODE 0
 #define TWO_PLAYER_MODE 1 
 
 void Screen1_Display(void);
-void Screen1_CheckPlayerMode(void);
+void checkPlayerMode(void);
 
-#define boardColumns 7
-#define boardRows 6
-
-void Screen2_NewGame(void);
+void newGame(void);
 
 void Screen2_Display(void);
 
-void Screen2_StartTimer(void);
+void startTimer(void);
 
-void Screen2_Drop(void);
+void drop(void);
 
-void Screen2_Move(void);
+void move(void);
 
-void Screen2_MoveAI(void);
+void moveAI(void);
 
-uint8_t Screen2_CheckState(void);
+uint8_t checkState(void);
 
 bool checkDirection(int i, int j, int dir_i, int dir_j);
 
 void Screen3_Display(void);
-void Screen3_EndTimer();
+void endTimer();
 
 
+void playGame(void);
 void startGame(void);
 void appDelay(uint32_t delayTime);
 
