@@ -1,8 +1,0 @@
-../Core/Src/Screen_2.c:4:6:Screen2_NewGame	3
-../Core/Src/Screen_2.c:13:6:Screen2_Display	8
-../Core/Src/Screen_2.c:57:6:Screen2_StartTimer	1
-../Core/Src/Screen_2.c:61:6:Screen2_Drop	5
-../Core/Src/Screen_2.c:80:6:Screen2_Move	7
-../Core/Src/Screen_2.c:96:6:Screen2_MoveAI	1
-../Core/Src/Screen_2.c:100:9:Screen2_CheckState	8
-../Core/Src/Screen_2.c:118:6:checkDirection	7
