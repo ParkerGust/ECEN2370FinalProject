@@ -12,12 +12,16 @@ static uint8_t winner;
 static uint8_t player1_Score;
 static uint8_t player2_Score;
 
+static uint32_t startTime;
+static uint32_t endTime;
+static uint32_t timePlayed;
+
 static bool TwoPlayerMode;
-static int chipLoc = 3;
+static uint8_t chipLoc = 3;
 static bool player1turn = true;
 static bool startPlayer1 = true;
 static bool dropped = false;
-static int gameBoard[boardColumns][boardRows];
+static uint8_t gameBoard[boardColumns][boardRows];
 
 #define FIRST_NAME_LENGTH 6
 
@@ -62,6 +66,7 @@ void playGame(void){
 	else{
 		player2_Score++;
 	}
+	endTimer();
 	Screen3_Display();
 }
 
@@ -80,6 +85,7 @@ void checkPlayerMode(void){
 }
 
 void newGame(void){
+	startTimer();
 	LCD_Clear(0, LCD_COLOR_GREY);
 	if (startPlayer1 == true){
 		startPlayer1 = false;
@@ -171,11 +177,12 @@ bool checkDirection(int i, int j, int dir_i, int dir_j){
 }
 
 void startTimer(void){
-
+	startTime = HAL_GetTick();
 }
 
 void endTimer(){
-    
+    endTime = HAL_GetTick();
+	timePlayed = endTime-startTime;
 }
 
 
@@ -280,8 +287,62 @@ void Screen3_Display(void){
     LCD_DisplayChar(140, 20, 'T');
     LCD_DisplayChar(180, 20, '4');
 
-    LCD_SetFont(&Font16x24);
+    char score1 = (char)(player1_Score+48);
+	char score2 = (char)(player2_Score+48);
 
+    LCD_SetFont(&Font12x12);
+	LCD_DisplayChar(20, 45, 'P');
+    LCD_DisplayChar(30, 45, 'L');
+    LCD_DisplayChar(40, 45, 'A');
+    LCD_DisplayChar(50, 45, 'Y');
+    LCD_DisplayChar(60, 45, 'E');
+    LCD_DisplayChar(70, 45, 'R');
+    LCD_DisplayChar(85, 45, '1');
+    LCD_DisplayChar(25, 60, 'S');
+    LCD_DisplayChar(35, 60, 'C');
+    LCD_DisplayChar(45, 60, 'O');
+    LCD_DisplayChar(55, 60, 'R');
+	LCD_DisplayChar(65, 60, 'E');
+	LCD_DisplayChar(75, 60, ':');
+	LCD_DisplayChar(85, 60, score1);
+
+    LCD_DisplayChar(140, 45, 'P');
+    LCD_DisplayChar(150, 45, 'L');
+    LCD_DisplayChar(160, 45, 'A');
+    LCD_DisplayChar(170, 45, 'Y');
+    LCD_DisplayChar(180, 45, 'E');
+    LCD_DisplayChar(190, 45, 'R');
+    LCD_DisplayChar(205, 45, '2');
+    LCD_DisplayChar(145, 60, 'S');
+    LCD_DisplayChar(155, 60, 'C');
+    LCD_DisplayChar(165, 60, 'O');
+    LCD_DisplayChar(175, 60, 'R');
+	LCD_DisplayChar(185, 60, 'E');
+	LCD_DisplayChar(195, 60, ':');
+	LCD_DisplayChar(205, 60, score2);
+
+	LCD_DisplayChar(40, 80, 'T');
+	LCD_DisplayChar(50, 80, 'I');
+	LCD_DisplayChar(55, 80, 'M');
+	LCD_DisplayChar(65, 80, 'E');
+	LCD_DisplayChar(80, 80, 'P');
+	LCD_DisplayChar(90, 80, 'L');
+	LCD_DisplayChar(100, 80, 'A');
+	LCD_DisplayChar(110, 80, 'Y');
+	LCD_DisplayChar(120, 80, 'E');
+	LCD_DisplayChar(130, 80, 'D');
+	uint32_t seconds = timePlayed/1000;
+	uint32_t minutes = seconds/60;
+	seconds = seconds-(minutes*60);
+	char msb_min = (char)((minutes/10)+48);
+	char lsb_min = (char)((minutes-((minutes/10)*10))+48);
+	char msb_sec = (char)((seconds/10)+48);
+	char lsb_sec = (char)((seconds-((seconds/10)*10))+48);
+	LCD_DisplayChar(150, 80, msb_min);
+	LCD_DisplayChar(160, 80, lsb_min);
+	LCD_DisplayChar(165, 80, ':');
+	LCD_DisplayChar(170, 80, msb_sec);
+	LCD_DisplayChar(180, 80, lsb_sec);
 
     for (int i = 0; i<boardColumns; i++){
         for (int j = 0; j<boardRows; j++){
