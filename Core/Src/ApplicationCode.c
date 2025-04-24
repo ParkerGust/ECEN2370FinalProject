@@ -340,7 +340,7 @@ void Screen3_Display(void){
 	char lsb_sec = (char)((seconds-((seconds/10)*10))+48);
 	LCD_DisplayChar(150, 80, msb_min);
 	LCD_DisplayChar(160, 80, lsb_min);
-	LCD_DisplayChar(165, 80, ':');
+	LCD_DisplayChar(167, 80, ':');
 	LCD_DisplayChar(170, 80, msb_sec);
 	LCD_DisplayChar(180, 80, lsb_sec);
 
