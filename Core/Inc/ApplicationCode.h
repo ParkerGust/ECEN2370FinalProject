@@ -9,7 +9,6 @@
 #include <stdbool.h>
 #include "LCD_Driver.h"
 #include "Gyro.h"
-#include "AI.h"
 #include "Button_Driver.h"
 
 void ApplicationInit(void);
@@ -33,8 +32,7 @@ void startTimer(void);
 void drop(void);
 
 void move(void);
-
-void moveAI(void);
+void moveGyro(void);
 
 uint8_t checkState(void);
 
@@ -43,6 +41,11 @@ bool checkDirection(int i, int j, int dir_i, int dir_j);
 void Screen3_Display(void);
 void endTimer();
 
+uint8_t moveAI();
+uint8_t WinOrBlock(uint8_t i, uint8_t j);
+uint8_t CheckWinningMove(int i, int j, int dir_i, int dir_j);
+uint8_t twoAway(uint8_t i, uint8_t j);
+uint8_t CheckTwoAway(int i, int j, int dir_i, int dir_j);
 
 void playGame(void);
 void startGame(void);

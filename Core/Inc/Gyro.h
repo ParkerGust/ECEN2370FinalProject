@@ -3,7 +3,6 @@
 #define INC_GYRO_H_
 
 #include <stdbool.h>
-#include <stdint.h>
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
 
@@ -43,6 +42,7 @@
 #define GYRO_CR1_POWERDOWN_NORMAL_ENABLE (1 <<3)
 #define GYRO_CR1_BANDWIDTH_SET (0b01 << 4)
 
+#define GYRO_CR5_FIFO (1<<6)
 #define GYRO_CR5_REBOOTMEMCONTENT (1 << 7)
 
 #define SPI_WRITE (0 << 7)
@@ -52,6 +52,7 @@
 
 #define timeout 2600
 
+int16_t Gyro_GetYLoc();
 void Gyro_Init();
 void Gyro_GetPrintID();
 void Gyro_Power();

@@ -10,7 +10,7 @@ void Gyro_Init(){
 		__HAL_RCC_SPI5_CLK_ENABLE();
 
 	GPIO_InitTypeDef PinConfig0;
-	PinConfig0.Mode = GPIO_MODE_OUTPUT_PP;
+	PinConfig0.Mode = GPIO_MODE_AF_PP;
 	PinConfig0.Pull = GPIO_NOPULL;
 	PinConfig0.Speed = GPIO_SPEED_FREQ_MEDIUM;
 	PinConfig0.Alternate = GPIO_AF5_SPI5;
@@ -18,7 +18,7 @@ void Gyro_Init(){
 	HAL_GPIO_Init(GPIOF, &PinConfig0);
 
 	GPIO_InitTypeDef PinConfig1;
-	PinConfig1.Mode = GPIO_MODE_INPUT;
+	PinConfig1.Mode = GPIO_MODE_AF_PP;
 	PinConfig1.Pull = GPIO_NOPULL;
 	PinConfig1.Speed = GPIO_SPEED_FREQ_MEDIUM;
 	PinConfig1.Alternate = GPIO_AF5_SPI5;
@@ -26,7 +26,7 @@ void Gyro_Init(){
 	HAL_GPIO_Init(GPIOF, &PinConfig1);
 
 	GPIO_InitTypeDef PinConfig2;
-	PinConfig2.Mode = GPIO_MODE_OUTPUT_PP;
+	PinConfig2.Mode = GPIO_MODE_AF_PP;
 	PinConfig2.Pull = GPIO_NOPULL;
 	PinConfig2.Speed = GPIO_SPEED_FREQ_MEDIUM;
 	PinConfig2.Alternate = GPIO_AF5_SPI5;
@@ -56,11 +56,20 @@ void Gyro_Init(){
 	Gyro_Power();
 	uint8_t CR5_Config = 0;
 	CR5_Config |= (GYRO_CR5_REBOOTMEMCONTENT);
+	CR5_Config |= (GYRO_CR5_FIFO);
 	Gyro_ConfigureReg(GYRO_CR5, CR5_Config);
 	uint8_t CR1_Config = 0;
 	CR1_Config |= GYRO_CR1_POWERDOWN_NORMAL_ENABLE;
 	CR1_Config |= GYRO_CR1_BANDWIDTH_SET;
+	CR1_Config |= GYRO_CR1_Y_ENABLE;
 	Gyro_ConfigureReg(GYRO_CR1, CR1_Config);
+}
+int16_t Gyro_GetYLoc(){
+	uint8_t yLow = Gyro_ReadReg(GYRO_OUT_Y_L);
+	uint16_t yHigh = Gyro_ReadReg(GYRO_OUT_Y_H);
+	yHigh = yHigh << 8;
+	int16_t yLoc = (int16_t)(yLow | yHigh);
+	return yLoc;
 }
 
 void Gyro_GetPrintID	(){
