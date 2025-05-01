@@ -23,7 +23,9 @@ uint32_t lastMoveTime = 0;
 
 void ApplicationInit(void){
     Display_Init();
+    #if GYRO_MOVEMENT
 	Gyro_Init();
+    #endif
     HAL_Delay(100);
 	Button_Init_Interrupt();
 	startGame();
@@ -48,7 +50,12 @@ void playGame(void){
 			Screen2_DisplayBoard(gameBoard);
 		}
 		else{
+            #if GYRO_MOVEMENT
 			moveGyro();
+            #else
+            move();
+            #endif
+            dropped = false;
 		}
 		Screen2_DisplayMoveChip(chipLoc, player1turn);
 		winner = checkState(gameBoard);
@@ -119,25 +126,7 @@ void drop(void){
 		dropped = true;
     }
 }
-
-void move(void){
-    STMPE811_TouchData touch;
-    touch.pressed = STMPE811_State_Released;
-    while(touch.pressed == STMPE811_State_Released && dropped == false){
-        returnTouchStateAndLocation(&touch);
-    }
-    if(touch.pressed == STMPE811_State_Pressed){
-        if (touch.x < LCD_PIXEL_WIDTH/2 && chipLoc<6){
-            chipLoc++;
-        }
-        else if(chipLoc > 0){
-            chipLoc--;
-        }
-    }
-}
-
-
-
+#if GYRO_MOVEMENT
 void moveGyro(void) {
     int16_t gyroLoc = Gyro_GetYLoc();
     uint32_t now = HAL_GetTick();
@@ -153,6 +142,25 @@ void moveGyro(void) {
     }
 }
 
+#else
+void move(void){
+    STMPE811_TouchData touch;
+    touch.pressed = STMPE811_State_Released;
+    while(touch.pressed == STMPE811_State_Released && dropped == false){
+        returnTouchStateAndLocation(&touch);
+    }
+    if(touch.pressed == STMPE811_State_Pressed){
+        if (touch.x < LCD_PIXEL_WIDTH/2 && chipLoc<6){
+            chipLoc++;
+            HAL_Delay(DEBOUNCE_TIME);
+        }
+        else if(chipLoc > 0){
+            chipLoc--;
+            HAL_Delay(DEBOUNCE_TIME);
+        }
+    }
+}
+#endif
 
 	
 void EXTI0_IRQHandler(){

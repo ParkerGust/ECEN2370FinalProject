@@ -1,9 +1,8 @@
 ../Core/Src/ApplicationCode.c:24:6:ApplicationInit	1
-../Core/Src/ApplicationCode.c:32:6:startGame	1
-../Core/Src/ApplicationCode.c:42:6:playGame	6
-../Core/Src/ApplicationCode.c:68:6:checkPlayerMode	3
-../Core/Src/ApplicationCode.c:82:6:newGame	4
-../Core/Src/ApplicationCode.c:104:6:drop	5
-../Core/Src/ApplicationCode.c:123:6:move	7
-../Core/Src/ApplicationCode.c:141:6:moveGyro	6
-../Core/Src/ApplicationCode.c:158:6:EXTI0_IRQHandler	2
+../Core/Src/ApplicationCode.c:34:6:startGame	1
+../Core/Src/ApplicationCode.c:44:6:playGame	6
+../Core/Src/ApplicationCode.c:75:6:checkPlayerMode	3
+../Core/Src/ApplicationCode.c:89:6:newGame	4
+../Core/Src/ApplicationCode.c:111:6:drop	5
+../Core/Src/ApplicationCode.c:130:6:moveGyro	6
+../Core/Src/ApplicationCode.c:166:6:EXTI0_IRQHandler	2
