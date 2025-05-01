@@ -3,7 +3,8 @@
         "stm32f4xx_hal.h": "c",
         "screen_1.h": "c",
         "screen_3.h": "c",
-        "ai.h": "c"
+        "ai.h": "c",
+        "lcd_driver.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

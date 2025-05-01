@@ -1,3 +1,4 @@
+"./Core/Src/AI.o"
 "./Core/Src/ApplicationCode.o"
 "./Core/Src/Button_Driver.o"
 "./Core/Src/Gyro.o"

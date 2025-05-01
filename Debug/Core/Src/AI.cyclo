@@ -1,0 +1,6 @@
+../Core/Src/AI.c:4:5:scoreDirection	12
+../Core/Src/AI.c:23:5:scorePosition	1
+../Core/Src/AI.c:33:5:scoreMove	5
+../Core/Src/AI.c:51:5:moveAI	11
+../Core/Src/AI.c:91:9:checkState	8
+../Core/Src/AI.c:106:6:checkDirection	7
