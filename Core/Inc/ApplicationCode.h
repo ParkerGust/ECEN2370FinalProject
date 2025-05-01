@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "LCD_Driver.h"
 #include "Gyro.h"
 #include "Button_Driver.h"
@@ -14,7 +15,8 @@
 void ApplicationInit(void);
 void LCD_Visual_Demo(void);
 
-
+#define PERSON 1
+#define AI 2
 #define boardColumns 7
 #define boardRows 6
 #define ONE_PLAYER_MODE 0
@@ -37,22 +39,22 @@ void drop(void);
 void move(void);
 void moveGyro(void);
 
-uint8_t checkState(void);
+uint8_t checkState(uint8_t checkBoard[boardColumns][boardRows]);
 
-bool checkDirection(int i, int j, int dir_i, int dir_j);
+bool checkDirection(uint8_t checkBoard[boardColumns][boardRows], int i, int j, int dir_i, int dir_j);
 
 void Screen3_Display(void);
 void endTimer();
 
-uint8_t moveAI();
-uint8_t WinOrBlock(uint8_t i, uint8_t j);
-uint8_t CheckWinningMove(int i, int j, int dir_i, int dir_j);
-uint8_t twoAway(uint8_t i, uint8_t j);
-uint8_t CheckTwoAway(int i, int j, int dir_i, int dir_j);
+int scoreDirection(uint8_t board[boardColumns][boardRows], int i, int j, int dir_i, int dir_j);
+int scorePosition(uint8_t board[boardColumns][boardRows], int i, int j);
+int scoreMove(uint8_t board[boardColumns][boardRows]);
+int moveAI();
 
 void playGame(void);
 void startGame(void);
 void appDelay(uint32_t delayTime);
+
 
 #if (COMPILE_TOUCH_FUNCTIONS == 1)
 void LCD_Touch_Polling_Demo(void);

@@ -24,8 +24,6 @@ static bool dropped = false;
 static uint8_t gameBoard[boardColumns][boardRows];
 uint32_t lastMoveTime = 0;
 
-#define FIRST_NAME_LENGTH 6
-
 
 void ApplicationInit(void)
 {
@@ -61,7 +59,7 @@ void playGame(void){
 			moveGyro();
 		}
 		Screen2_DisplayMoveChip();
-		winner = checkState();
+		winner = checkState(gameBoard);
 	}
 	if(winner == 1){
 		player1_Score++;
@@ -103,12 +101,13 @@ void newGame(void){
 	        gameBoard[i][j] = 0;
 		}
 	}
+    Screen2_DisplayBoard();
 }
 
 
 void drop(void){
     int j = 0;
-    while (gameBoard[chipLoc][j] == 0 && j<6){
+    while (gameBoard[chipLoc][j] == 0 && j<boardRows){
         j++;
     }
     if(j>0){
@@ -157,33 +156,34 @@ void moveGyro(void) {
         }
     }
 }
-uint8_t checkState(void){
+
+uint8_t checkState(uint8_t checkBoard[boardColumns][boardRows]){
     int playerChecking = 0;
     dropped = false;
     for (int i = 0; i< boardColumns; i++){
         for (int j = 0; j < boardRows; j++){
-            playerChecking = gameBoard[i][j];
+            playerChecking = checkBoard[i][j];
             if (playerChecking != 0){
-                if (checkDirection(i, j, 1, 0)|| //checking horizontal
-                    checkDirection(i, j, 0, 1)|| //checking vertical 
-                    checkDirection(i, j, 1, 1)|| //checking / diagonal
-                    checkDirection(i, j, 1, -1)){ //checking \ diagonal
-                        return gameBoard[i][j];
+                if (checkDirection(checkBoard, i, j, 1, 0)|| //checking horizontal
+                    checkDirection(checkBoard, i, j, 0, 1)|| //checking vertical 
+                    checkDirection(checkBoard, i, j, 1, 1)|| //checking / diagonal
+                    checkDirection(checkBoard, i, j, 1, -1)){ //checking \ diagonal
+                        return checkBoard[i][j];
                 }
             }
         }
     }
 	return 0;
 }
-bool checkDirection(int i, int j, int dir_i, int dir_j){
+bool checkDirection(uint8_t checkBoard[boardColumns][boardRows], int i, int j, int dir_i, int dir_j){
     for (int k = 1; k < 4; k++){
-        if ((i+dir_i*k)>boardColumns || (i+dir_i*k)<0){
+        if ((i+dir_i*k)>=boardColumns || (i+dir_i*k)<0){
             return false;
         } 
-        if ((j+dir_j*k)>boardRows || (j+dir_j*k)<0){
+        if ((j+dir_j*k)>=boardRows || (j+dir_j*k)<0){
             return false;
         } 
-        if (gameBoard[i][j] != gameBoard[i+dir_i*k][j+dir_j*k]){
+        if (checkBoard[i][j] != checkBoard[i+dir_i*k][j+dir_j*k]){
             return false;
         }
 
@@ -251,14 +251,14 @@ void Screen2_DisplayBoard(void){
     
     LCD_SetFont(&Font16x24);
     LCD_SetTextColor(LCD_COLOR_BLACK);
-    LCD_DisplayChar(20, 15, 'C');
-    LCD_DisplayChar(40, 15, 'O');
-    LCD_DisplayChar(60, 15, 'N');
-    LCD_DisplayChar(80, 15, 'N');
-    LCD_DisplayChar(100, 15, 'E');
-    LCD_DisplayChar(120, 15, 'C');
-    LCD_DisplayChar(140, 15, 'T');
-    LCD_DisplayChar(180, 15, '4');
+    LCD_DisplayChar(20, 25, 'C');
+    LCD_DisplayChar(40, 25, 'O');
+    LCD_DisplayChar(60, 25, 'N');
+    LCD_DisplayChar(80, 25, 'N');
+    LCD_DisplayChar(100, 25, 'E');
+    LCD_DisplayChar(120, 25, 'C');
+    LCD_DisplayChar(140, 25, 'T');
+    LCD_DisplayChar(180, 25, '4');
 
     for (int i = 0; i<boardColumns; i++){
         for (int j = 0; j<boardRows; j++){
@@ -402,111 +402,95 @@ void Screen3_Display(void){
     playGame();
 }
 
-uint8_t moveAI(){
-	uint8_t playerChecking =0;
-	for (int i = 0; i< boardColumns; i++){
-        for (int j = 0; j < boardRows; j++){
-            playerChecking = gameBoard[i][j];
-            if (playerChecking != 0){
-                if(WinOrBlock(i, j)<8){
-                    return WinOrBlock(i, j);
+int scoreDirection(uint8_t board[boardColumns][boardRows], int i, int j, int dir_i, int dir_j){
+    int count = 0;
+    int empty = 0;
+    int dirScore =0;
+    // score winability of the direction
+    for (int k = 0; k < 4; k++) {
+        if (!((i+dir_i*k)>=boardColumns || (i+dir_i*k)<0||(j+dir_j*k)>=boardRows || (j+dir_j*k)<0)){
+            if(board[i+dir_i*k][j+dir_j*k] == board[i][j]){
+                count++;
+            }
+            else if (board[i+dir_i*k][j+dir_j*k] == 0){
+                empty++;
+            }
+        }
+    }
+    if (count == 3 && empty == 1) dirScore += 50;
+    else if (count == 2 && empty == 2) dirScore += 10;
+    return dirScore;
+}
+int scorePosition(uint8_t board[boardColumns][boardRows], int i, int j){
+    int posScore = 0;
+    //score winability of the position
+    posScore += scoreDirection(board, i, j, 1,0);
+    posScore += scoreDirection(board, i, j, 0,1);
+    posScore += scoreDirection(board, i, j, 1,1);
+    posScore += scoreDirection(board, i, j, 1,-1);
+    return posScore;
+}
+
+int scoreMove(uint8_t board[boardColumns][boardRows]) {
+    int score = 0;
+    // prefers the center columns
+    int center_col = boardColumns / 2;
+    for (int row = 0; row < boardRows; row++) {
+        if (board[center_col][row] == AI)
+            score += 6; 
+    }
+    //score winability of the temp board
+    for (int r = 0; r < boardRows; r++) {
+        for (int c = 0; c < boardColumns; c++) {
+            score += scorePosition(board, c, r);
+        }
+    }
+
+    return score;
+}
+
+int moveAI() {
+    int best_col = -1;
+    int best_score = -1;
+
+    for (int col = 0; col < boardColumns; col++) {
+        if (gameBoard[col][0] == 0) {
+            int row = 0;
+            while (row < boardRows && gameBoard[col][row] == 0) {
+                row++;
+            }
+            if (row == 0) continue; 
+            row--;  // simulated row drop
+        
+            //check win
+            uint8_t tempBoard[boardColumns][boardRows];
+            for (int i = 0; i < boardColumns; i++) {
+                for (int j = 0; j < boardRows; j++) {
+                    tempBoard[i][j] = gameBoard[i][j];
                 }
             }
-        }
-    }
-	for (int i = 0; i< boardColumns; i++){
-        for (int j = 0; j < boardRows; j++){
-            playerChecking = gameBoard[i][j];
-            if (playerChecking != 0){
-				if(twoAway(i, j)<8){
-					return twoAway(i, j);
-				}
+            tempBoard[col][row] = 2;
+            if (checkState(tempBoard) == 2) return col;
+        
+            //check block
+            tempBoard[col][row] = 1;
+            if (checkState(tempBoard) == 1) return col;
+        
+            //otherwise score move
+            tempBoard[col][row] = 2;
+            int score = scoreMove(tempBoard);
+            if (score > best_score) {
+                best_score = score;
+                best_col = col;
             }
         }
     }
-	return 3;
-}
 
-uint8_t WinOrBlock(uint8_t i, uint8_t j){
-	if(CheckWinningMove(i, j, 1, 0)<8){
-		return CheckWinningMove(i, j, 1, 0);
-	}
-	if(CheckWinningMove(i, j, 0, 1)<8){
-		return CheckWinningMove(i, j, 0, 1);
-	}
-	if(CheckWinningMove(i, j, 1, 1)<8){
-		return CheckWinningMove(i, j, 1, 1);
-	}
-	if(CheckWinningMove(i, j, 1, -1)){
-		return CheckWinningMove(i, j, 1, 0);
-	}
-	return 8;
-}
-
-uint8_t CheckWinningMove(int i, int j, int dir_i, int dir_j){
-    for (int k = 1; k < 3; k++){
-        if ((i+dir_i*k)>boardColumns || (i+dir_i*k)<0){
-            return 8;
-        }
-        if ((j+dir_j*k)>boardRows || (j+dir_j*k)<0){
-            return 8;
-        }
-        if (gameBoard[i][j] != gameBoard[i+dir_i*k][j+dir_j*k]){
-            return 8;
-        }
-    }
-	if((i+dir_i*4)>boardColumns || (j+dir_j*4)>boardRows || gameBoard[i+dir_i*4][j+dir_j*4] != 0){
-		return 8;
-	}
-    return i+dir_i*4;
-
-}
-
-uint8_t twoAway(uint8_t i, uint8_t j){
-	if(CheckTwoAway(i, j, 1, 0)<8){
-		return CheckTwoAway(i, j, 1, 0);
-	}
-	if(CheckTwoAway(i, j, 0, 1)<8){
-		return CheckTwoAway(i, j, 0, 1);
-	}
-	if(CheckTwoAway(i, j, 1, 1)<8){
-		return CheckTwoAway(i, j, 1, 1);
-	}
-	if(CheckTwoAway(i, j, 1, -1)){
-		return CheckTwoAway(i, j, 1, 0);
-	}
-	return 8;
-}
-
-uint8_t CheckTwoAway(int i, int j, int dir_i, int dir_j){
-    for (int k = 1; k < 2; k++){
-        if ((i+dir_i*k)>boardColumns || (i+dir_i*k)<0){
-            return 8;
-        }
-        if ((j+dir_j*k)>boardRows || (j+dir_j*k)<0){
-            return 8;
-        }
-        if (gameBoard[i][j] != gameBoard[i+dir_i*k][j+dir_j*k]){
-            return 8;
-        }
-    }
-	if((i+dir_i*3)>boardColumns || (j+dir_j*3)>boardRows || gameBoard[i+dir_i*3][j+dir_j*3] != 0){
-		return 8;
-	}
-    return i+dir_i*3;
-
+    return best_col;
 }
 
 
-void appDelay(uint32_t delayTime){
-	char name[] = {'p','a','r','k','e','r'};
-	[[maybe_unused]]char destinationArray[FIRST_NAME_LENGTH];
-	for (int i = 0; i <delayTime; i++){
-		for (int j = 0; j < FIRST_NAME_LENGTH; j++){
-			destinationArray[j] = name[j];
-		}
-	}
-}
+
 
 	
 void EXTI0_IRQHandler(){
