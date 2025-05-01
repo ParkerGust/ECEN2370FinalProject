@@ -22,7 +22,7 @@ static bool player1turn = true;
 static bool startPlayer1 = true;
 static bool dropped = false;
 static uint8_t gameBoard[boardColumns][boardRows];
-//static uint8_t gyroState=0;
+uint32_t lastMoveTime = 0;
 
 #define FIRST_NAME_LENGTH 6
 
@@ -45,20 +45,22 @@ void startGame(void){
 	startTimer();
 	winner = 0;
 	newGame();
+	Screen2_DisplayBoard();
 	playGame();
 }
 
 void playGame(void){
 	while (winner == 0){
-		Screen2_Display();
+		Screen2_DisplayMoveChip();
 		if(TwoPlayerMode == false && player1turn == false){
 			chipLoc = moveAI();
 			drop();
+			Screen2_DisplayBoard();
 		}
 		else{
 			moveGyro();
 		}
-		Screen2_Display();
+		Screen2_DisplayMoveChip();
 		winner = checkState();
 	}
 	if(winner == 1){
@@ -138,33 +140,8 @@ void move(void){
         }
     }
 }
-/*
-void moveGyro(void){
-    int16_t gyroLoc;
-    gyroLoc = Gyro_GetYLoc();
-    if(10000<gyroLoc || -10000>gyroLoc){
-        if (10000<gyroLoc && chipLoc<6 && gyroState<2){
-            gyroState++;
-            HAL_Delay(500);
-        }
-        else if(chipLoc > 0 && gyroState<0){
-            gyroState--;
-            HAL_Delay(500);
-        }
-    }
-    if (gyroState == 2 && chipLoc<6){
-        chipLoc++;
-        HAL_Delay(300);
-        }
-    else if(gyroState == 0 && chipLoc > 0){
-        chipLoc--;
-        	HAL_Delay(300);
-        }
-}
-*/
-#define DEBOUNCE_TIME 50 // ms
-#define MOVE_THRESHOLD 5000
-uint32_t lastMoveTime = 0;
+
+
 
 void moveGyro(void) {
     int16_t gyroLoc = Gyro_GetYLoc();
@@ -230,14 +207,14 @@ void Screen1_Display(void){
     
     LCD_SetFont(&Font16x24);
     LCD_SetTextColor(LCD_COLOR_BLACK);
-    LCD_DisplayChar(20, 20, 'C');
-    LCD_DisplayChar(40, 20, 'O');
-    LCD_DisplayChar(60, 20, 'N');
-    LCD_DisplayChar(80, 20, 'N');
-    LCD_DisplayChar(100, 20, 'E');
-    LCD_DisplayChar(120, 20, 'C');
-    LCD_DisplayChar(140, 20, 'T');
-    LCD_DisplayChar(180, 20, '4');
+    LCD_DisplayChar(20, 25, 'C');
+    LCD_DisplayChar(40, 25, 'O');
+    LCD_DisplayChar(60, 25, 'N');
+    LCD_DisplayChar(80, 25, 'N');
+    LCD_DisplayChar(100, 25, 'E');
+    LCD_DisplayChar(120, 25, 'C');
+    LCD_DisplayChar(140, 25, 'T');
+    LCD_DisplayChar(180, 25, '4');
 
     LCD_SetFont(&Font12x12);
     LCD_DisplayChar(20, 110, '1');
@@ -269,33 +246,19 @@ void Screen1_Display(void){
     LCD_Draw_Circle_Fill(LCD_PIXEL_WIDTH-60, (LCD_PIXEL_HEIGHT/2)+20, 40, LCD_COLOR_BLUE);
 }
 
-void Screen2_Display(void){
+void Screen2_DisplayBoard(void){
     LCD_Clear(0, LCD_COLOR_GREY);
     
     LCD_SetFont(&Font16x24);
     LCD_SetTextColor(LCD_COLOR_BLACK);
-    LCD_DisplayChar(20, 20, 'C');
-    LCD_DisplayChar(40, 20, 'O');
-    LCD_DisplayChar(60, 20, 'N');
-    LCD_DisplayChar(80, 20, 'N');
-    LCD_DisplayChar(100, 20, 'E');
-    LCD_DisplayChar(120, 20, 'C');
-    LCD_DisplayChar(140, 20, 'T');
-    LCD_DisplayChar(180, 20, '4');
-    
-    for (int i = 0; i<boardColumns; i++){
-        if (i == chipLoc){
-            if (player1turn){
-                LCD_Draw_Circle_Fill((i*30)+30, 80, 12, LCD_COLOR_BLUE);
-            }
-            else{
-                LCD_Draw_Circle_Fill((i*30)+30, 80, 12, LCD_COLOR_RED);
-            }
-        }
-        else{
-            LCD_Draw_Circle_Fill((i*30)+30, 80, 12, LCD_COLOR_GREY);
-        }
-    }
+    LCD_DisplayChar(20, 15, 'C');
+    LCD_DisplayChar(40, 15, 'O');
+    LCD_DisplayChar(60, 15, 'N');
+    LCD_DisplayChar(80, 15, 'N');
+    LCD_DisplayChar(100, 15, 'E');
+    LCD_DisplayChar(120, 15, 'C');
+    LCD_DisplayChar(140, 15, 'T');
+    LCD_DisplayChar(180, 15, '4');
 
     for (int i = 0; i<boardColumns; i++){
         for (int j = 0; j<boardRows; j++){
@@ -312,64 +275,82 @@ void Screen2_Display(void){
     }
 }
 
+void Screen2_DisplayMoveChip(void){
+    for (int i = 0; i<boardColumns; i++){
+        if (i == chipLoc){
+            if (player1turn){
+                LCD_Draw_Circle_Fill((i*30)+30, 80, 12, LCD_COLOR_BLUE);
+            }
+            else{
+                LCD_Draw_Circle_Fill((i*30)+30, 80, 12, LCD_COLOR_RED);
+            }
+        }
+        else{
+            LCD_Draw_Circle_Fill((i*30)+30, 80, 12, LCD_COLOR_GREY);
+        }
+    }
+
+}
+
 void Screen3_Display(void){
     LCD_Clear(0, LCD_COLOR_GREY);
     
     LCD_SetFont(&Font16x24);
     LCD_SetTextColor(LCD_COLOR_BLACK);
-    LCD_DisplayChar(20, 20, 'C');
-    LCD_DisplayChar(40, 20, 'O');
-    LCD_DisplayChar(60, 20, 'N');
-    LCD_DisplayChar(80, 20, 'N');
-    LCD_DisplayChar(100, 20, 'E');
-    LCD_DisplayChar(120, 20, 'C');
-    LCD_DisplayChar(140, 20, 'T');
-    LCD_DisplayChar(180, 20, '4');
+    LCD_DisplayChar(20, 15, 'C');
+    LCD_DisplayChar(40, 15, 'O');
+    LCD_DisplayChar(60, 15, 'N');
+    LCD_DisplayChar(80, 15, 'N');
+    LCD_DisplayChar(100, 15, 'E');
+    LCD_DisplayChar(120, 15, 'C');
+    LCD_DisplayChar(140, 15, 'T');
+    LCD_DisplayChar(180, 15, '4');
 
     char score1 = (char)(player1_Score+48);
 	char score2 = (char)(player2_Score+48);
 
     LCD_SetFont(&Font12x12);
-	LCD_DisplayChar(20, 45, 'P');
-    LCD_DisplayChar(30, 45, 'L');
-    LCD_DisplayChar(40, 45, 'A');
-    LCD_DisplayChar(50, 45, 'Y');
-    LCD_DisplayChar(60, 45, 'E');
-    LCD_DisplayChar(70, 45, 'R');
-    LCD_DisplayChar(85, 45, '1');
-    LCD_DisplayChar(25, 60, 'S');
-    LCD_DisplayChar(35, 60, 'C');
-    LCD_DisplayChar(45, 60, 'O');
-    LCD_DisplayChar(55, 60, 'R');
-	LCD_DisplayChar(65, 60, 'E');
-	LCD_DisplayChar(75, 60, ':');
-	LCD_DisplayChar(85, 60, score1);
+	LCD_DisplayChar(20, 40, 'P');
+    LCD_DisplayChar(30, 40, 'L');
+    LCD_DisplayChar(40, 40, 'A');
+    LCD_DisplayChar(50, 40, 'Y');
+    LCD_DisplayChar(60, 40, 'E');
+    LCD_DisplayChar(70, 40, 'R');
+    LCD_DisplayChar(85, 40, '1');
+    LCD_DisplayChar(25, 55, 'S');
+    LCD_DisplayChar(35, 55, 'C');
+    LCD_DisplayChar(45, 55, 'O');
+    LCD_DisplayChar(55, 55, 'R');
+	LCD_DisplayChar(65, 55, 'E');
+	LCD_DisplayChar(75, 55, ':');
+	LCD_DisplayChar(85, 55, score1);
 
-    LCD_DisplayChar(140, 45, 'P');
-    LCD_DisplayChar(150, 45, 'L');
-    LCD_DisplayChar(160, 45, 'A');
-    LCD_DisplayChar(170, 45, 'Y');
-    LCD_DisplayChar(180, 45, 'E');
-    LCD_DisplayChar(190, 45, 'R');
-    LCD_DisplayChar(205, 45, '2');
-    LCD_DisplayChar(145, 60, 'S');
-    LCD_DisplayChar(155, 60, 'C');
-    LCD_DisplayChar(165, 60, 'O');
-    LCD_DisplayChar(175, 60, 'R');
-	LCD_DisplayChar(185, 60, 'E');
-	LCD_DisplayChar(195, 60, ':');
-	LCD_DisplayChar(205, 60, score2);
+    LCD_DisplayChar(140, 40, 'P');
+    LCD_DisplayChar(150, 40, 'L');
+    LCD_DisplayChar(160, 40, 'A');
+    LCD_DisplayChar(170, 40, 'Y');
+    LCD_DisplayChar(180, 40, 'E');
+    LCD_DisplayChar(190, 40, 'R');
+    LCD_DisplayChar(205, 40, '2');
+    LCD_DisplayChar(145, 55, 'S');
+    LCD_DisplayChar(155, 55, 'C');
+    LCD_DisplayChar(165, 55, 'O');
+    LCD_DisplayChar(175, 55, 'R');
+	LCD_DisplayChar(185, 55, 'E');
+	LCD_DisplayChar(195, 55, ':');
+	LCD_DisplayChar(205, 55, score2);
 
-	LCD_DisplayChar(40, 80, 'T');
-	LCD_DisplayChar(50, 80, 'I');
-	LCD_DisplayChar(55, 80, 'M');
-	LCD_DisplayChar(65, 80, 'E');
-	LCD_DisplayChar(80, 80, 'P');
-	LCD_DisplayChar(90, 80, 'L');
-	LCD_DisplayChar(100, 80, 'A');
-	LCD_DisplayChar(110, 80, 'Y');
-	LCD_DisplayChar(120, 80, 'E');
-	LCD_DisplayChar(130, 80, 'D');
+	LCD_DisplayChar(40, 70, 'T');
+	LCD_DisplayChar(50, 70, 'I');
+	LCD_DisplayChar(55, 70, 'M');
+	LCD_DisplayChar(65, 70, 'E');
+	LCD_DisplayChar(80, 70, 'P');
+	LCD_DisplayChar(90, 70, 'L');
+	LCD_DisplayChar(100, 70, 'A');
+	LCD_DisplayChar(110, 70, 'Y');
+	LCD_DisplayChar(120, 70, 'E');
+	LCD_DisplayChar(130, 70, 'D');
+
 	uint32_t seconds = timePlayed/1000;
 	uint32_t minutes = seconds/60;
 	seconds = seconds-(minutes*60);
@@ -377,11 +358,32 @@ void Screen3_Display(void){
 	char lsb_min = (char)((minutes-((minutes/10)*10))+48);
 	char msb_sec = (char)((seconds/10)+48);
 	char lsb_sec = (char)((seconds-((seconds/10)*10))+48);
-	LCD_DisplayChar(150, 80, msb_min);
-	LCD_DisplayChar(160, 80, lsb_min);
-	LCD_DisplayChar(167, 80, ':');
-	LCD_DisplayChar(170, 80, msb_sec);
-	LCD_DisplayChar(180, 80, lsb_sec);
+	LCD_DisplayChar(150, 70, msb_min);
+	LCD_DisplayChar(160, 70, lsb_min);
+	LCD_DisplayChar(167, 70, ':');
+	LCD_DisplayChar(170, 70, msb_sec);
+	LCD_DisplayChar(180, 70, lsb_sec);
+    
+    LCD_DisplayChar(15, 85, 'P');
+	LCD_DisplayChar(25, 85, 'R');
+	LCD_DisplayChar(35, 85, 'E');
+	LCD_DisplayChar(45, 85, 'S');
+	LCD_DisplayChar(55, 85, 'S');
+	LCD_DisplayChar(70, 85, 'B');
+	LCD_DisplayChar(80, 85, 'U');
+	LCD_DisplayChar(90, 85, 'T');
+	LCD_DisplayChar(100, 85, 'T');
+	LCD_DisplayChar(110, 85, 'O');
+    LCD_DisplayChar(120, 85, 'N');
+    LCD_DisplayChar(135, 85, 'T');
+    LCD_DisplayChar(145, 85, 'O');
+    LCD_DisplayChar(160, 85, 'R');
+    LCD_DisplayChar(170, 85, 'E');
+    LCD_DisplayChar(180, 85, 'S');
+    LCD_DisplayChar(190, 85, 'T');
+    LCD_DisplayChar(200, 85, 'A');
+    LCD_DisplayChar(210, 85, 'R');
+    LCD_DisplayChar(220, 85, 'T');
 
     for (int i = 0; i<boardColumns; i++){
         for (int j = 0; j<boardRows; j++){
@@ -511,6 +513,7 @@ void EXTI0_IRQHandler(){
 	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
 	if(winner == 0){
 		drop();
+        Screen2_DisplayBoard();
 	}
 	else{
 		newGame();
