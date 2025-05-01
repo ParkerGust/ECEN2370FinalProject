@@ -1,8 +1,8 @@
 
 #include "stm32f4xx_hal.h"
 
-#ifndef INC_APPLICATIONCODE_H_
-#define INC_APPLICATIONCODE_H_
+#ifndef INC_AI_H_
+#define INC_AI_H_
 
 #include <stdio.h>
 #include <stdbool.h>

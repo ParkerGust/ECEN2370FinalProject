@@ -107,8 +107,7 @@ int main(void)
   MX_SPI5_Init();
   MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
-  ApplicationInit(); // Initializes the LCD functionality
-  HAL_Delay(5000);
+  ApplicationInit();
   /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -116,6 +115,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+	  playGame();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
