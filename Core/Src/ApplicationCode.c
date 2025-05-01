@@ -22,23 +22,20 @@ static bool player1turn = true;
 static bool startPlayer1 = true;
 static bool dropped = false;
 static uint8_t gameBoard[boardColumns][boardRows];
-
-static int16_t initialGyroLoc;
+//static uint8_t gyroState=0;
 
 #define FIRST_NAME_LENGTH 6
 
-extern void initialise_monitor_handles(void); 
 
 void ApplicationInit(void)
 {
-	initialise_monitor_handles(); // Allows printf functionality
     LTCD__Init();
     LTCD_Layer_Init(0);
     LCD_Clear(0,LCD_COLOR_WHITE);
 	InitializeLCDTouch();
 	Gyro_Init();
+    HAL_Delay(100);
 	Button_Init_Interrupt();
-	initialGyroLoc = Gyro_GetYLoc();
 	startGame();
 }
 
@@ -141,23 +138,48 @@ void move(void){
         }
     }
 }
-
+/*
 void moveGyro(void){
     int16_t gyroLoc;
     gyroLoc = Gyro_GetYLoc();
-    while((initialGyroLoc+500)>gyroLoc && (initialGyroLoc-500)<gyroLoc && dropped == false){
-    	gyroLoc = Gyro_GetYLoc();
-    }
-    if((initialGyroLoc+500)<gyroLoc || (initialGyroLoc-500)>gyroLoc){
-        if ((initialGyroLoc+500)<gyroLoc && chipLoc<6){
-            chipLoc++;
+    if(10000<gyroLoc || -10000>gyroLoc){
+        if (10000<gyroLoc && chipLoc<6 && gyroState<2){
+            gyroState++;
+            HAL_Delay(500);
         }
-        else if(chipLoc > 0){
+        else if(chipLoc > 0 && gyroState<0){
+            gyroState--;
+            HAL_Delay(500);
+        }
+    }
+    if (gyroState == 2 && chipLoc<6){
+        chipLoc++;
+        HAL_Delay(300);
+        }
+    else if(gyroState == 0 && chipLoc > 0){
+        chipLoc--;
+        	HAL_Delay(300);
+        }
+}
+*/
+#define DEBOUNCE_TIME 50 // ms
+#define MOVE_THRESHOLD 5000
+uint32_t lastMoveTime = 0;
+
+void moveGyro(void) {
+    int16_t gyroLoc = Gyro_GetYLoc();
+    uint32_t now = HAL_GetTick();
+
+    if (now - lastMoveTime > DEBOUNCE_TIME) {
+        if (gyroLoc > MOVE_THRESHOLD && chipLoc < 6) {
+            chipLoc++;
+            lastMoveTime = now;
+        } else if (gyroLoc < -MOVE_THRESHOLD && chipLoc > 0) {
             chipLoc--;
+            lastMoveTime = now;
         }
     }
 }
-
 uint8_t checkState(void){
     int playerChecking = 0;
     dropped = false;

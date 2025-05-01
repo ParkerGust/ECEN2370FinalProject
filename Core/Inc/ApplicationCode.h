@@ -19,6 +19,8 @@ void LCD_Visual_Demo(void);
 #define boardRows 6
 #define ONE_PLAYER_MODE 0
 #define TWO_PLAYER_MODE 1 
+#define DEBOUNCE_TIME 50 // ms
+#define MOVE_THRESHOLD 5000
 
 void Screen1_Display(void);
 void checkPlayerMode(void);
