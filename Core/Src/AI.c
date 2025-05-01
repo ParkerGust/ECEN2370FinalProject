@@ -101,7 +101,14 @@ uint8_t checkState(uint8_t checkBoard[boardColumns][boardRows]){
             }
         }
     }
-	return 0;
+    for (int i = 0; i< boardColumns; i++){
+        for (int j = 0; j < boardRows; j++){
+            if(checkBoard[i][j] == 0){
+                return 0;
+            }
+        }
+    }
+	return 3; // tie condition to end game without incrementing score
 }
 bool checkDirection(uint8_t checkBoard[boardColumns][boardRows], int i, int j, int dir_i, int dir_j){
     for (int k = 1; k < 4; k++){
