@@ -1,0 +1,171 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/\+AI.c File Reference}
+\hypertarget{_a_i_8c}{}\label{_a_i_8c}\index{ECEN2370FinalProject/Core/Src/AI.c@{ECEN2370FinalProject/Core/Src/AI.c}}
+{\ttfamily \#include "{}AI.\+h"{}}\newline
+Include dependency graph for AI.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_a_i_8c_a59e2c737d4b6d705e0ed11a2e9b41752}{score\+Direction}} (uint8\+\_\+t board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]}, int i, int j, int dir\+\_\+i, int dir\+\_\+j)
+\begin{DoxyCompactList}\small\item\em Calculates a score of a direction /, \textbackslash{}, \texorpdfstring{$\vert$}{|}, -\/. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_a_i_8c_a12b4757135034ac890fe38bc5aad92f0}{score\+Position}} (uint8\+\_\+t board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]}, int i, int j)
+\begin{DoxyCompactList}\small\item\em Calculates a score for the position by checking in all directions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_a_i_8c_a58dbeb0edab4f0514555efc4b1be8a97}{score\+Move}} (uint8\+\_\+t board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Calculates a score for the board by checking all positions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_a_i_8c_a90bb36576ea122c2869f5b3392453a02}{move\+AI}} (uint8\+\_\+t game\+Board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Moves the piece to the best position based on scores. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_a_i_8c_ae9311ace8e11cba345ccba6ecfd1b6b6}{check\+State}} (uint8\+\_\+t check\+Board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Checks if a game has been won given the board. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_a_i_8c_a598eb784713eca7a81391647864b7612}{check\+Direction}} (uint8\+\_\+t check\+Board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]}, int i, int j, int dir\+\_\+i, int dir\+\_\+j)
+\begin{DoxyCompactList}\small\item\em helper function for check\+State that checks in directions \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_a_i_8c_a598eb784713eca7a81391647864b7612}\index{AI.c@{AI.c}!checkDirection@{checkDirection}}
+\index{checkDirection@{checkDirection}!AI.c@{AI.c}}
+\doxysubsubsection{\texorpdfstring{checkDirection()}{checkDirection()}}
+{\footnotesize\ttfamily \label{_a_i_8c_a598eb784713eca7a81391647864b7612} 
+bool check\+Direction (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{check\+Board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}, }\item[{int}]{i}{, }\item[{int}]{j}{, }\item[{int}]{dir\+\_\+i}{, }\item[{int}]{dir\+\_\+j}{}\end{DoxyParamCaption})}
+
+
+
+helper function for check\+State that checks in directions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em check\+Board} & is a game board that you want checked \\
+\hline
+{\em i} & Column \\
+\hline
+{\em j} & Row \\
+\hline
+{\em dir\+\_\+i} & if checking in column direction = 1 or -\/1 \\
+\hline
+{\em dir\+\_\+j} & if checking in row direction = 1 or -\/1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if no winer, true if winner 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{_a_i_8c_ae9311ace8e11cba345ccba6ecfd1b6b6}\index{AI.c@{AI.c}!checkState@{checkState}}
+\index{checkState@{checkState}!AI.c@{AI.c}}
+\doxysubsubsection{\texorpdfstring{checkState()}{checkState()}}
+{\footnotesize\ttfamily \label{_a_i_8c_ae9311ace8e11cba345ccba6ecfd1b6b6} 
+uint8\+\_\+t check\+State (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{check\+Board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Checks if a game has been won given the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em check\+Board} & is a game board that you want checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no winner, 1 if player 1 wins, 2 if player 2 wins 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{_a_i_8c_a90bb36576ea122c2869f5b3392453a02}\index{AI.c@{AI.c}!moveAI@{moveAI}}
+\index{moveAI@{moveAI}!AI.c@{AI.c}}
+\doxysubsubsection{\texorpdfstring{moveAI()}{moveAI()}}
+{\footnotesize\ttfamily \label{_a_i_8c_a90bb36576ea122c2869f5b3392453a02} 
+int move\+AI (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{game\+Board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Moves the piece to the best position based on scores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Board} & current game board with no test peices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best column for the chip to be placed in 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{_a_i_8c_a59e2c737d4b6d705e0ed11a2e9b41752}\index{AI.c@{AI.c}!scoreDirection@{scoreDirection}}
+\index{scoreDirection@{scoreDirection}!AI.c@{AI.c}}
+\doxysubsubsection{\texorpdfstring{scoreDirection()}{scoreDirection()}}
+{\footnotesize\ttfamily \label{_a_i_8c_a59e2c737d4b6d705e0ed11a2e9b41752} 
+int score\+Direction (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}, }\item[{int}]{i}{, }\item[{int}]{j}{, }\item[{int}]{dir\+\_\+i}{, }\item[{int}]{dir\+\_\+j}{}\end{DoxyParamCaption})}
+
+
+
+Calculates a score of a direction /, \textbackslash{}, \texorpdfstring{$\vert$}{|}, -\/. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & game board with test piece placed \\
+\hline
+{\em i} & Column \\
+\hline
+{\em j} & Row \\
+\hline
+{\em dir\+\_\+i} & if checking in column direction = 1 or -\/1 \\
+\hline
+{\em dir\+\_\+j} & if checking in row direction = 1 or -\/1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the score in the given direction 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{_a_i_8c_a58dbeb0edab4f0514555efc4b1be8a97}\index{AI.c@{AI.c}!scoreMove@{scoreMove}}
+\index{scoreMove@{scoreMove}!AI.c@{AI.c}}
+\doxysubsubsection{\texorpdfstring{scoreMove()}{scoreMove()}}
+{\footnotesize\ttfamily \label{_a_i_8c_a58dbeb0edab4f0514555efc4b1be8a97} 
+int score\+Move (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Calculates a score for the board by checking all positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & game board with test piece placed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the score of the board with the chip in the position 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{_a_i_8c_a12b4757135034ac890fe38bc5aad92f0}\index{AI.c@{AI.c}!scorePosition@{scorePosition}}
+\index{scorePosition@{scorePosition}!AI.c@{AI.c}}
+\doxysubsubsection{\texorpdfstring{scorePosition()}{scorePosition()}}
+{\footnotesize\ttfamily \label{_a_i_8c_a12b4757135034ac890fe38bc5aad92f0} 
+int score\+Position (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}, }\item[{int}]{i}{, }\item[{int}]{j}{}\end{DoxyParamCaption})}
+
+
+
+Calculates a score for the position by checking in all directions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & game board with test piece placed \\
+\hline
+{\em i} & Column \\
+\hline
+{\em j} & Row \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the score with chip in the given position 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10

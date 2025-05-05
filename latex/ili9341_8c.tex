@@ -1,0 +1,146 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/ili9341.c File Reference}
+\hypertarget{ili9341_8c}{}\label{ili9341_8c}\index{ECEN2370FinalProject/Core/Src/ili9341.c@{ECEN2370FinalProject/Core/Src/ili9341.c}}
+
+
+This file includes the LCD driver for ILI9341 LCD.  
+
+
+{\ttfamily \#include "{}ili9341.\+h"{}}\newline
+Include dependency graph for ili9341.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga9f53af6ab5b6427655c61ef71fa4a442}{ili9341\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Power on the LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ili9341_8c_ac3489560fb954b6e4bf5ac24ef99988d}{ili9341\+\_\+\+Display\+On}} (void)
+\begin{DoxyCompactList}\small\item\em Enables the Display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ili9341_8c_a3c09dd822d1d76312b6143b8adcb00fa}{ili9341\+\_\+\+Display\+Off}} (void)
+\begin{DoxyCompactList}\small\item\em Disables the Display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga4adb2f8560c2addc44f415420f56d783}{ili9341\+\_\+\+Write\+\_\+\+Reg}} (uint8\+\_\+t LCD\+\_\+\+Reg)
+\begin{DoxyCompactList}\small\item\em Writes to the selected LCD register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga2ab32c85fa63d2acadeffc52a494f168}{ili9341\+\_\+\+Send\+\_\+\+Data}} (uint16\+\_\+t Reg\+Value)
+\begin{DoxyCompactList}\small\item\em Writes data to the selected LCD register. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{ili9341_8c_a8a2a8f4eb728128a111362c7e552634f}{ili9341\+\_\+\+Read\+Data}} (uint16\+\_\+t Reg\+Value, uint8\+\_\+t Read\+Size)
+\begin{DoxyCompactList}\small\item\em Reads the selected LCD Register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_gaccf0a45e037a886f9b1a849bedd63735}{LCD\+\_\+\+IO\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Configures the LCD\+\_\+\+SPI interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_gaae6ab499c7ca32f026708cbfb5153c97}{LCD\+\_\+\+IO\+\_\+\+Write\+Data}} (uint16\+\_\+t Reg\+Value)
+\begin{DoxyCompactList}\small\item\em Writes register value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga435f47c3f7c327325ea17f71fae7cebc}{LCD\+\_\+\+IO\+\_\+\+Write\+Reg}} (uint8\+\_\+t Reg)
+\begin{DoxyCompactList}\small\item\em Writes register address. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga10fd152b0ec2326173d80e922d8635fc}{LCD\+\_\+\+IO\+\_\+\+Read\+Data}} (uint16\+\_\+t Reg\+Value, uint8\+\_\+t Read\+Size)
+\begin{DoxyCompactList}\small\item\em Reads register value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga0b45e37ff42910b44d218393ed479e12}{LCD\+\_\+\+Delay}} (uint32\+\_\+t Delay)
+\begin{DoxyCompactList}\small\item\em Wait for loop in ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{ili9341_8c_abfc59bb414a3487fa4801a991b3b0e74}{Spi\+Timeout}} = \mbox{\hyperlink{ili9341_8h_aa1c0af772e3c4b9ac61fc29ad5299724}{SPI\+\_\+\+TIMEOUT\+\_\+\+MAX}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file includes the LCD driver for ILI9341 LCD. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+V1.\+0.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+02-\/December-\/2014 
+\end{DoxyDate}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} COPYRIGHT(c) 2014 STMicroelectronics\end{center} }
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of STMicroelectronics nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}\+AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ili9341_8c_a3c09dd822d1d76312b6143b8adcb00fa}\index{ili9341.c@{ili9341.c}!ili9341\_DisplayOff@{ili9341\_DisplayOff}}
+\index{ili9341\_DisplayOff@{ili9341\_DisplayOff}!ili9341.c@{ili9341.c}}
+\doxysubsubsection{\texorpdfstring{ili9341\_DisplayOff()}{ili9341\_DisplayOff()}}
+{\footnotesize\ttfamily \label{ili9341_8c_a3c09dd822d1d76312b6143b8adcb00fa} 
+void ili9341\+\_\+\+Display\+Off (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Disables the Display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{ili9341_8c_ac3489560fb954b6e4bf5ac24ef99988d}\index{ili9341.c@{ili9341.c}!ili9341\_DisplayOn@{ili9341\_DisplayOn}}
+\index{ili9341\_DisplayOn@{ili9341\_DisplayOn}!ili9341.c@{ili9341.c}}
+\doxysubsubsection{\texorpdfstring{ili9341\_DisplayOn()}{ili9341\_DisplayOn()}}
+{\footnotesize\ttfamily \label{ili9341_8c_ac3489560fb954b6e4bf5ac24ef99988d} 
+void ili9341\+\_\+\+Display\+On (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Enables the Display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{ili9341_8c_a8a2a8f4eb728128a111362c7e552634f}\index{ili9341.c@{ili9341.c}!ili9341\_ReadData@{ili9341\_ReadData}}
+\index{ili9341\_ReadData@{ili9341\_ReadData}!ili9341.c@{ili9341.c}}
+\doxysubsubsection{\texorpdfstring{ili9341\_ReadData()}{ili9341\_ReadData()}}
+{\footnotesize\ttfamily \label{ili9341_8c_a8a2a8f4eb728128a111362c7e552634f} 
+uint32\+\_\+t ili9341\+\_\+\+Read\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg\+Value}{, }\item[{uint8\+\_\+t}]{Read\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Reads the selected LCD Register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reg\+Value} & Address of the register to read \\
+\hline
+{\em Read\+Size} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LCD} & Register Value. \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{ili9341_8c_abfc59bb414a3487fa4801a991b3b0e74}\index{ili9341.c@{ili9341.c}!SpiTimeout@{SpiTimeout}}
+\index{SpiTimeout@{SpiTimeout}!ili9341.c@{ili9341.c}}
+\doxysubsubsection{\texorpdfstring{SpiTimeout}{SpiTimeout}}
+{\footnotesize\ttfamily \label{ili9341_8c_abfc59bb414a3487fa4801a991b3b0e74} 
+uint32\+\_\+t Spi\+Timeout = \mbox{\hyperlink{ili9341_8h_aa1c0af772e3c4b9ac61fc29ad5299724}{SPI\+\_\+\+TIMEOUT\+\_\+\+MAX}}}
+

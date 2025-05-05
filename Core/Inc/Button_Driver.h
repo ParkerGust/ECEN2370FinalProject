@@ -1,4 +1,7 @@
-
+/** 
+ * @file Button_Driver.h
+ * @brief Allows button functionality
+ */
 
 #ifndef BUTTON_DRIVER_H_
 #define BUTTON_DRIVER_H_
@@ -13,7 +16,14 @@
 #define UNPRESSED 0
 
 void Button_Init();
+/** 
+ * @brief initializes the button with interrupt functionality 
+ */
 void Button_Init_Interrupt();
+
+/** 
+ * @brief function to check if button is pressed 
+ */
 bool isPressed();
 
 

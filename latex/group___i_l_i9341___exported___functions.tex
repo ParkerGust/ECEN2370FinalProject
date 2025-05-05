@@ -1,0 +1,200 @@
+\doxysection{ILI9341\+\_\+\+Exported\+\_\+\+Functions}
+\hypertarget{group___i_l_i9341___exported___functions}{}\label{group___i_l_i9341___exported___functions}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga9f53af6ab5b6427655c61ef71fa4a442}{ili9341\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Power on the LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga4adb2f8560c2addc44f415420f56d783}{ili9341\+\_\+\+Write\+\_\+\+Reg}} (uint8\+\_\+t LCD\+\_\+\+Reg)
+\begin{DoxyCompactList}\small\item\em Writes to the selected LCD register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga2ab32c85fa63d2acadeffc52a494f168}{ili9341\+\_\+\+Send\+\_\+\+Data}} (uint16\+\_\+t Reg\+Value)
+\begin{DoxyCompactList}\small\item\em Writes data to the selected LCD register. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___i_l_i9341___exported___functions_gaa9ccfa6fd034e034321d69ae86c5789c}{ili9341\+\_\+\+Read\+\_\+\+Data}} (uint16\+\_\+t Reg\+Value, uint8\+\_\+t Read\+Size)
+\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_gad55293fd947fbbf686c02712b06a89cc}{ili9341\+\_\+\+Display\+\_\+\+On}} (void)
+\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga3a654e86b44986da487efa5e2caa643e}{ili9341\+\_\+\+Display\+\_\+\+Off}} (void)
+\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_gaccf0a45e037a886f9b1a849bedd63735}{LCD\+\_\+\+IO\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Configures the LCD\+\_\+\+SPI interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_gaae6ab499c7ca32f026708cbfb5153c97}{LCD\+\_\+\+IO\+\_\+\+Write\+Data}} (uint16\+\_\+t Reg\+Value)
+\begin{DoxyCompactList}\small\item\em Writes register value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga435f47c3f7c327325ea17f71fae7cebc}{LCD\+\_\+\+IO\+\_\+\+Write\+Reg}} (uint8\+\_\+t Reg)
+\begin{DoxyCompactList}\small\item\em Writes register address. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga10fd152b0ec2326173d80e922d8635fc}{LCD\+\_\+\+IO\+\_\+\+Read\+Data}} (uint16\+\_\+t Reg\+Value, uint8\+\_\+t Read\+Size)
+\begin{DoxyCompactList}\small\item\em Reads register value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___i_l_i9341___exported___functions_ga0b45e37ff42910b44d218393ed479e12}{LCD\+\_\+\+Delay}} (uint32\+\_\+t delay)
+\begin{DoxyCompactList}\small\item\em Wait for loop in ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___i_l_i9341___exported___functions_ga3a654e86b44986da487efa5e2caa643e}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!ili9341\_Display\_Off@{ili9341\_Display\_Off}}
+\index{ili9341\_Display\_Off@{ili9341\_Display\_Off}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{ili9341\_Display\_Off()}{ili9341\_Display\_Off()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga3a654e86b44986da487efa5e2caa643e} 
+void ili9341\+\_\+\+Display\+\_\+\+Off (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{group___i_l_i9341___exported___functions_gad55293fd947fbbf686c02712b06a89cc}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!ili9341\_Display\_On@{ili9341\_Display\_On}}
+\index{ili9341\_Display\_On@{ili9341\_Display\_On}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{ili9341\_Display\_On()}{ili9341\_Display\_On()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_gad55293fd947fbbf686c02712b06a89cc} 
+void ili9341\+\_\+\+Display\+\_\+\+On (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{group___i_l_i9341___exported___functions_ga9f53af6ab5b6427655c61ef71fa4a442}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!ili9341\_Init@{ili9341\_Init}}
+\index{ili9341\_Init@{ili9341\_Init}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{ili9341\_Init()}{ili9341\_Init()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga9f53af6ab5b6427655c61ef71fa4a442} 
+void ili9341\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Power on the LCD. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{group___i_l_i9341___exported___functions_gaa9ccfa6fd034e034321d69ae86c5789c}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!ili9341\_Read\_Data@{ili9341\_Read\_Data}}
+\index{ili9341\_Read\_Data@{ili9341\_Read\_Data}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{ili9341\_Read\_Data()}{ili9341\_Read\_Data()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_gaa9ccfa6fd034e034321d69ae86c5789c} 
+uint32\+\_\+t ili9341\+\_\+\+Read\+\_\+\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg\+Value}{, }\item[{uint8\+\_\+t}]{Read\+Size}{}\end{DoxyParamCaption})}
+
+\Hypertarget{group___i_l_i9341___exported___functions_ga2ab32c85fa63d2acadeffc52a494f168}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!ili9341\_Send\_Data@{ili9341\_Send\_Data}}
+\index{ili9341\_Send\_Data@{ili9341\_Send\_Data}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{ili9341\_Send\_Data()}{ili9341\_Send\_Data()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga2ab32c85fa63d2acadeffc52a494f168} 
+void ili9341\+\_\+\+Send\+\_\+\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg\+Value}{}\end{DoxyParamCaption})}
+
+
+
+Writes data to the selected LCD register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em LCD\+\_\+\+Reg} & address of the selected register. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{group___i_l_i9341___exported___functions_ga4adb2f8560c2addc44f415420f56d783}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!ili9341\_Write\_Reg@{ili9341\_Write\_Reg}}
+\index{ili9341\_Write\_Reg@{ili9341\_Write\_Reg}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{ili9341\_Write\_Reg()}{ili9341\_Write\_Reg()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga4adb2f8560c2addc44f415420f56d783} 
+void ili9341\+\_\+\+Write\+\_\+\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{LCD\+\_\+\+Reg}{}\end{DoxyParamCaption})}
+
+
+
+Writes to the selected LCD register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em LCD\+\_\+\+Reg} & address of the selected register. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{group___i_l_i9341___exported___functions_ga0b45e37ff42910b44d218393ed479e12}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!LCD\_Delay@{LCD\_Delay}}
+\index{LCD\_Delay@{LCD\_Delay}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{LCD\_Delay()}{LCD\_Delay()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga0b45e37ff42910b44d218393ed479e12} 
+void LCD\+\_\+\+Delay (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{Delay}{}\end{DoxyParamCaption})}
+
+
+
+Wait for loop in ms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Delay} & in ms. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{group___i_l_i9341___exported___functions_gaccf0a45e037a886f9b1a849bedd63735}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!LCD\_IO\_Init@{LCD\_IO\_Init}}
+\index{LCD\_IO\_Init@{LCD\_IO\_Init}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{LCD\_IO\_Init()}{LCD\_IO\_Init()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_gaccf0a45e037a886f9b1a849bedd63735} 
+void LCD\+\_\+\+IO\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Configures the LCD\+\_\+\+SPI interface. 
+
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{group___i_l_i9341___exported___functions_ga10fd152b0ec2326173d80e922d8635fc}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!LCD\_IO\_ReadData@{LCD\_IO\_ReadData}}
+\index{LCD\_IO\_ReadData@{LCD\_IO\_ReadData}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{LCD\_IO\_ReadData()}{LCD\_IO\_ReadData()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga10fd152b0ec2326173d80e922d8635fc} 
+uint32\+\_\+t LCD\+\_\+\+IO\+\_\+\+Read\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg\+Value}{, }\item[{uint8\+\_\+t}]{Read\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Reads register value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reg\+Value} & Address of the register to read \\
+\hline
+{\em Read\+Size} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Content} & of the register value \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{group___i_l_i9341___exported___functions_gaae6ab499c7ca32f026708cbfb5153c97}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!LCD\_IO\_WriteData@{LCD\_IO\_WriteData}}
+\index{LCD\_IO\_WriteData@{LCD\_IO\_WriteData}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{LCD\_IO\_WriteData()}{LCD\_IO\_WriteData()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_gaae6ab499c7ca32f026708cbfb5153c97} 
+void LCD\+\_\+\+IO\+\_\+\+Write\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg\+Value}{}\end{DoxyParamCaption})}
+
+
+
+Writes register value. 
+
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{group___i_l_i9341___exported___functions_ga435f47c3f7c327325ea17f71fae7cebc}\index{ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}!LCD\_IO\_WriteReg@{LCD\_IO\_WriteReg}}
+\index{LCD\_IO\_WriteReg@{LCD\_IO\_WriteReg}!ILI9341\_Exported\_Functions@{ILI9341\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{LCD\_IO\_WriteReg()}{LCD\_IO\_WriteReg()}}
+{\footnotesize\ttfamily \label{group___i_l_i9341___exported___functions_ga435f47c3f7c327325ea17f71fae7cebc} 
+void LCD\+\_\+\+IO\+\_\+\+Write\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg}{}\end{DoxyParamCaption})}
+
+
+
+Writes register address. 
+
+Here is the caller graph for this function\+:
+% FIG 10

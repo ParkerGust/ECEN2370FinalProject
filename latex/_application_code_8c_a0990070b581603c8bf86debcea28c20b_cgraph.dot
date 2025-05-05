@@ -1,0 +1,19 @@
+digraph "moveGyro"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="moveGyro",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="move function to change the column that the chip hovers over gyro or touch controlled based on compil..."];
+  Node1 -> Node2 [id="edge6_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Gyro_GetYLoc",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_gyro_8c.html#a3f23b9c98e52e23454d961ecbcaa97fd",tooltip="gets the change in y location"];
+  Node2 -> Node3 [id="edge7_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Gyro_ReadReg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_gyro_8c.html#ac40c444b1ec53a450cdce8ca8f147237",tooltip="reads a given register"];
+  Node3 -> Node4 [id="edge8_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Gyro_DisableSlaveConnection",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_gyro_8c.html#ab2f8c2d55c38872d6b058cd2b1d913ae",tooltip="disables chip select to disable communication through SPI"];
+  Node3 -> Node5 [id="edge9_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Gyro_EnableSlaveConnection",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_gyro_8c.html#a458aac68a5214cfaa23b08e42c8af9ec",tooltip="enables chip select to enable communication through SPI"];
+  Node3 -> Node6 [id="edge10_Node000003_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Gyro_VerifyHAL",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_gyro_8c.html#a76b0f183cf84f9c616c01b0902601e0c",tooltip="ensures HAL is still ok"];
+}

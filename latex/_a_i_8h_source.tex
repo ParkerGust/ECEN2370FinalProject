@@ -1,0 +1,33 @@
+\doxysection{AI.\+h}
+\hypertarget{_a_i_8h_source}{}\label{_a_i_8h_source}\index{ECEN2370FinalProject/Core/Inc/AI.h@{ECEN2370FinalProject/Core/Inc/AI.h}}
+\mbox{\hyperlink{_a_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INC\_AI\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INC\_AI\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PERSON\ 1}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ AI\ 2}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ boardColumns\ 7}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ boardRows\ 6}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_i_8h_a59e2c737d4b6d705e0ed11a2e9b41752}{scoreDirection}}(uint8\_t\ board[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}],\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ dir\_i,\ \textcolor{keywordtype}{int}\ dir\_j);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_i_8h_a12b4757135034ac890fe38bc5aad92f0}{scorePosition}}(uint8\_t\ board[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}],\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_i_8h_a58dbeb0edab4f0514555efc4b1be8a97}{scoreMove}}(uint8\_t\ board[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}]);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_i_8h_a90bb36576ea122c2869f5b3392453a02}{moveAI}}(uint8\_t\ gameBoard[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}]);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ uint8\_t\ \mbox{\hyperlink{_a_i_8h_ae9311ace8e11cba345ccba6ecfd1b6b6}{checkState}}(uint8\_t\ checkBoard[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}]);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_a_i_8h_a598eb784713eca7a81391647864b7612}{checkDirection}}(uint8\_t\ checkBoard[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}],\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ dir\_i,\ \textcolor{keywordtype}{int}\ dir\_j);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_APPLICATIONCODE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

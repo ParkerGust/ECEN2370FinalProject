@@ -1,0 +1,24 @@
+digraph "Screen1_Display"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Screen1_Display",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="displays 1 or 2 player mode choice screen (startup)"];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="LCD_Clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#a3adb96f62a9531f7c1e5d05f74c13aad",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="LCD_DisplayChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#aa500186c114aaea3dd6cdc11d306617e",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="LCD_Draw_Char",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#addb5f8abbda2661be669a4a51f7e544c",tooltip=" "];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="LCD_Draw_Pixel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#a1fcee343bead66e79958b5d243fcaabb",tooltip=" "];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="LCD_Draw_Circle_Fill",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#ad100093c753ae9ae5d6a5a193dd22b36",tooltip=" "];
+  Node6 -> Node5 [id="edge6_Node000006_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge7_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="LCD_SetFont",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#ac033ddcb70a4545090a2ca57f0be321a",tooltip=" "];
+  Node1 -> Node8 [id="edge8_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="LCD_SetTextColor",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#afb00cae53154eb62c10694a6e9122187",tooltip=" "];
+}

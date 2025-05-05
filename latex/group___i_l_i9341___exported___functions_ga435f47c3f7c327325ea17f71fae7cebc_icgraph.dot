@@ -1,0 +1,25 @@
+digraph "LCD_IO_WriteReg"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="LCD_IO_WriteReg",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Writes register address."];
+  Node1 -> Node2 [id="edge9_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="ili9341_Write_Reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$group___i_l_i9341___exported___functions.html#ga4adb2f8560c2addc44f415420f56d783",tooltip="Writes to the selected LCD register."];
+  Node2 -> Node3 [id="edge10_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="ili9341_DisplayOff",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ili9341_8c.html#a3c09dd822d1d76312b6143b8adcb00fa",tooltip="Disables the Display."];
+  Node2 -> Node4 [id="edge11_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="ili9341_DisplayOn",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ili9341_8c.html#ac3489560fb954b6e4bf5ac24ef99988d",tooltip="Enables the Display."];
+  Node2 -> Node5 [id="edge12_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="ili9341_Init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$group___i_l_i9341___exported___functions.html#ga9f53af6ab5b6427655c61ef71fa4a442",tooltip="Power on the LCD."];
+  Node5 -> Node6 [id="edge13_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="LTCD__Init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_l_c_d___driver_8c.html#a2d22c501c8fe2206b5bef8e6c4d4778c",tooltip=" "];
+  Node6 -> Node7 [id="edge14_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Display_Init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_display_8c.html#a50241dacc3833df7ae8c7a4740b3b9f7",tooltip="initializes the display and touch functionality"];
+  Node7 -> Node8 [id="edge15_Node000007_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="ApplicationInit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_application_code_8c.html#a784bc21ff799c79e41f61fbb3583d1e9",tooltip=" "];
+  Node8 -> Node9 [id="edge16_Node000008_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip="The application entry point."];
+}

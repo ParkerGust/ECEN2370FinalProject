@@ -1,0 +1,100 @@
+\doxysection{LCD\+\_\+\+Driver.\+h}
+\hypertarget{_l_c_d___driver_8h_source}{}\label{_l_c_d___driver_8h_source}\index{ECEN2370FinalProject/Core/Inc/LCD\_Driver.h@{ECEN2370FinalProject/Core/Inc/LCD\_Driver.h}}
+\mbox{\hyperlink{_l_c_d___driver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ LCD\_Driver.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Sep\ 28,\ 2023}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Xavion}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INC\_LCD\_DRIVER\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INC\_LCD\_DRIVER\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ili9341_8h}{ili9341.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{fonts_8h}{fonts.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stmpe811_8h}{stmpe811.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ COMPILE\_TOUCH\_FUNCTIONS\ COMPILE\_TOUCH}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ TOUCH\_INTERRUPT\_ENABLED\ COMPILE\_TOUCH\_INTERRUPT\_SUPPORT}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ LCD\_PIXEL\_FORMAT\_1\ \ \ \ \ LTDC\_PIXEL\_FORMAT\_RGB565}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_WHITE\ \ \ \ \ \ \ \ \ 0xFFFF}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_BLACK\ \ \ \ \ \ \ \ \ 0x0000}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_GREY\ \ \ \ \ \ \ \ \ \ 0xF7DE}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_BLUE\ \ \ \ \ \ \ \ \ \ 0x001F}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_BLUE2\ \ \ \ \ \ \ \ \ 0x051F}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_RED\ \ \ \ \ \ \ \ \ \ \ 0xF800}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_MAGENTA\ \ \ \ \ \ \ 0xF81F}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_GREEN\ \ \ \ \ \ \ \ \ 0x07E0}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_CYAN\ \ \ \ \ \ \ \ \ \ 0x7FFF}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ LCD\_COLOR\_YELLOW\ \ \ \ \ \ \ \ 0xFFE0}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{/*\ Timing\ configuration\ from\ datahseet}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ HSYNC=10\ (9+1)}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ HBP=20\ (29-\/10+1)}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ ActiveW=240\ (269-\/20-\/10+1)}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ HFP=10\ (279-\/240-\/20-\/10+1)}}
+\DoxyCodeLine{00041\ \textcolor{comment}{}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ VSYNC=2\ (1+1)}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ VBP=2\ (3-\/2+1)}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ ActiveH=320\ (323-\/2-\/2+1)}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ VFP=4\ (327-\/320-\/2-\/2+1)}}
+\DoxyCodeLine{00046\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ \ ILI9341\_HSYNC\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)9)\ \ \ }\textcolor{comment}{/*\ Horizontal\ synchronization\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ \ ILI9341\_HBP\ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)29)\ \ \ \ }\textcolor{comment}{/*\ Horizontal\ back\ porch\ \ \ \ \ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ \ ILI9341\_HFP\ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)2)\ \ \ \ }\textcolor{comment}{/*\ Horizontal\ front\ porch\ \ \ \ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ \ ILI9341\_VSYNC\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)1)\ \ \ }\textcolor{comment}{/*\ Vertical\ synchronization\ \ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ \ ILI9341\_VBP\ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)3)\ \ \ \ }\textcolor{comment}{/*\ Vertical\ back\ porch\ \ \ \ \ \ \ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ \ ILI9341\_VFP\ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)2)\ \ \ \ }\textcolor{comment}{/*\ Vertical\ front\ porch\ \ \ \ \ \ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ \ LCD\_PIXEL\_WIDTH\ \ \ \ ((uint16\_t)240)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ \ LCD\_PIXEL\_HEIGHT\ \ \ ((uint16\_t)320)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ \ LCD\_PIXELS\ \ \ \ \ \ \ \ \ \ ((uint32\_t)LCD\_PIXEL\_WIDTH\ *\ (uint32\_t)LCD\_PIXEL\_HEIGHT)}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a2d22c501c8fe2206b5bef8e6c4d4778c}{LTCD\_\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a472bf1663586d3e1a7cf7244dc18cb19}{LTCD\_Layer\_Init}}(uint8\_t\ LayerIndex);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a7d1f743ddd1e2d9333bef2debcd588bb}{LCD\_DrawChar}}(uint16\_t\ Xpos,\ uint16\_t\ Ypos,\ \textcolor{keyword}{const}\ uint16\_t\ *c);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_aa500186c114aaea3dd6cdc11d306617e}{LCD\_DisplayChar}}(uint16\_t\ Xpos,\ uint16\_t\ Ypos,\ uint8\_t\ Ascii);}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_afb00cae53154eb62c10694a6e9122187}{LCD\_SetTextColor}}(uint16\_t\ Color);}
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_ac033ddcb70a4545090a2ca57f0be321a}{LCD\_SetFont}}(\mbox{\hyperlink{struct_f_o_n_t__t}{FONT\_t}}\ *fonts);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ Draw\ Circle\ Filled}}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_ad100093c753ae9ae5d6a5a193dd22b36}{LCD\_Draw\_Circle\_Fill}}(uint16\_t\ Xpos,\ uint16\_t\ Ypos,\ uint16\_t\ radius,\ uint16\_t\ color);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ Draw\ Vertical\ Line}}
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a0ac6b0baeb492c28cb5de69d89685436}{LCD\_Draw\_Vertical\_Line}}(uint16\_t\ x,\ uint16\_t\ y,\ uint16\_t\ len,\ uint16\_t\ color);}
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a3adb96f62a9531f7c1e5d05f74c13aad}{LCD\_Clear}}(uint8\_t\ LayerIndex,\ uint16\_t\ Color);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a9d542c46c2588a88955b8546689c5e53}{LCD\_Error\_Handler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ Demo\ using\ provided\ functions}}
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_aac33094cbe08196b782a4c0d3a33fff7}{visualDemo}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a9d542c46c2588a88955b8546689c5e53}{LCD\_Error\_Handler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#if\ COMPILE\_TOUCH\_FUNCTIONS\ ==\ 1}}
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a1bcbc006436d0a2a866374a163f0328c}{InitializeLCDTouch}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00081\ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\_State\_t}}\ \mbox{\hyperlink{_l_c_d___driver_8h_a50fe6b2cf379f8f4cb6cca2ebfeec7d9}{returnTouchStateAndLocation}}(\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\_TouchData}}\ *\ touchStruct);}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a9313e3bf290109a98d3f6eb15615bf21}{LCD\_Touch\_Polling\_Demo}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a36eedf0a775d646c89c5db259a85d13a}{DetermineTouchPosition}}(\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\_TouchData}}\ *\ touchStruct);}
+\DoxyCodeLine{00084\ uint8\_t\ \mbox{\hyperlink{_l_c_d___driver_8h_a13c78e34e0aab687b0c7908d99804a09}{ReadRegisterFromTouchModule}}(uint8\_t\ RegToRead);}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___driver_8h_a22200c8d19126e9a1e5d48b99d05c956}{WriteDataToTouchModule}}(uint8\_t\ RegToWrite,\ uint8\_t\ writeData);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMPILE\_TOUCH\_FUNCTIONS}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{/*\ \ \ \ \ \ \ \ APPLICATION\ SPECIFIC\ FUNCTION\ DECLARATION\ -\/\ PUT\ YOUR\ NEWLY\ CREATED\ FUNCTIONS\ HERE\ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ LEFT\_TOUCH\ 0}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ RIGHT\_TOUCH\ 1\ }}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_l_c_d___driver_8h_a63f97fd6e5961f6a595cd5c4ee63905a}{getTouchSide}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_LCD\_DRIVER\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

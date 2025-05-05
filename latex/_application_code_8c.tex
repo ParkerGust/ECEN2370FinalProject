@@ -1,0 +1,141 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/\+Application\+Code.c File Reference}
+\hypertarget{_application_code_8c}{}\label{_application_code_8c}\index{ECEN2370FinalProject/Core/Src/ApplicationCode.c@{ECEN2370FinalProject/Core/Src/ApplicationCode.c}}
+{\ttfamily \#include "{}Application\+Code.\+h"{}}\newline
+Include dependency graph for Application\+Code.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_application_code_8c_a784bc21ff799c79e41f61fbb3583d1e9}{Application\+Init}} (void)
+\item 
+void \mbox{\hyperlink{_application_code_8c_abf5f6de04bef125dc7c4b1cda0357d3f}{start\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em starts a new game and sets scores to zero, displays screen 1 and sets player mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8c_ab7c3a6586b18c40cdf49c922ba6edc5a}{play\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em loop that runs the program to play the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8c_a4ddd55c50a2b49da981ce84f4edcfc70}{check\+Player\+Mode}} (void)
+\begin{DoxyCompactList}\small\item\em Checks whether its one player mode or two player mode based on touch inputs and saves to static variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8c_a24903cba723365d50b4c662e33e91707}{new\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a new gameboard, flips the starting player, and starts the timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8c_a70b6ce664b7b4fdb33e25ad9d81873d6}{drop}} (void)
+\begin{DoxyCompactList}\small\item\em drops the chip to the lowest location for the given column in gameboard triggered by button interrupt or in AI sequence \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8c_a0990070b581603c8bf86debcea28c20b}{move\+Gyro}} (void)
+\begin{DoxyCompactList}\small\item\em move function to change the column that the chip hovers over gyro or touch controlled based on compile switch \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8c_ac40e3efd9598191869ae6e4677df48ba}{EXTI0\+\_\+\+IRQHandler}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_application_code_8c_a25d5fa7d4aeab1414e96e02191788a24}{last\+Move\+Time}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_application_code_8c_a784bc21ff799c79e41f61fbb3583d1e9}\index{ApplicationCode.c@{ApplicationCode.c}!ApplicationInit@{ApplicationInit}}
+\index{ApplicationInit@{ApplicationInit}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{ApplicationInit()}{ApplicationInit()}}
+{\footnotesize\ttfamily \label{_application_code_8c_a784bc21ff799c79e41f61fbb3583d1e9} 
+void Application\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{_application_code_8c_a4ddd55c50a2b49da981ce84f4edcfc70}\index{ApplicationCode.c@{ApplicationCode.c}!checkPlayerMode@{checkPlayerMode}}
+\index{checkPlayerMode@{checkPlayerMode}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{checkPlayerMode()}{checkPlayerMode()}}
+{\footnotesize\ttfamily \label{_application_code_8c_a4ddd55c50a2b49da981ce84f4edcfc70} 
+void check\+Player\+Mode (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Checks whether its one player mode or two player mode based on touch inputs and saves to static variable. 
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{_application_code_8c_a70b6ce664b7b4fdb33e25ad9d81873d6}\index{ApplicationCode.c@{ApplicationCode.c}!drop@{drop}}
+\index{drop@{drop}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{drop()}{drop()}}
+{\footnotesize\ttfamily \label{_application_code_8c_a70b6ce664b7b4fdb33e25ad9d81873d6} 
+void drop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+drops the chip to the lowest location for the given column in gameboard triggered by button interrupt or in AI sequence 
+
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{_application_code_8c_ac40e3efd9598191869ae6e4677df48ba}\index{ApplicationCode.c@{ApplicationCode.c}!EXTI0\_IRQHandler@{EXTI0\_IRQHandler}}
+\index{EXTI0\_IRQHandler@{EXTI0\_IRQHandler}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{EXTI0\_IRQHandler()}{EXTI0\_IRQHandler()}}
+{\footnotesize\ttfamily \label{_application_code_8c_ac40e3efd9598191869ae6e4677df48ba} 
+void EXTI0\+\_\+\+IRQHandler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{_application_code_8c_a0990070b581603c8bf86debcea28c20b}\index{ApplicationCode.c@{ApplicationCode.c}!moveGyro@{moveGyro}}
+\index{moveGyro@{moveGyro}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{moveGyro()}{moveGyro()}}
+{\footnotesize\ttfamily \label{_application_code_8c_a0990070b581603c8bf86debcea28c20b} 
+void move\+Gyro (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+move function to change the column that the chip hovers over gyro or touch controlled based on compile switch 
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{_application_code_8c_a24903cba723365d50b4c662e33e91707}\index{ApplicationCode.c@{ApplicationCode.c}!newGame@{newGame}}
+\index{newGame@{newGame}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{newGame()}{newGame()}}
+{\footnotesize\ttfamily \label{_application_code_8c_a24903cba723365d50b4c662e33e91707} 
+void new\+Game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new gameboard, flips the starting player, and starts the timer. 
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{_application_code_8c_ab7c3a6586b18c40cdf49c922ba6edc5a}\index{ApplicationCode.c@{ApplicationCode.c}!playGame@{playGame}}
+\index{playGame@{playGame}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{playGame()}{playGame()}}
+{\footnotesize\ttfamily \label{_application_code_8c_ab7c3a6586b18c40cdf49c922ba6edc5a} 
+void play\+Game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+loop that runs the program to play the game 
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{_application_code_8c_abf5f6de04bef125dc7c4b1cda0357d3f}\index{ApplicationCode.c@{ApplicationCode.c}!startGame@{startGame}}
+\index{startGame@{startGame}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{_application_code_8c_abf5f6de04bef125dc7c4b1cda0357d3f} 
+void start\+Game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+starts a new game and sets scores to zero, displays screen 1 and sets player mode 
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_application_code_8c_a25d5fa7d4aeab1414e96e02191788a24}\index{ApplicationCode.c@{ApplicationCode.c}!lastMoveTime@{lastMoveTime}}
+\index{lastMoveTime@{lastMoveTime}!ApplicationCode.c@{ApplicationCode.c}}
+\doxysubsubsection{\texorpdfstring{lastMoveTime}{lastMoveTime}}
+{\footnotesize\ttfamily \label{_application_code_8c_a25d5fa7d4aeab1414e96e02191788a24} 
+uint32\+\_\+t last\+Move\+Time = 0}
+

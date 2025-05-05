@@ -1,4 +1,8 @@
 
+/** 
+ * @file ApplicationCode.h
+ * @brief runs the game and stores static game variables
+ */
 
 #include "stm32f4xx_hal.h"
 
@@ -31,18 +35,39 @@ void ApplicationInit(void);
 
 #endif
 
+/** 
+ * @brief Checks whether its one player mode or two player mode based on touch inputs and saves to static variable
+ */
 void checkPlayerMode(void);
+/** 
+ * @brief Creates a new gameboard, flips the starting player, and starts the timer
+ */
 void newGame(void);
 
+/** 
+ * @brief drops the chip to the lowest location for the given column in gameboard triggered by button interrupt or in AI sequence
+ */
 void drop(void);
+
+/** 
+ * @brief move function to change the column that the chip hovers over gyro or touch controlled based on compile switch
+ */
 #if GYRO_MOVEMENT
 void moveGyro(void);
 #else
 void move(void);
 #endif
 
+/** 
+ * @brief loop that runs the program to play the game 
+ */
 void playGame(void);
+
+/** 
+ * @brief starts a new game and sets scores to zero, displays screen 1 and sets player mode
+ */
 void startGame(void);
+
 void appDelay(uint32_t delayTime);
 
 

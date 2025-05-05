@@ -1,0 +1,127 @@
+\doxysection{stmpe811.\+h}
+\hypertarget{stmpe811_8h_source}{}\label{stmpe811_8h_source}\index{ECEN2370FinalProject/Core/Inc/stmpe811.h@{ECEN2370FinalProject/Core/Inc/stmpe811.h}}
+\mbox{\hyperlink{stmpe811_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ stmpe811.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Oct\ 31,\ 2023}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Tilen\ MAJERLE\ modified\ significantly\ by\ Xavion}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INC\_STMPE811\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INC\_STMPE811\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ COMPILE\_TOUCH\ \ 1}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{/*\ Private\ defines\ */}}
+\DoxyCodeLine{00018\ \textcolor{comment}{/*\ I2C\ address\ */}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ STMPE811\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x82}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*\ STMPE811\ Chip\ ID\ on\ reset\ */}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ STMPE811\_CHIP\_ID\_VALUE\ \ \ \ \ \ \ \ \ \ 0x0811\ \ }\textcolor{comment}{//Chip\ ID}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/*\ Registers\ */}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ STMPE811\_CHIP\_ID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00\ \ \ \ }\textcolor{comment}{//STMPE811\ Device\ identification}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ STMPE811\_ID\_VER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02\ \ \ \ }\textcolor{comment}{//STMPE811\ Revision\ number;\ 0x01\ for\ engineering\ sample;\ 0x03\ for\ final\ silicon}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ STMPE811\_SYS\_CTRL1\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x03\ \ \ \ }\textcolor{comment}{//Reset\ control}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ STMPE811\_SYS\_CTRL2\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04\ \ \ \ }\textcolor{comment}{//Clock\ control}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ STMPE811\_SPI\_CFG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08\ \ \ \ }\textcolor{comment}{//SPI\ interface\ configuration}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ STMPE811\_INT\_CTRL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x09\ \ \ \ }\textcolor{comment}{//Interrupt\ control\ register}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ STMPE811\_INT\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0A\ \ \ \ }\textcolor{comment}{//Interrupt\ enable\ register}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ STMPE811\_INT\_STA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0B\ \ \ \ }\textcolor{comment}{//Interrupt\ status\ register}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0C\ \ \ \ }\textcolor{comment}{//GPIO\ interrupt\ enable\ register}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_INT\_STA\ \ \ \ \ \ \ \ \ \ \ 0x0D\ \ \ \ }\textcolor{comment}{//GPIO\ interrupt\ status\ register}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_INT\_EN\ \ \ \ \ \ \ \ \ \ \ \ \ 0x0E\ \ \ \ }\textcolor{comment}{//ADC\ interrupt\ enable\ register}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_INT\_STA\ \ \ \ \ \ \ \ \ \ \ \ 0x0F\ \ \ \ }\textcolor{comment}{//ADC\ interface\ status\ register}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_SET\_PIN\ \ \ \ \ \ \ \ \ \ \ 0x10\ \ \ \ }\textcolor{comment}{//GPIO\ set\ pin\ register}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_CLR\_PIN\ \ \ \ \ \ \ \ \ \ \ 0x11\ \ \ \ }\textcolor{comment}{//GPIO\ clear\ pin\ register}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ STMPE811\_MP\_STA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x12\ \ \ \ }\textcolor{comment}{//GPIO\ monitor\ pin\ state\ register}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_DIR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x13\ \ \ \ }\textcolor{comment}{//GPIO\ direction\ register}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_ED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x14\ \ \ \ }\textcolor{comment}{//GPIO\ edge\ detect\ register}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_RE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x15\ \ \ \ }\textcolor{comment}{//GPIO\ rising\ edge\ register}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_FE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x16\ \ \ \ }\textcolor{comment}{//GPIO\ falling\ edge\ register}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ STMPE811\_GPIO\_AF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x17\ \ \ \ }\textcolor{comment}{//alternate\ function\ register}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_CTRL1\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20\ \ \ \ }\textcolor{comment}{//ADC\ control}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_CTRL2\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x21\ \ \ \ }\textcolor{comment}{//ADC\ control}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_CAPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x22\ \ \ \ }\textcolor{comment}{//To\ initiate\ ADC\ data\ acquisition}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CHO\ \ \ \ \ \ \ \ \ \ \ 0x30\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 0}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH1\ \ \ \ \ \ \ \ \ \ \ 0x32\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 1}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH2\ \ \ \ \ \ \ \ \ \ \ 0x34\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 2}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH3\ \ \ \ \ \ \ \ \ \ \ 0x36\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 3}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH4\ \ \ \ \ \ \ \ \ \ \ 0x38\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 4}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH5\ \ \ \ \ \ \ \ \ \ \ 0x3A\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 5}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH6\ \ \ \ \ \ \ \ \ \ \ 0x3C\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 6}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ STMPE811\_ADC\_DATA\_CH7\ \ \ \ \ \ \ \ \ \ \ 0x3E\ \ \ \ }\textcolor{comment}{//ADC\ channel\ 7}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_CTRL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40\ \ \ \ }\textcolor{comment}{//4-\/wire\ touchscreen\ controller\ setup}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_CFG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x41\ \ \ \ }\textcolor{comment}{//Touchscreen\ controller\ configuration}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ STMPE811\_WDW\_TR\_X\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x42\ \ \ \ }\textcolor{comment}{//Window\ setup\ for\ top\ right\ X}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ STMPE811\_WDW\_TR\_Y\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x44\ \ \ \ }\textcolor{comment}{//Window\ setup\ for\ top\ right\ Y}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ STMPE811\_WDW\_BL\_X\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x46\ \ \ \ }\textcolor{comment}{//Window\ setup\ for\ bottom\ left\ X}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ STMPE811\_WDW\_BL\_Y\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x48\ \ \ \ }\textcolor{comment}{//Window\ setup\ for\ bottom\ left\ Y}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ STMPE811\_FIFO\_TH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x4A\ \ \ \ }\textcolor{comment}{//FIFO\ level\ to\ generate\ interrupt}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ STMPE811\_FIFO\_STA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x4B\ \ \ \ }\textcolor{comment}{//Current\ status\ of\ FIFO}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ STMPE811\_FIFO\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x4C\ \ \ \ }\textcolor{comment}{//Current\ filled\ level\ of\ FIFO}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_DATA\_X\ \ \ \ \ \ \ \ \ \ \ \ \ 0x4D\ \ \ \ }\textcolor{comment}{//Data\ port\ for\ touchscreen\ controller\ data\ access}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_DATA\_Y\ \ \ \ \ \ \ \ \ \ \ \ \ 0x4F\ \ \ \ }\textcolor{comment}{//Data\ port\ for\ touchscreen\ controller\ data\ access}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_DATA\_Z\ \ \ \ \ \ \ \ \ \ \ \ \ 0x51\ \ \ \ }\textcolor{comment}{//Data\ port\ for\ touchscreen\ controller\ data\ access}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_DATA\_XYZ\ \ \ \ \ \ \ \ \ \ \ 0x52\ \ \ \ }\textcolor{comment}{//Data\ port\ for\ touchscreen\ controller\ data\ access}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_FRACTION\_Z\ \ \ \ \ \ \ \ \ 0x56\ \ \ \ }\textcolor{comment}{//Touchscreen\ controller\ FRACTION\_Z}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_DATA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x57\ \ \ \ }\textcolor{comment}{//Data\ port\ for\ touchscreen\ controller\ data\ access}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_I\_DRIVE\ \ \ \ \ \ \ \ \ \ \ \ 0x58\ \ \ \ }\textcolor{comment}{//Touchscreen\ controller\ drivel}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ STMPE811\_TSC\_SHIELD\ \ \ \ \ \ \ \ \ \ \ \ \ 0x59\ \ \ \ }\textcolor{comment}{//Touchscreen\ controller\ shield}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ STMPE811\_TEMP\_CTRL\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x60\ \ \ \ }\textcolor{comment}{//Temperature\ sensor\ setup}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ STMPE811\_TEMP\_DATA\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x61\ \ \ \ }\textcolor{comment}{//Temperature\ data\ access\ port}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ STMPE811\_TEMP\_TH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x62\ \ \ \ }\textcolor{comment}{//Threshold\ for\ temperature\ controlled\ interrupt}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ STMPE811\_I2C\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ I2C3}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ STMPE811\_I2C\_CLOCK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 100000}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{comment}{/*\ STM\ Related\ Macros,\ this\ techinically\ should\ be\ in\ a\ different\ fileset\ */}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ I2C3\_SDA\_Pin\ GPIO\_PIN\_9}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ I2C3\_SDA\_GPIO\_Port\ GPIOC}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ I2C3\_SCL\_Pin\ GPIO\_PIN\_8}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ I2C3\_SCL\_GPIO\_Port\ GPIOA}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a905e7468808709a98cf097a703d5f3a3}{STMPE811\_Orientation\_Portrait\_1}},\ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a3252c2dde28d375f99bffb69e62bd3ee}{STMPE811\_Orientation\_Portrait\_2}},\ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a730a3b727076d7332be7c765ad4dd9f7}{STMPE811\_Orientation\_Landscape\_1}},\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a078b71082a4b2ec162e662460cd27c18}{STMPE811\_Orientation\_Landscape\_2}},\ }
+\DoxyCodeLine{00091\ \}\mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77}{STMPE811\_Orientation\_t}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caa3c26c18ed26c1dabfc86e8ec7215544}{STMPE811\_State\_Pressed}},\ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caec50fde459bf3aae63ccb0fd6ec3d1b2}{STMPE811\_State\_Released}},\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca126638f919ea4377e1adfcc3d080c413}{STMPE811\_State\_Ok}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca5b352730d1be368aaa7d8dd6e79338a2}{STMPE811\_State\_Error}}\ \ \ \ \ }
+\DoxyCodeLine{00101\ \}\ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\_State\_t}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00107\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_s_t_m_p_e811__t_a4dde988b1b2adba65ae3efa69f65d960}{x}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_s_t_m_p_e811__t_ab0580f504a7428539be299fa71565f30}{y}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\_State\_t}}\ \mbox{\hyperlink{struct_s_t_m_p_e811__t_ab515c0f766833eea37d4dc918df997e1}{pressed}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\_State\_t}}\ \mbox{\hyperlink{struct_s_t_m_p_e811__t_acdbcdc5beb60e8887002fe4cc6239929}{last\_pressed}};\ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77}{STMPE811\_Orientation\_t}}\ \mbox{\hyperlink{struct_s_t_m_p_e811__t_a949be63907038721b0825007b0d6622c}{orientation}};\ }
+\DoxyCodeLine{00112\ \}\mbox{\hyperlink{struct_s_t_m_p_e811__t}{STMPE811\_t}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{/*\ Backward\ compatibility\ */}}
+\DoxyCodeLine{00115\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_s_t_m_p_e811__t}{STMPE811\_t}}\ \mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\_TouchData}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ TM\_STMPE811\_TouchInRectangle(sd,\ xPos,\ yPos,\ w,\ h)\ \ (((sd)-\/>x\ >=\ (xPos))\ \&\&\ ((sd)-\/>x\ <\ (xPos\ +\ w))\ \&\&\ ((sd)-\/>y\ >=\ (yPos))\ \&\&\ ((sd)-\/>y\ <\ (yPos\ +\ h)))}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\_State\_t}}\ \mbox{\hyperlink{stmpe811_8h_a67ad0299dc8afb38a6add8b89992b74b}{STMPE811\_ReadTouch}}(\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\_TouchData}}\ *data);}
+\DoxyCodeLine{00132\ uint8\_t\ \mbox{\hyperlink{stmpe811_8h_ace7fce7ebc71e31b840e6a703c4a6d59}{STMPE811\_Read}}(uint8\_t\ reg);}
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stmpe811_8h_ac0ef9700df67eb72c7b77543e16b7360}{STMPE811\_Write}}(uint8\_t\ reg,\ uint8\_t\ dataToWrite);}
+\DoxyCodeLine{00134\ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\_State\_t}}\ \mbox{\hyperlink{stmpe811_8h_a8d6ada67989160aebff650c9a0a6a9b5}{STMPE811\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{stmpe811_8h_a135115bd48f72dad8c9dfe428c156511}{isSTMPE811\_Ready}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00136\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stmpe811_8h_aafcdc403b9cf0af3743fdaa4617950b2}{STMPE811\_DetermineTouchPosition}}(\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\_TouchData}}\ *\ data);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_STMPE811\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

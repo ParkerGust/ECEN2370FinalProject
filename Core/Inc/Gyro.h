@@ -1,3 +1,7 @@
+/** 
+ * @file Gyro.h
+ * @brief Driver for Gyroscope 
+ */
 
 #ifndef INC_GYRO_H_
 #define INC_GYRO_H_
@@ -52,15 +56,44 @@
 
 #define timeout 2600
 
+/** 
+ * @brief gets the change in y location 
+ * @return change in y location
+ */
 int16_t Gyro_GetYLoc();
+/** 
+ * @brief starts up the gyro and enables all registers for gyro Y reading
+ */
 void Gyro_Init();
 void Gyro_GetPrintID();
+/** 
+ * @brief powers on the board
+ */
 void Gyro_Power();
 void Gyro_GetPrintTemp();
+/** 
+ * @brief configures given register to the data provided
+ * @param Reg register to be configures
+ * @param data data to write to register
+ */
 void Gyro_ConfigureReg(uint16_t Reg, uint8_t data);
+/** 
+ * @brief reads a given register 
+ * @param Reg register to be read
+ * @return data read from register
+ */
 uint16_t Gyro_ReadReg(uint16_t Reg);
+/** 
+ * @brief ensures HAL is still ok
+ */
 void Gyro_VerifyHAL();
+/** 
+ * @brief enables chip select to enable communication through SPI
+ */
 void Gyro_EnableSlaveConnection();
+/** 
+ * @brief disables chip select to disable communication through SPI
+ */
 void Gyro_DisableSlaveConnection();
 
 

@@ -1,0 +1,140 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/\+Display.c File Reference}
+\hypertarget{_display_8c}{}\label{_display_8c}\index{ECEN2370FinalProject/Core/Src/Display.c@{ECEN2370FinalProject/Core/Src/Display.c}}
+{\ttfamily \#include "{}Display.\+h"{}}\newline
+Include dependency graph for Display.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_display_8c_a50241dacc3833df7ae8c7a4740b3b9f7}{Display\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em initializes the display and touch functionality \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_display_8c_a930e0d87767d5dd317b9bb971e664394}{Screen1\+\_\+\+Display}} (void)
+\begin{DoxyCompactList}\small\item\em displays 1 or 2 player mode choice screen (startup) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_display_8c_a5bc581d263574a331a20dd48e5c38773}{Screen2\+\_\+\+Display\+Board}} (uint8\+\_\+t game\+Board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em displays the board and connect 4 lettering while playing the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_display_8c_ad6a9f3b56b0e9f012ec296470d33fd80}{Screen2\+\_\+\+Display\+Move\+Chip}} (uint8\+\_\+t chip\+Loc, bool player1turn)
+\begin{DoxyCompactList}\small\item\em displays the moving chip at its given location \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_display_8c_ae449fa53977e9b5a60f38a6b99c9a2fd}{Screen3\+\_\+\+Display}} (uint8\+\_\+t game\+Board\mbox{[}\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}\mbox{]}, uint8\+\_\+t player1\+\_\+\+Score, uint8\+\_\+t player2\+\_\+\+Score)
+\begin{DoxyCompactList}\small\item\em displays end game screen with scores and time played \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_display_8c_a2982c9a6534d5b81a42f6181c2f9620f}{start\+Timer}} (void)
+\begin{DoxyCompactList}\small\item\em starts the game timer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_display_8c_a25f1dec00bfa5ab6afed0de15b9a07da}{end\+Timer}} (void)
+\begin{DoxyCompactList}\small\item\em ends the game timer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_display_8c_a50241dacc3833df7ae8c7a4740b3b9f7}\index{Display.c@{Display.c}!Display\_Init@{Display\_Init}}
+\index{Display\_Init@{Display\_Init}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{Display\_Init()}{Display\_Init()}}
+{\footnotesize\ttfamily \label{_display_8c_a50241dacc3833df7ae8c7a4740b3b9f7} 
+void Display\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+initializes the display and touch functionality 
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{_display_8c_a25f1dec00bfa5ab6afed0de15b9a07da}\index{Display.c@{Display.c}!endTimer@{endTimer}}
+\index{endTimer@{endTimer}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{endTimer()}{endTimer()}}
+{\footnotesize\ttfamily \label{_display_8c_a25f1dec00bfa5ab6afed0de15b9a07da} 
+void end\+Timer (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+ends the game timer 
+
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{_display_8c_a930e0d87767d5dd317b9bb971e664394}\index{Display.c@{Display.c}!Screen1\_Display@{Screen1\_Display}}
+\index{Screen1\_Display@{Screen1\_Display}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{Screen1\_Display()}{Screen1\_Display()}}
+{\footnotesize\ttfamily \label{_display_8c_a930e0d87767d5dd317b9bb971e664394} 
+void Screen1\+\_\+\+Display (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+displays 1 or 2 player mode choice screen (startup) 
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{_display_8c_a5bc581d263574a331a20dd48e5c38773}\index{Display.c@{Display.c}!Screen2\_DisplayBoard@{Screen2\_DisplayBoard}}
+\index{Screen2\_DisplayBoard@{Screen2\_DisplayBoard}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{Screen2\_DisplayBoard()}{Screen2\_DisplayBoard()}}
+{\footnotesize\ttfamily \label{_display_8c_a5bc581d263574a331a20dd48e5c38773} 
+void Screen2\+\_\+\+Display\+Board (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{game\+Board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+displays the board and connect 4 lettering while playing the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Board} & is the current board state \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{_display_8c_ad6a9f3b56b0e9f012ec296470d33fd80}\index{Display.c@{Display.c}!Screen2\_DisplayMoveChip@{Screen2\_DisplayMoveChip}}
+\index{Screen2\_DisplayMoveChip@{Screen2\_DisplayMoveChip}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{Screen2\_DisplayMoveChip()}{Screen2\_DisplayMoveChip()}}
+{\footnotesize\ttfamily \label{_display_8c_ad6a9f3b56b0e9f012ec296470d33fd80} 
+void Screen2\+\_\+\+Display\+Move\+Chip (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{chip\+Loc}{, }\item[{bool}]{player1turn}{}\end{DoxyParamCaption})}
+
+
+
+displays the moving chip at its given location 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chip\+Loc} & current location of the chip \\
+\hline
+{\em player1turn} & boolean of whos turn it is \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{_display_8c_ae449fa53977e9b5a60f38a6b99c9a2fd}\index{Display.c@{Display.c}!Screen3\_Display@{Screen3\_Display}}
+\index{Screen3\_Display@{Screen3\_Display}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{Screen3\_Display()}{Screen3\_Display()}}
+{\footnotesize\ttfamily \label{_display_8c_ae449fa53977e9b5a60f38a6b99c9a2fd} 
+void Screen3\+\_\+\+Display (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{game\+Board}{\mbox{[}board\+Columns\mbox{]}\mbox{[}board\+Rows\mbox{]}, }\item[{uint8\+\_\+t}]{player1\+\_\+\+Score}{, }\item[{uint8\+\_\+t}]{player2\+\_\+\+Score}{}\end{DoxyParamCaption})}
+
+
+
+displays end game screen with scores and time played 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Board} & is winned board state \\
+\hline
+{\em player1\+\_\+\+Score} & player 1\textquotesingle{}s score \\
+\hline
+{\em player2\+\_\+\+Score} & player 2\textquotesingle{}s score \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{_display_8c_a2982c9a6534d5b81a42f6181c2f9620f}\index{Display.c@{Display.c}!startTimer@{startTimer}}
+\index{startTimer@{startTimer}!Display.c@{Display.c}}
+\doxysubsubsection{\texorpdfstring{startTimer()}{startTimer()}}
+{\footnotesize\ttfamily \label{_display_8c_a2982c9a6534d5b81a42f6181c2f9620f} 
+void start\+Timer (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+starts the game timer 
+
+Here is the caller graph for this function\+:
+% FIG 12

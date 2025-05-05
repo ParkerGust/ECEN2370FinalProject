@@ -1,0 +1,186 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/\+LCD\+\_\+\+Driver.c File Reference}
+\hypertarget{_l_c_d___driver_8c}{}\label{_l_c_d___driver_8c}\index{ECEN2370FinalProject/Core/Src/LCD\_Driver.c@{ECEN2370FinalProject/Core/Src/LCD\_Driver.c}}
+{\ttfamily \#include "{}LCD\+\_\+\+Driver.\+h"{}}\newline
+Include dependency graph for LCD\+\_\+\+Driver.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a6758ae1e84bda7de6a13005947e33d7f}{LCD\+\_\+\+GPIO\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a472bf1663586d3e1a7cf7244dc18cb19}{LTCD\+\_\+\+Layer\+\_\+\+Init}} (uint8\+\_\+t Layer\+Index)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a67e96e514d9f296c79378f7fbfba457a}{clear\+Screen}} (void)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a2d22c501c8fe2206b5bef8e6c4d4778c}{LTCD\+\_\+\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a1fcee343bead66e79958b5d243fcaabb}{LCD\+\_\+\+Draw\+\_\+\+Pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t color)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_ad100093c753ae9ae5d6a5a193dd22b36}{LCD\+\_\+\+Draw\+\_\+\+Circle\+\_\+\+Fill}} (uint16\+\_\+t Xpos, uint16\+\_\+t Ypos, uint16\+\_\+t radius, uint16\+\_\+t color)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a0ac6b0baeb492c28cb5de69d89685436}{LCD\+\_\+\+Draw\+\_\+\+Vertical\+\_\+\+Line}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint16\+\_\+t color)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a3adb96f62a9531f7c1e5d05f74c13aad}{LCD\+\_\+\+Clear}} (uint8\+\_\+t Layer\+Index, uint16\+\_\+t Color)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_afb00cae53154eb62c10694a6e9122187}{LCD\+\_\+\+Set\+Text\+Color}} (uint16\+\_\+t Color)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_ac033ddcb70a4545090a2ca57f0be321a}{LCD\+\_\+\+Set\+Font}} (\mbox{\hyperlink{struct_f_o_n_t__t}{FONT\+\_\+t}} \texorpdfstring{$\ast$}{*}fonts)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_addb5f8abbda2661be669a4a51f7e544c}{LCD\+\_\+\+Draw\+\_\+\+Char}} (uint16\+\_\+t Xpos, uint16\+\_\+t Ypos, const uint16\+\_\+t \texorpdfstring{$\ast$}{*}c)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_aa500186c114aaea3dd6cdc11d306617e}{LCD\+\_\+\+Display\+Char}} (uint16\+\_\+t Xpos, uint16\+\_\+t Ypos, uint8\+\_\+t Ascii)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_aac33094cbe08196b782a4c0d3a33fff7}{visual\+Demo}} (void)
+\item 
+void \mbox{\hyperlink{_l_c_d___driver_8c_a9d542c46c2588a88955b8546689c5e53}{LCD\+\_\+\+Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_l_c_d___driver_8c_a005c26fa59921428e5b56e4e3e436559}{frame\+Buffer}} \mbox{[}\mbox{\hyperlink{_l_c_d___driver_8h_a215a46e7477262a8280bcb27b63aaabd}{LCD\+\_\+\+PIXEL\+\_\+\+WIDTH}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_l_c_d___driver_8h_af796d6844b178c92f38b8cb4b9e41c78}{LCD\+\_\+\+PIXEL\+\_\+\+HEIGHT}}\mbox{]} = \{0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_l_c_d___driver_8c_a67e96e514d9f296c79378f7fbfba457a}\index{LCD\_Driver.c@{LCD\_Driver.c}!clearScreen@{clearScreen}}
+\index{clearScreen@{clearScreen}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{clearScreen()}{clearScreen()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a67e96e514d9f296c79378f7fbfba457a} 
+void clear\+Screen (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{_l_c_d___driver_8c_a3adb96f62a9531f7c1e5d05f74c13aad}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_Clear@{LCD\_Clear}}
+\index{LCD\_Clear@{LCD\_Clear}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_Clear()}{LCD\_Clear()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a3adb96f62a9531f7c1e5d05f74c13aad} 
+void LCD\+\_\+\+Clear (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Layer\+Index}{, }\item[{uint16\+\_\+t}]{Color}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{_l_c_d___driver_8c_aa500186c114aaea3dd6cdc11d306617e}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_DisplayChar@{LCD\_DisplayChar}}
+\index{LCD\_DisplayChar@{LCD\_DisplayChar}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_DisplayChar()}{LCD\_DisplayChar()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_aa500186c114aaea3dd6cdc11d306617e} 
+void LCD\+\_\+\+Display\+Char (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Xpos}{, }\item[{uint16\+\_\+t}]{Ypos}{, }\item[{uint8\+\_\+t}]{Ascii}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{_l_c_d___driver_8c_addb5f8abbda2661be669a4a51f7e544c}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_Draw\_Char@{LCD\_Draw\_Char}}
+\index{LCD\_Draw\_Char@{LCD\_Draw\_Char}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_Draw\_Char()}{LCD\_Draw\_Char()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_addb5f8abbda2661be669a4a51f7e544c} 
+void LCD\+\_\+\+Draw\+\_\+\+Char (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Xpos}{, }\item[{uint16\+\_\+t}]{Ypos}{, }\item[{const uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{c}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{_l_c_d___driver_8c_ad100093c753ae9ae5d6a5a193dd22b36}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_Draw\_Circle\_Fill@{LCD\_Draw\_Circle\_Fill}}
+\index{LCD\_Draw\_Circle\_Fill@{LCD\_Draw\_Circle\_Fill}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_Draw\_Circle\_Fill()}{LCD\_Draw\_Circle\_Fill()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_ad100093c753ae9ae5d6a5a193dd22b36} 
+void LCD\+\_\+\+Draw\+\_\+\+Circle\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Xpos}{, }\item[{uint16\+\_\+t}]{Ypos}{, }\item[{uint16\+\_\+t}]{radius}{, }\item[{uint16\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{_l_c_d___driver_8c_a1fcee343bead66e79958b5d243fcaabb}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_Draw\_Pixel@{LCD\_Draw\_Pixel}}
+\index{LCD\_Draw\_Pixel@{LCD\_Draw\_Pixel}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_Draw\_Pixel()}{LCD\_Draw\_Pixel()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a1fcee343bead66e79958b5d243fcaabb} 
+void LCD\+\_\+\+Draw\+\_\+\+Pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{_l_c_d___driver_8c_a0ac6b0baeb492c28cb5de69d89685436}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_Draw\_Vertical\_Line@{LCD\_Draw\_Vertical\_Line}}
+\index{LCD\_Draw\_Vertical\_Line@{LCD\_Draw\_Vertical\_Line}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_Draw\_Vertical\_Line()}{LCD\_Draw\_Vertical\_Line()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a0ac6b0baeb492c28cb5de69d89685436} 
+void LCD\+\_\+\+Draw\+\_\+\+Vertical\+\_\+\+Line (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{len}{, }\item[{uint16\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{_l_c_d___driver_8c_a9d542c46c2588a88955b8546689c5e53}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_Error\_Handler@{LCD\_Error\_Handler}}
+\index{LCD\_Error\_Handler@{LCD\_Error\_Handler}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_Error\_Handler()}{LCD\_Error\_Handler()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a9d542c46c2588a88955b8546689c5e53} 
+void LCD\+\_\+\+Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{_l_c_d___driver_8c_a6758ae1e84bda7de6a13005947e33d7f}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_GPIO\_Init@{LCD\_GPIO\_Init}}
+\index{LCD\_GPIO\_Init@{LCD\_GPIO\_Init}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_GPIO\_Init()}{LCD\_GPIO\_Init()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a6758ae1e84bda7de6a13005947e33d7f} 
+void LCD\+\_\+\+GPIO\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{_l_c_d___driver_8c_ac033ddcb70a4545090a2ca57f0be321a}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_SetFont@{LCD\_SetFont}}
+\index{LCD\_SetFont@{LCD\_SetFont}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_SetFont()}{LCD\_SetFont()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_ac033ddcb70a4545090a2ca57f0be321a} 
+void LCD\+\_\+\+Set\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_f_o_n_t__t}{FONT\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{fonts}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{_l_c_d___driver_8c_afb00cae53154eb62c10694a6e9122187}\index{LCD\_Driver.c@{LCD\_Driver.c}!LCD\_SetTextColor@{LCD\_SetTextColor}}
+\index{LCD\_SetTextColor@{LCD\_SetTextColor}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LCD\_SetTextColor()}{LCD\_SetTextColor()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_afb00cae53154eb62c10694a6e9122187} 
+void LCD\+\_\+\+Set\+Text\+Color (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Color}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{_l_c_d___driver_8c_a2d22c501c8fe2206b5bef8e6c4d4778c}\index{LCD\_Driver.c@{LCD\_Driver.c}!LTCD\_\_Init@{LTCD\_\_Init}}
+\index{LTCD\_\_Init@{LTCD\_\_Init}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LTCD\_\_Init()}{LTCD\_\_Init()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a2d22c501c8fe2206b5bef8e6c4d4778c} 
+void LTCD\+\_\+\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{_l_c_d___driver_8c_a472bf1663586d3e1a7cf7244dc18cb19}\index{LCD\_Driver.c@{LCD\_Driver.c}!LTCD\_Layer\_Init@{LTCD\_Layer\_Init}}
+\index{LTCD\_Layer\_Init@{LTCD\_Layer\_Init}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{LTCD\_Layer\_Init()}{LTCD\_Layer\_Init()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a472bf1663586d3e1a7cf7244dc18cb19} 
+void LTCD\+\_\+\+Layer\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Layer\+Index}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{_l_c_d___driver_8c_aac33094cbe08196b782a4c0d3a33fff7}\index{LCD\_Driver.c@{LCD\_Driver.c}!visualDemo@{visualDemo}}
+\index{visualDemo@{visualDemo}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{visualDemo()}{visualDemo()}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_aac33094cbe08196b782a4c0d3a33fff7} 
+void visual\+Demo (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 20
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_l_c_d___driver_8c_a005c26fa59921428e5b56e4e3e436559}\index{LCD\_Driver.c@{LCD\_Driver.c}!frameBuffer@{frameBuffer}}
+\index{frameBuffer@{frameBuffer}!LCD\_Driver.c@{LCD\_Driver.c}}
+\doxysubsubsection{\texorpdfstring{frameBuffer}{frameBuffer}}
+{\footnotesize\ttfamily \label{_l_c_d___driver_8c_a005c26fa59921428e5b56e4e3e436559} 
+uint16\+\_\+t frame\+Buffer\mbox{[}\mbox{\hyperlink{_l_c_d___driver_8h_a215a46e7477262a8280bcb27b63aaabd}{LCD\+\_\+\+PIXEL\+\_\+\+WIDTH}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_l_c_d___driver_8h_af796d6844b178c92f38b8cb4b9e41c78}{LCD\+\_\+\+PIXEL\+\_\+\+HEIGHT}}\mbox{]} = \{0\}}
+

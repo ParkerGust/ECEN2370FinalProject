@@ -1,0 +1,205 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Inc/\+Application\+Code.h File Reference}
+\hypertarget{_application_code_8h}{}\label{_application_code_8h}\index{ECEN2370FinalProject/Core/Inc/ApplicationCode.h@{ECEN2370FinalProject/Core/Inc/ApplicationCode.h}}
+
+
+runs the game and stores static game variables  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}Gyro.\+h"{}}\newline
+{\ttfamily \#include "{}AI.\+h"{}}\newline
+{\ttfamily \#include "{}Display.\+h"{}}\newline
+{\ttfamily \#include "{}Button\+\_\+\+Driver.\+h"{}}\newline
+Include dependency graph for Application\+Code.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a3ebc241c2aa2f44a5424be4a1f5a6a0c}{GYRO\+\_\+\+MOVEMENT}}~1
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{board\+Columns}}~7
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a94f47bd3ebc14019542ff7132fb15e79}{board\+Rows}}~6
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a3df60bf17314e1f4348c7b4b33e2a1db}{ONE\+\_\+\+PLAYER\+\_\+\+MODE}}~0
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a00c601cc7509f3a0982c35c16fbddda2}{TWO\+\_\+\+PLAYER\+\_\+\+MODE}}~1
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a00aef9e8dd001a49f8717031d84b2c6c}{DEBOUNCE\+\_\+\+TIME}}~80
+\item 
+\#define \mbox{\hyperlink{_application_code_8h_a6c76ae0036c6680877f81b1ec54c432d}{MOVE\+\_\+\+THRESHOLD}}~2000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_application_code_8h_a784bc21ff799c79e41f61fbb3583d1e9}{Application\+Init}} (void)
+\item 
+void \mbox{\hyperlink{_application_code_8h_a4ddd55c50a2b49da981ce84f4edcfc70}{check\+Player\+Mode}} (void)
+\begin{DoxyCompactList}\small\item\em Checks whether its one player mode or two player mode based on touch inputs and saves to static variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8h_a24903cba723365d50b4c662e33e91707}{new\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a new gameboard, flips the starting player, and starts the timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8h_a70b6ce664b7b4fdb33e25ad9d81873d6}{drop}} (void)
+\begin{DoxyCompactList}\small\item\em drops the chip to the lowest location for the given column in gameboard triggered by button interrupt or in AI sequence \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8h_a0990070b581603c8bf86debcea28c20b}{move\+Gyro}} (void)
+\begin{DoxyCompactList}\small\item\em move function to change the column that the chip hovers over gyro or touch controlled based on compile switch \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8h_ab7c3a6586b18c40cdf49c922ba6edc5a}{play\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em loop that runs the program to play the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8h_abf5f6de04bef125dc7c4b1cda0357d3f}{start\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em starts a new game and sets scores to zero, displays screen 1 and sets player mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_application_code_8h_ad68cdaadb2bd2f4f9bef115775fb323f}{app\+Delay}} (uint32\+\_\+t delay\+Time)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+runs the game and stores static game variables 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_application_code_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}\index{ApplicationCode.h@{ApplicationCode.h}!boardColumns@{boardColumns}}
+\index{boardColumns@{boardColumns}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{boardColumns}{boardColumns}}
+{\footnotesize\ttfamily \label{_application_code_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94} 
+\#define board\+Columns~7}
+
+\Hypertarget{_application_code_8h_a94f47bd3ebc14019542ff7132fb15e79}\index{ApplicationCode.h@{ApplicationCode.h}!boardRows@{boardRows}}
+\index{boardRows@{boardRows}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{boardRows}{boardRows}}
+{\footnotesize\ttfamily \label{_application_code_8h_a94f47bd3ebc14019542ff7132fb15e79} 
+\#define board\+Rows~6}
+
+\Hypertarget{_application_code_8h_a00aef9e8dd001a49f8717031d84b2c6c}\index{ApplicationCode.h@{ApplicationCode.h}!DEBOUNCE\_TIME@{DEBOUNCE\_TIME}}
+\index{DEBOUNCE\_TIME@{DEBOUNCE\_TIME}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{DEBOUNCE\_TIME}{DEBOUNCE\_TIME}}
+{\footnotesize\ttfamily \label{_application_code_8h_a00aef9e8dd001a49f8717031d84b2c6c} 
+\#define DEBOUNCE\+\_\+\+TIME~80}
+
+\Hypertarget{_application_code_8h_a3ebc241c2aa2f44a5424be4a1f5a6a0c}\index{ApplicationCode.h@{ApplicationCode.h}!GYRO\_MOVEMENT@{GYRO\_MOVEMENT}}
+\index{GYRO\_MOVEMENT@{GYRO\_MOVEMENT}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_MOVEMENT}{GYRO\_MOVEMENT}}
+{\footnotesize\ttfamily \label{_application_code_8h_a3ebc241c2aa2f44a5424be4a1f5a6a0c} 
+\#define GYRO\+\_\+\+MOVEMENT~1}
+
+\Hypertarget{_application_code_8h_a6c76ae0036c6680877f81b1ec54c432d}\index{ApplicationCode.h@{ApplicationCode.h}!MOVE\_THRESHOLD@{MOVE\_THRESHOLD}}
+\index{MOVE\_THRESHOLD@{MOVE\_THRESHOLD}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{MOVE\_THRESHOLD}{MOVE\_THRESHOLD}}
+{\footnotesize\ttfamily \label{_application_code_8h_a6c76ae0036c6680877f81b1ec54c432d} 
+\#define MOVE\+\_\+\+THRESHOLD~2000}
+
+\Hypertarget{_application_code_8h_a3df60bf17314e1f4348c7b4b33e2a1db}\index{ApplicationCode.h@{ApplicationCode.h}!ONE\_PLAYER\_MODE@{ONE\_PLAYER\_MODE}}
+\index{ONE\_PLAYER\_MODE@{ONE\_PLAYER\_MODE}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{ONE\_PLAYER\_MODE}{ONE\_PLAYER\_MODE}}
+{\footnotesize\ttfamily \label{_application_code_8h_a3df60bf17314e1f4348c7b4b33e2a1db} 
+\#define ONE\+\_\+\+PLAYER\+\_\+\+MODE~0}
+
+\Hypertarget{_application_code_8h_a00c601cc7509f3a0982c35c16fbddda2}\index{ApplicationCode.h@{ApplicationCode.h}!TWO\_PLAYER\_MODE@{TWO\_PLAYER\_MODE}}
+\index{TWO\_PLAYER\_MODE@{TWO\_PLAYER\_MODE}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{TWO\_PLAYER\_MODE}{TWO\_PLAYER\_MODE}}
+{\footnotesize\ttfamily \label{_application_code_8h_a00c601cc7509f3a0982c35c16fbddda2} 
+\#define TWO\+\_\+\+PLAYER\+\_\+\+MODE~1}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_application_code_8h_ad68cdaadb2bd2f4f9bef115775fb323f}\index{ApplicationCode.h@{ApplicationCode.h}!appDelay@{appDelay}}
+\index{appDelay@{appDelay}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{appDelay()}{appDelay()}}
+{\footnotesize\ttfamily \label{_application_code_8h_ad68cdaadb2bd2f4f9bef115775fb323f} 
+void app\+Delay (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{delay\+Time}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_application_code_8h_a784bc21ff799c79e41f61fbb3583d1e9}\index{ApplicationCode.h@{ApplicationCode.h}!ApplicationInit@{ApplicationInit}}
+\index{ApplicationInit@{ApplicationInit}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{ApplicationInit()}{ApplicationInit()}}
+{\footnotesize\ttfamily \label{_application_code_8h_a784bc21ff799c79e41f61fbb3583d1e9} 
+void Application\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{_application_code_8h_a4ddd55c50a2b49da981ce84f4edcfc70}\index{ApplicationCode.h@{ApplicationCode.h}!checkPlayerMode@{checkPlayerMode}}
+\index{checkPlayerMode@{checkPlayerMode}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{checkPlayerMode()}{checkPlayerMode()}}
+{\footnotesize\ttfamily \label{_application_code_8h_a4ddd55c50a2b49da981ce84f4edcfc70} 
+void check\+Player\+Mode (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Checks whether its one player mode or two player mode based on touch inputs and saves to static variable. 
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{_application_code_8h_a70b6ce664b7b4fdb33e25ad9d81873d6}\index{ApplicationCode.h@{ApplicationCode.h}!drop@{drop}}
+\index{drop@{drop}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{drop()}{drop()}}
+{\footnotesize\ttfamily \label{_application_code_8h_a70b6ce664b7b4fdb33e25ad9d81873d6} 
+void drop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+drops the chip to the lowest location for the given column in gameboard triggered by button interrupt or in AI sequence 
+
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{_application_code_8h_a0990070b581603c8bf86debcea28c20b}\index{ApplicationCode.h@{ApplicationCode.h}!moveGyro@{moveGyro}}
+\index{moveGyro@{moveGyro}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{moveGyro()}{moveGyro()}}
+{\footnotesize\ttfamily \label{_application_code_8h_a0990070b581603c8bf86debcea28c20b} 
+void move\+Gyro (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+move function to change the column that the chip hovers over gyro or touch controlled based on compile switch 
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{_application_code_8h_a24903cba723365d50b4c662e33e91707}\index{ApplicationCode.h@{ApplicationCode.h}!newGame@{newGame}}
+\index{newGame@{newGame}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{newGame()}{newGame()}}
+{\footnotesize\ttfamily \label{_application_code_8h_a24903cba723365d50b4c662e33e91707} 
+void new\+Game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new gameboard, flips the starting player, and starts the timer. 
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{_application_code_8h_ab7c3a6586b18c40cdf49c922ba6edc5a}\index{ApplicationCode.h@{ApplicationCode.h}!playGame@{playGame}}
+\index{playGame@{playGame}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{playGame()}{playGame()}}
+{\footnotesize\ttfamily \label{_application_code_8h_ab7c3a6586b18c40cdf49c922ba6edc5a} 
+void play\+Game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+loop that runs the program to play the game 
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{_application_code_8h_abf5f6de04bef125dc7c4b1cda0357d3f}\index{ApplicationCode.h@{ApplicationCode.h}!startGame@{startGame}}
+\index{startGame@{startGame}!ApplicationCode.h@{ApplicationCode.h}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{_application_code_8h_abf5f6de04bef125dc7c4b1cda0357d3f} 
+void start\+Game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+starts a new game and sets scores to zero, displays screen 1 and sets player mode 
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14

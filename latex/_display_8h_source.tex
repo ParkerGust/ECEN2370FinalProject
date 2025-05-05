@@ -1,0 +1,31 @@
+\doxysection{Display.\+h}
+\hypertarget{_display_8h_source}{}\label{_display_8h_source}\index{ECEN2370FinalProject/Core/Inc/Display.h@{ECEN2370FinalProject/Core/Inc/Display.h}}
+\mbox{\hyperlink{_display_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INC\_DISPLAY\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INC\_DISPLAY\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_l_c_d___driver_8h}{LCD\_Driver.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ boardColumns\ 7}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ boardRows\ 6}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_a50241dacc3833df7ae8c7a4740b3b9f7}{Display\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_a930e0d87767d5dd317b9bb971e664394}{Screen1\_Display}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_a5bc581d263574a331a20dd48e5c38773}{Screen2\_DisplayBoard}}(uint8\_t\ gameBoard[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}]);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_ad6a9f3b56b0e9f012ec296470d33fd80}{Screen2\_DisplayMoveChip}}(uint8\_t\ chipLoc,\ \textcolor{keywordtype}{bool}\ player1turn);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_ae449fa53977e9b5a60f38a6b99c9a2fd}{Screen3\_Display}}(uint8\_t\ gameBoard[\mbox{\hyperlink{_a_i_8h_a7c62deeb71d3d107ef8f3b43dd7b9d94}{boardColumns}}][\mbox{\hyperlink{_a_i_8h_a94f47bd3ebc14019542ff7132fb15e79}{boardRows}}],\ uint8\_t\ player1\_Score,\ uint8\_t\ player2\_Score);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_a2982c9a6534d5b81a42f6181c2f9620f}{startTimer}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_display_8h_a25f1dec00bfa5ab6afed0de15b9a07da}{endTimer}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,17 @@
+digraph "returnTouchStateAndLocation"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="returnTouchStateAndLocation",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge5_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="checkPlayerMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_application_code_8c.html#a4ddd55c50a2b49da981ce84f4edcfc70",tooltip="Checks whether its one player mode or two player mode based on touch inputs and saves to static varia..."];
+  Node2 -> Node3 [id="edge6_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="startGame",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_application_code_8c.html#abf5f6de04bef125dc7c4b1cda0357d3f",tooltip="starts a new game and sets scores to zero, displays screen 1 and sets player mode"];
+  Node3 -> Node4 [id="edge7_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="ApplicationInit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_application_code_8c.html#a784bc21ff799c79e41f61fbb3583d1e9",tooltip=" "];
+  Node4 -> Node5 [id="edge8_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip="The application entry point."];
+}

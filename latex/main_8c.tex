@@ -1,0 +1,146 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{ECEN2370FinalProject/Core/Src/main.c@{ECEN2370FinalProject/Core/Src/main.c}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}Application\+Code.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_aeb6252b81c496380fcf11b7d6970c573}{initialise\+\_\+monitor\+\_\+handles}} (void)
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+I2\+C\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a5ccf4a01a8d7f08d3190181f843f7515}{hi2c3}}
+\item 
+LTDC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a9ede3a77755ec81a9be03423cb915b05}{hltdc}}
+\item 
+RNG\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_aac2dceb5bba58c53cf7a0be6934c4df6}{hrng}}
+\item 
+SPI\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_afdea13a2cdf1c24e3a0edfc65c30b474}{hspi5}}
+\item 
+TIM\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a2c80fd5510e2990a59a5c90d745c716c}{htim2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Main program body 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2025 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a1730ffe1e560465665eb47d9264826f9}\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily \label{main_8c_a1730ffe1e560465665eb47d9264826f9} 
+void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{main_8c_aeb6252b81c496380fcf11b7d6970c573}\index{main.c@{main.c}!initialise\_monitor\_handles@{initialise\_monitor\_handles}}
+\index{initialise\_monitor\_handles@{initialise\_monitor\_handles}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{initialise\_monitor\_handles()}{initialise\_monitor\_handles()}}
+{\footnotesize\ttfamily \label{main_8c_aeb6252b81c496380fcf11b7d6970c573} 
+void initialise\+\_\+monitor\+\_\+handles (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int main (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily \label{main_8c_a70af21c671abfcc773614a9a4f63d920} 
+void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Configure the main internal regulator output voltage
+
+Initializes the RCC Oscillators according to the specified parameters in the RCC\+\_\+\+Osc\+Init\+Type\+Def structure.
+
+Initializes the CPU, AHB and APB buses clocksHere is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8c_a5ccf4a01a8d7f08d3190181f843f7515}\index{main.c@{main.c}!hi2c3@{hi2c3}}
+\index{hi2c3@{hi2c3}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hi2c3}{hi2c3}}
+{\footnotesize\ttfamily \label{main_8c_a5ccf4a01a8d7f08d3190181f843f7515} 
+I2\+C\+\_\+\+Handle\+Type\+Def hi2c3}
+
+\Hypertarget{main_8c_a9ede3a77755ec81a9be03423cb915b05}\index{main.c@{main.c}!hltdc@{hltdc}}
+\index{hltdc@{hltdc}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hltdc}{hltdc}}
+{\footnotesize\ttfamily \label{main_8c_a9ede3a77755ec81a9be03423cb915b05} 
+LTDC\+\_\+\+Handle\+Type\+Def hltdc}
+
+\Hypertarget{main_8c_aac2dceb5bba58c53cf7a0be6934c4df6}\index{main.c@{main.c}!hrng@{hrng}}
+\index{hrng@{hrng}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hrng}{hrng}}
+{\footnotesize\ttfamily \label{main_8c_aac2dceb5bba58c53cf7a0be6934c4df6} 
+RNG\+\_\+\+Handle\+Type\+Def hrng}
+
+\Hypertarget{main_8c_afdea13a2cdf1c24e3a0edfc65c30b474}\index{main.c@{main.c}!hspi5@{hspi5}}
+\index{hspi5@{hspi5}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hspi5}{hspi5}}
+{\footnotesize\ttfamily \label{main_8c_afdea13a2cdf1c24e3a0edfc65c30b474} 
+SPI\+\_\+\+Handle\+Type\+Def hspi5}
+
+\Hypertarget{main_8c_a2c80fd5510e2990a59a5c90d745c716c}\index{main.c@{main.c}!htim2@{htim2}}
+\index{htim2@{htim2}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{htim2}{htim2}}
+{\footnotesize\ttfamily \label{main_8c_a2c80fd5510e2990a59a5c90d745c716c} 
+TIM\+\_\+\+Handle\+Type\+Def htim2}
+

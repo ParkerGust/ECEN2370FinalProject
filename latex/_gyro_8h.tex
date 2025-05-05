@@ -1,0 +1,511 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Inc/\+Gyro.h File Reference}
+\hypertarget{_gyro_8h}{}\label{_gyro_8h}\index{ECEN2370FinalProject/Core/Inc/Gyro.h@{ECEN2370FinalProject/Core/Inc/Gyro.h}}
+
+
+Driver for Gyroscope.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+Include dependency graph for Gyro.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a4e157316d93c0270c0d19fcd07e5611c}{GYRO\+\_\+\+WHO\+\_\+\+AM\+\_\+I}}~0x0f
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_aaddeaa4423fd357a974bd7e5e76a9e71}{GYRO\+\_\+\+CR1}}~0x20
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a50a73f9d409bff5c7291fc8258cf9046}{GYRO\+\_\+\+CR2}}~0x21
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_aaf9621ccf8f06235ff38e265ec01eb16}{GYRO\+\_\+\+CR3}}~0x22
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ac4725293a0dae5504ac8c140213e7d99}{GYRO\+\_\+\+CR4}}~0x23
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a4760428156626f9c400cb05499d0fa0c}{GYRO\+\_\+\+CR5}}~0x24
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a1bb5174a91079bbc6a6d6332a6a7182c}{GYRO\+\_\+\+REFRENCEDATACAPTURE}}~0x25
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a7bc5ead88c891290a39a97cd3fa31e18}{GYRO\+\_\+\+OUT\+\_\+\+TEMP}}~0x26
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ac1ab591afd7d64512d9a1fe140bdade2}{GYRO\+\_\+\+SR}}~0x27
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ab2a37fede6f6f0ae94a6299abaa8eedf}{GYRO\+\_\+\+OUT\+\_\+\+X\+\_\+L}}~0x28
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a351a2beee44c10bd1158118ea79ebd8a}{GYRO\+\_\+\+OUT\+\_\+\+X\+\_\+H}}~0x29
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a5fe7f6766283ec11e423f373b5d379a4}{GYRO\+\_\+\+OUT\+\_\+\+Y\+\_\+L}}~0x2A
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a3f5e7805a3be66e239757b8c626d0776}{GYRO\+\_\+\+OUT\+\_\+\+Y\+\_\+H}}~0x2B
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a6218782f60acb88958451b21fb6f1dd6}{GYRO\+\_\+\+OUT\+\_\+\+Z\+\_\+L}}~0x2C
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a234754362bd5c074bea5744719869ece}{GYRO\+\_\+\+OUT\+\_\+\+Z\+\_\+H}}~0x2D
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a88e85d334a2feaf225af2a87e3fd7704}{GYRO\+\_\+\+FIFO\+\_\+\+CTRL\+\_\+\+REG}}~0x2E
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a9bb185724310c63967232a0005d11388}{GYRO\+\_\+\+FIFO\+\_\+\+SRC\+\_\+\+REG}}~0x2F
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a9c390cab976c57ed5bcd9e6dd63732cf}{GYRO\+\_\+\+INT1\+\_\+\+CFG}}~0x30
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a480f1e49557dadd447a4ed891374e29d}{GYRO\+\_\+\+INT1\+\_\+\+SRC}}~0x31
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a4c98a9ce7b5fcd113e08c585384540c5}{GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+XH}}~0x32
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ae1b70c0038135c0ee0c23d89d08303ee}{GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+XL}}~0x33
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a9dd36efeb555a5017bc58521f78e36a7}{GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+YH}}~0x34
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a44301b497e1068b09ee49494e89efe62}{GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+YL}}~0x35
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ae008e6ac16fe5b5dd81f3445f69310a2}{GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+ZH}}~0x36
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a1769e11ad8f0e949716a3c6415dfe22d}{GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+ZL}}~0x37
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a05c71aec019eb9404c8f9510ce8cf0d3}{GYRO\+\_\+\+INT1\+\_\+\+DURATION}}~0x38
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a1573e137fe6c8d223b5306e32d9bdfbf}{GYRO\+\_\+\+CS\+\_\+\+PORT}}~GPIOC
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a4fe89845ce6beda9196ab0483f2dc27f}{GYRO\+\_\+\+CS\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+1
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a0c6de601d3c489f0000bc0f0cbfbb423}{GYRO\+\_\+\+CR1\+\_\+\+X\+\_\+\+ENABLE}}~(1 $<$$<$ 0)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ac48cfb0718146adb425a78604a76d7c4}{GYRO\+\_\+\+CR1\+\_\+\+Y\+\_\+\+ENABLE}}~(1 $<$$<$ 1)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a07807415607f40fd650e2abf302d1dc0}{GYRO\+\_\+\+CR1\+\_\+\+Z\+\_\+\+ENABLE}}~(1 $<$$<$ 2)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a23ed196da98e0da6dec7ca8caf60b82b}{GYRO\+\_\+\+CR1\+\_\+\+POWERDOWN\+\_\+\+NORMAL\+\_\+\+ENABLE}}~(1 $<$$<$3)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a5d8676e2a75835c51f4f7cfe954c8c0e}{GYRO\+\_\+\+CR1\+\_\+\+BANDWIDTH\+\_\+\+SET}}~(0b01 $<$$<$ 4)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a39ddddd65e7d568aabb2f24549c43b53}{GYRO\+\_\+\+CR5\+\_\+\+FIFO}}~(1$<$$<$6)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a7456c3643f76fbfe8c94a5efa611a02b}{GYRO\+\_\+\+CR5\+\_\+\+REBOOTMEMCONTENT}}~(1 $<$$<$ 7)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ad0b7528e75ba0db014b37ab470bd4996}{SPI\+\_\+\+WRITE}}~(0 $<$$<$ 7)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a2391b9cfab401375f9193246690a043d}{SPI\+\_\+\+READ}}~(1 $<$$<$ 7)
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a72df9c30960abb8e246feb4319f377c1}{SPI\+\_\+\+REG\+\_\+\+OFFSET}}~2
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_a0e39758d8d26ee8b89ad58d9cc104f4c}{SPI\+\_\+\+DATA\+\_\+\+OFFSET}}~8
+\item 
+\#define \mbox{\hyperlink{_gyro_8h_ae6c5811c029a6ee1565195f9e17ddec2}{timeout}}~2600
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_gyro_8h_a3f23b9c98e52e23454d961ecbcaa97fd}{Gyro\+\_\+\+Get\+YLoc}} ()
+\begin{DoxyCompactList}\small\item\em gets the change in y location \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8h_a43c12bfd8b1698dc230be585a8629c9a}{Gyro\+\_\+\+Init}} ()
+\begin{DoxyCompactList}\small\item\em starts up the gyro and enables all registers for gyro Y reading \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8h_a4eb34e06690a00cb6046963f3e43cd48}{Gyro\+\_\+\+Get\+Print\+ID}} ()
+\item 
+void \mbox{\hyperlink{_gyro_8h_a9cf90d1ba4a81771f99c2a913609235e}{Gyro\+\_\+\+Power}} ()
+\begin{DoxyCompactList}\small\item\em powers on the board \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8h_a476507800fac6b49519a25651b003317}{Gyro\+\_\+\+Get\+Print\+Temp}} ()
+\item 
+void \mbox{\hyperlink{_gyro_8h_a983563144736f319a76de4da7ac4322e}{Gyro\+\_\+\+Configure\+Reg}} (uint16\+\_\+t Reg, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em configures given register to the data provided \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_gyro_8h_ac40c444b1ec53a450cdce8ca8f147237}{Gyro\+\_\+\+Read\+Reg}} (uint16\+\_\+t Reg)
+\begin{DoxyCompactList}\small\item\em reads a given register \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8h_a76b0f183cf84f9c616c01b0902601e0c}{Gyro\+\_\+\+Verify\+HAL}} ()
+\begin{DoxyCompactList}\small\item\em ensures HAL is still ok \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8h_a458aac68a5214cfaa23b08e42c8af9ec}{Gyro\+\_\+\+Enable\+Slave\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em enables chip select to enable communication through SPI \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8h_ab2f8c2d55c38872d6b058cd2b1d913ae}{Gyro\+\_\+\+Disable\+Slave\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em disables chip select to disable communication through SPI \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Driver for Gyroscope. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_gyro_8h_aaddeaa4423fd357a974bd7e5e76a9e71}\index{Gyro.h@{Gyro.h}!GYRO\_CR1@{GYRO\_CR1}}
+\index{GYRO\_CR1@{GYRO\_CR1}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR1}{GYRO\_CR1}}
+{\footnotesize\ttfamily \label{_gyro_8h_aaddeaa4423fd357a974bd7e5e76a9e71} 
+\#define GYRO\+\_\+\+CR1~0x20}
+
+\Hypertarget{_gyro_8h_a5d8676e2a75835c51f4f7cfe954c8c0e}\index{Gyro.h@{Gyro.h}!GYRO\_CR1\_BANDWIDTH\_SET@{GYRO\_CR1\_BANDWIDTH\_SET}}
+\index{GYRO\_CR1\_BANDWIDTH\_SET@{GYRO\_CR1\_BANDWIDTH\_SET}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR1\_BANDWIDTH\_SET}{GYRO\_CR1\_BANDWIDTH\_SET}}
+{\footnotesize\ttfamily \label{_gyro_8h_a5d8676e2a75835c51f4f7cfe954c8c0e} 
+\#define GYRO\+\_\+\+CR1\+\_\+\+BANDWIDTH\+\_\+\+SET~(0b01 $<$$<$ 4)}
+
+\Hypertarget{_gyro_8h_a23ed196da98e0da6dec7ca8caf60b82b}\index{Gyro.h@{Gyro.h}!GYRO\_CR1\_POWERDOWN\_NORMAL\_ENABLE@{GYRO\_CR1\_POWERDOWN\_NORMAL\_ENABLE}}
+\index{GYRO\_CR1\_POWERDOWN\_NORMAL\_ENABLE@{GYRO\_CR1\_POWERDOWN\_NORMAL\_ENABLE}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR1\_POWERDOWN\_NORMAL\_ENABLE}{GYRO\_CR1\_POWERDOWN\_NORMAL\_ENABLE}}
+{\footnotesize\ttfamily \label{_gyro_8h_a23ed196da98e0da6dec7ca8caf60b82b} 
+\#define GYRO\+\_\+\+CR1\+\_\+\+POWERDOWN\+\_\+\+NORMAL\+\_\+\+ENABLE~(1 $<$$<$3)}
+
+\Hypertarget{_gyro_8h_a0c6de601d3c489f0000bc0f0cbfbb423}\index{Gyro.h@{Gyro.h}!GYRO\_CR1\_X\_ENABLE@{GYRO\_CR1\_X\_ENABLE}}
+\index{GYRO\_CR1\_X\_ENABLE@{GYRO\_CR1\_X\_ENABLE}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR1\_X\_ENABLE}{GYRO\_CR1\_X\_ENABLE}}
+{\footnotesize\ttfamily \label{_gyro_8h_a0c6de601d3c489f0000bc0f0cbfbb423} 
+\#define GYRO\+\_\+\+CR1\+\_\+\+X\+\_\+\+ENABLE~(1 $<$$<$ 0)}
+
+\Hypertarget{_gyro_8h_ac48cfb0718146adb425a78604a76d7c4}\index{Gyro.h@{Gyro.h}!GYRO\_CR1\_Y\_ENABLE@{GYRO\_CR1\_Y\_ENABLE}}
+\index{GYRO\_CR1\_Y\_ENABLE@{GYRO\_CR1\_Y\_ENABLE}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR1\_Y\_ENABLE}{GYRO\_CR1\_Y\_ENABLE}}
+{\footnotesize\ttfamily \label{_gyro_8h_ac48cfb0718146adb425a78604a76d7c4} 
+\#define GYRO\+\_\+\+CR1\+\_\+\+Y\+\_\+\+ENABLE~(1 $<$$<$ 1)}
+
+\Hypertarget{_gyro_8h_a07807415607f40fd650e2abf302d1dc0}\index{Gyro.h@{Gyro.h}!GYRO\_CR1\_Z\_ENABLE@{GYRO\_CR1\_Z\_ENABLE}}
+\index{GYRO\_CR1\_Z\_ENABLE@{GYRO\_CR1\_Z\_ENABLE}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR1\_Z\_ENABLE}{GYRO\_CR1\_Z\_ENABLE}}
+{\footnotesize\ttfamily \label{_gyro_8h_a07807415607f40fd650e2abf302d1dc0} 
+\#define GYRO\+\_\+\+CR1\+\_\+\+Z\+\_\+\+ENABLE~(1 $<$$<$ 2)}
+
+\Hypertarget{_gyro_8h_a50a73f9d409bff5c7291fc8258cf9046}\index{Gyro.h@{Gyro.h}!GYRO\_CR2@{GYRO\_CR2}}
+\index{GYRO\_CR2@{GYRO\_CR2}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR2}{GYRO\_CR2}}
+{\footnotesize\ttfamily \label{_gyro_8h_a50a73f9d409bff5c7291fc8258cf9046} 
+\#define GYRO\+\_\+\+CR2~0x21}
+
+\Hypertarget{_gyro_8h_aaf9621ccf8f06235ff38e265ec01eb16}\index{Gyro.h@{Gyro.h}!GYRO\_CR3@{GYRO\_CR3}}
+\index{GYRO\_CR3@{GYRO\_CR3}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR3}{GYRO\_CR3}}
+{\footnotesize\ttfamily \label{_gyro_8h_aaf9621ccf8f06235ff38e265ec01eb16} 
+\#define GYRO\+\_\+\+CR3~0x22}
+
+\Hypertarget{_gyro_8h_ac4725293a0dae5504ac8c140213e7d99}\index{Gyro.h@{Gyro.h}!GYRO\_CR4@{GYRO\_CR4}}
+\index{GYRO\_CR4@{GYRO\_CR4}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR4}{GYRO\_CR4}}
+{\footnotesize\ttfamily \label{_gyro_8h_ac4725293a0dae5504ac8c140213e7d99} 
+\#define GYRO\+\_\+\+CR4~0x23}
+
+\Hypertarget{_gyro_8h_a4760428156626f9c400cb05499d0fa0c}\index{Gyro.h@{Gyro.h}!GYRO\_CR5@{GYRO\_CR5}}
+\index{GYRO\_CR5@{GYRO\_CR5}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR5}{GYRO\_CR5}}
+{\footnotesize\ttfamily \label{_gyro_8h_a4760428156626f9c400cb05499d0fa0c} 
+\#define GYRO\+\_\+\+CR5~0x24}
+
+\Hypertarget{_gyro_8h_a39ddddd65e7d568aabb2f24549c43b53}\index{Gyro.h@{Gyro.h}!GYRO\_CR5\_FIFO@{GYRO\_CR5\_FIFO}}
+\index{GYRO\_CR5\_FIFO@{GYRO\_CR5\_FIFO}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR5\_FIFO}{GYRO\_CR5\_FIFO}}
+{\footnotesize\ttfamily \label{_gyro_8h_a39ddddd65e7d568aabb2f24549c43b53} 
+\#define GYRO\+\_\+\+CR5\+\_\+\+FIFO~(1$<$$<$6)}
+
+\Hypertarget{_gyro_8h_a7456c3643f76fbfe8c94a5efa611a02b}\index{Gyro.h@{Gyro.h}!GYRO\_CR5\_REBOOTMEMCONTENT@{GYRO\_CR5\_REBOOTMEMCONTENT}}
+\index{GYRO\_CR5\_REBOOTMEMCONTENT@{GYRO\_CR5\_REBOOTMEMCONTENT}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CR5\_REBOOTMEMCONTENT}{GYRO\_CR5\_REBOOTMEMCONTENT}}
+{\footnotesize\ttfamily \label{_gyro_8h_a7456c3643f76fbfe8c94a5efa611a02b} 
+\#define GYRO\+\_\+\+CR5\+\_\+\+REBOOTMEMCONTENT~(1 $<$$<$ 7)}
+
+\Hypertarget{_gyro_8h_a4fe89845ce6beda9196ab0483f2dc27f}\index{Gyro.h@{Gyro.h}!GYRO\_CS\_PIN@{GYRO\_CS\_PIN}}
+\index{GYRO\_CS\_PIN@{GYRO\_CS\_PIN}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CS\_PIN}{GYRO\_CS\_PIN}}
+{\footnotesize\ttfamily \label{_gyro_8h_a4fe89845ce6beda9196ab0483f2dc27f} 
+\#define GYRO\+\_\+\+CS\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+1}
+
+\Hypertarget{_gyro_8h_a1573e137fe6c8d223b5306e32d9bdfbf}\index{Gyro.h@{Gyro.h}!GYRO\_CS\_PORT@{GYRO\_CS\_PORT}}
+\index{GYRO\_CS\_PORT@{GYRO\_CS\_PORT}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CS\_PORT}{GYRO\_CS\_PORT}}
+{\footnotesize\ttfamily \label{_gyro_8h_a1573e137fe6c8d223b5306e32d9bdfbf} 
+\#define GYRO\+\_\+\+CS\+\_\+\+PORT~GPIOC}
+
+\Hypertarget{_gyro_8h_a88e85d334a2feaf225af2a87e3fd7704}\index{Gyro.h@{Gyro.h}!GYRO\_FIFO\_CTRL\_REG@{GYRO\_FIFO\_CTRL\_REG}}
+\index{GYRO\_FIFO\_CTRL\_REG@{GYRO\_FIFO\_CTRL\_REG}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_FIFO\_CTRL\_REG}{GYRO\_FIFO\_CTRL\_REG}}
+{\footnotesize\ttfamily \label{_gyro_8h_a88e85d334a2feaf225af2a87e3fd7704} 
+\#define GYRO\+\_\+\+FIFO\+\_\+\+CTRL\+\_\+\+REG~0x2E}
+
+\Hypertarget{_gyro_8h_a9bb185724310c63967232a0005d11388}\index{Gyro.h@{Gyro.h}!GYRO\_FIFO\_SRC\_REG@{GYRO\_FIFO\_SRC\_REG}}
+\index{GYRO\_FIFO\_SRC\_REG@{GYRO\_FIFO\_SRC\_REG}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_FIFO\_SRC\_REG}{GYRO\_FIFO\_SRC\_REG}}
+{\footnotesize\ttfamily \label{_gyro_8h_a9bb185724310c63967232a0005d11388} 
+\#define GYRO\+\_\+\+FIFO\+\_\+\+SRC\+\_\+\+REG~0x2F}
+
+\Hypertarget{_gyro_8h_a9c390cab976c57ed5bcd9e6dd63732cf}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_CFG@{GYRO\_INT1\_CFG}}
+\index{GYRO\_INT1\_CFG@{GYRO\_INT1\_CFG}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_CFG}{GYRO\_INT1\_CFG}}
+{\footnotesize\ttfamily \label{_gyro_8h_a9c390cab976c57ed5bcd9e6dd63732cf} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+CFG~0x30}
+
+\Hypertarget{_gyro_8h_a05c71aec019eb9404c8f9510ce8cf0d3}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_DURATION@{GYRO\_INT1\_DURATION}}
+\index{GYRO\_INT1\_DURATION@{GYRO\_INT1\_DURATION}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_DURATION}{GYRO\_INT1\_DURATION}}
+{\footnotesize\ttfamily \label{_gyro_8h_a05c71aec019eb9404c8f9510ce8cf0d3} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+DURATION~0x38}
+
+\Hypertarget{_gyro_8h_a480f1e49557dadd447a4ed891374e29d}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_SRC@{GYRO\_INT1\_SRC}}
+\index{GYRO\_INT1\_SRC@{GYRO\_INT1\_SRC}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_SRC}{GYRO\_INT1\_SRC}}
+{\footnotesize\ttfamily \label{_gyro_8h_a480f1e49557dadd447a4ed891374e29d} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+SRC~0x31}
+
+\Hypertarget{_gyro_8h_a4c98a9ce7b5fcd113e08c585384540c5}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_THS\_XH@{GYRO\_INT1\_THS\_XH}}
+\index{GYRO\_INT1\_THS\_XH@{GYRO\_INT1\_THS\_XH}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_THS\_XH}{GYRO\_INT1\_THS\_XH}}
+{\footnotesize\ttfamily \label{_gyro_8h_a4c98a9ce7b5fcd113e08c585384540c5} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+XH~0x32}
+
+\Hypertarget{_gyro_8h_ae1b70c0038135c0ee0c23d89d08303ee}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_THS\_XL@{GYRO\_INT1\_THS\_XL}}
+\index{GYRO\_INT1\_THS\_XL@{GYRO\_INT1\_THS\_XL}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_THS\_XL}{GYRO\_INT1\_THS\_XL}}
+{\footnotesize\ttfamily \label{_gyro_8h_ae1b70c0038135c0ee0c23d89d08303ee} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+XL~0x33}
+
+\Hypertarget{_gyro_8h_a9dd36efeb555a5017bc58521f78e36a7}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_THS\_YH@{GYRO\_INT1\_THS\_YH}}
+\index{GYRO\_INT1\_THS\_YH@{GYRO\_INT1\_THS\_YH}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_THS\_YH}{GYRO\_INT1\_THS\_YH}}
+{\footnotesize\ttfamily \label{_gyro_8h_a9dd36efeb555a5017bc58521f78e36a7} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+YH~0x34}
+
+\Hypertarget{_gyro_8h_a44301b497e1068b09ee49494e89efe62}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_THS\_YL@{GYRO\_INT1\_THS\_YL}}
+\index{GYRO\_INT1\_THS\_YL@{GYRO\_INT1\_THS\_YL}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_THS\_YL}{GYRO\_INT1\_THS\_YL}}
+{\footnotesize\ttfamily \label{_gyro_8h_a44301b497e1068b09ee49494e89efe62} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+YL~0x35}
+
+\Hypertarget{_gyro_8h_ae008e6ac16fe5b5dd81f3445f69310a2}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_THS\_ZH@{GYRO\_INT1\_THS\_ZH}}
+\index{GYRO\_INT1\_THS\_ZH@{GYRO\_INT1\_THS\_ZH}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_THS\_ZH}{GYRO\_INT1\_THS\_ZH}}
+{\footnotesize\ttfamily \label{_gyro_8h_ae008e6ac16fe5b5dd81f3445f69310a2} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+ZH~0x36}
+
+\Hypertarget{_gyro_8h_a1769e11ad8f0e949716a3c6415dfe22d}\index{Gyro.h@{Gyro.h}!GYRO\_INT1\_THS\_ZL@{GYRO\_INT1\_THS\_ZL}}
+\index{GYRO\_INT1\_THS\_ZL@{GYRO\_INT1\_THS\_ZL}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_INT1\_THS\_ZL}{GYRO\_INT1\_THS\_ZL}}
+{\footnotesize\ttfamily \label{_gyro_8h_a1769e11ad8f0e949716a3c6415dfe22d} 
+\#define GYRO\+\_\+\+INT1\+\_\+\+THS\+\_\+\+ZL~0x37}
+
+\Hypertarget{_gyro_8h_a7bc5ead88c891290a39a97cd3fa31e18}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_TEMP@{GYRO\_OUT\_TEMP}}
+\index{GYRO\_OUT\_TEMP@{GYRO\_OUT\_TEMP}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_TEMP}{GYRO\_OUT\_TEMP}}
+{\footnotesize\ttfamily \label{_gyro_8h_a7bc5ead88c891290a39a97cd3fa31e18} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+TEMP~0x26}
+
+\Hypertarget{_gyro_8h_a351a2beee44c10bd1158118ea79ebd8a}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_X\_H@{GYRO\_OUT\_X\_H}}
+\index{GYRO\_OUT\_X\_H@{GYRO\_OUT\_X\_H}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_X\_H}{GYRO\_OUT\_X\_H}}
+{\footnotesize\ttfamily \label{_gyro_8h_a351a2beee44c10bd1158118ea79ebd8a} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+X\+\_\+H~0x29}
+
+\Hypertarget{_gyro_8h_ab2a37fede6f6f0ae94a6299abaa8eedf}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_X\_L@{GYRO\_OUT\_X\_L}}
+\index{GYRO\_OUT\_X\_L@{GYRO\_OUT\_X\_L}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_X\_L}{GYRO\_OUT\_X\_L}}
+{\footnotesize\ttfamily \label{_gyro_8h_ab2a37fede6f6f0ae94a6299abaa8eedf} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+X\+\_\+L~0x28}
+
+\Hypertarget{_gyro_8h_a3f5e7805a3be66e239757b8c626d0776}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_Y\_H@{GYRO\_OUT\_Y\_H}}
+\index{GYRO\_OUT\_Y\_H@{GYRO\_OUT\_Y\_H}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_Y\_H}{GYRO\_OUT\_Y\_H}}
+{\footnotesize\ttfamily \label{_gyro_8h_a3f5e7805a3be66e239757b8c626d0776} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+Y\+\_\+H~0x2B}
+
+\Hypertarget{_gyro_8h_a5fe7f6766283ec11e423f373b5d379a4}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_Y\_L@{GYRO\_OUT\_Y\_L}}
+\index{GYRO\_OUT\_Y\_L@{GYRO\_OUT\_Y\_L}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_Y\_L}{GYRO\_OUT\_Y\_L}}
+{\footnotesize\ttfamily \label{_gyro_8h_a5fe7f6766283ec11e423f373b5d379a4} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+Y\+\_\+L~0x2A}
+
+\Hypertarget{_gyro_8h_a234754362bd5c074bea5744719869ece}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_Z\_H@{GYRO\_OUT\_Z\_H}}
+\index{GYRO\_OUT\_Z\_H@{GYRO\_OUT\_Z\_H}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_Z\_H}{GYRO\_OUT\_Z\_H}}
+{\footnotesize\ttfamily \label{_gyro_8h_a234754362bd5c074bea5744719869ece} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+Z\+\_\+H~0x2D}
+
+\Hypertarget{_gyro_8h_a6218782f60acb88958451b21fb6f1dd6}\index{Gyro.h@{Gyro.h}!GYRO\_OUT\_Z\_L@{GYRO\_OUT\_Z\_L}}
+\index{GYRO\_OUT\_Z\_L@{GYRO\_OUT\_Z\_L}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_OUT\_Z\_L}{GYRO\_OUT\_Z\_L}}
+{\footnotesize\ttfamily \label{_gyro_8h_a6218782f60acb88958451b21fb6f1dd6} 
+\#define GYRO\+\_\+\+OUT\+\_\+\+Z\+\_\+L~0x2C}
+
+\Hypertarget{_gyro_8h_a1bb5174a91079bbc6a6d6332a6a7182c}\index{Gyro.h@{Gyro.h}!GYRO\_REFRENCEDATACAPTURE@{GYRO\_REFRENCEDATACAPTURE}}
+\index{GYRO\_REFRENCEDATACAPTURE@{GYRO\_REFRENCEDATACAPTURE}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_REFRENCEDATACAPTURE}{GYRO\_REFRENCEDATACAPTURE}}
+{\footnotesize\ttfamily \label{_gyro_8h_a1bb5174a91079bbc6a6d6332a6a7182c} 
+\#define GYRO\+\_\+\+REFRENCEDATACAPTURE~0x25}
+
+\Hypertarget{_gyro_8h_ac1ab591afd7d64512d9a1fe140bdade2}\index{Gyro.h@{Gyro.h}!GYRO\_SR@{GYRO\_SR}}
+\index{GYRO\_SR@{GYRO\_SR}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_SR}{GYRO\_SR}}
+{\footnotesize\ttfamily \label{_gyro_8h_ac1ab591afd7d64512d9a1fe140bdade2} 
+\#define GYRO\+\_\+\+SR~0x27}
+
+\Hypertarget{_gyro_8h_a4e157316d93c0270c0d19fcd07e5611c}\index{Gyro.h@{Gyro.h}!GYRO\_WHO\_AM\_I@{GYRO\_WHO\_AM\_I}}
+\index{GYRO\_WHO\_AM\_I@{GYRO\_WHO\_AM\_I}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_WHO\_AM\_I}{GYRO\_WHO\_AM\_I}}
+{\footnotesize\ttfamily \label{_gyro_8h_a4e157316d93c0270c0d19fcd07e5611c} 
+\#define GYRO\+\_\+\+WHO\+\_\+\+AM\+\_\+I~0x0f}
+
+\Hypertarget{_gyro_8h_a0e39758d8d26ee8b89ad58d9cc104f4c}\index{Gyro.h@{Gyro.h}!SPI\_DATA\_OFFSET@{SPI\_DATA\_OFFSET}}
+\index{SPI\_DATA\_OFFSET@{SPI\_DATA\_OFFSET}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_DATA\_OFFSET}{SPI\_DATA\_OFFSET}}
+{\footnotesize\ttfamily \label{_gyro_8h_a0e39758d8d26ee8b89ad58d9cc104f4c} 
+\#define SPI\+\_\+\+DATA\+\_\+\+OFFSET~8}
+
+\Hypertarget{_gyro_8h_a2391b9cfab401375f9193246690a043d}\index{Gyro.h@{Gyro.h}!SPI\_READ@{SPI\_READ}}
+\index{SPI\_READ@{SPI\_READ}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_READ}{SPI\_READ}}
+{\footnotesize\ttfamily \label{_gyro_8h_a2391b9cfab401375f9193246690a043d} 
+\#define SPI\+\_\+\+READ~(1 $<$$<$ 7)}
+
+\Hypertarget{_gyro_8h_a72df9c30960abb8e246feb4319f377c1}\index{Gyro.h@{Gyro.h}!SPI\_REG\_OFFSET@{SPI\_REG\_OFFSET}}
+\index{SPI\_REG\_OFFSET@{SPI\_REG\_OFFSET}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_REG\_OFFSET}{SPI\_REG\_OFFSET}}
+{\footnotesize\ttfamily \label{_gyro_8h_a72df9c30960abb8e246feb4319f377c1} 
+\#define SPI\+\_\+\+REG\+\_\+\+OFFSET~2}
+
+\Hypertarget{_gyro_8h_ad0b7528e75ba0db014b37ab470bd4996}\index{Gyro.h@{Gyro.h}!SPI\_WRITE@{SPI\_WRITE}}
+\index{SPI\_WRITE@{SPI\_WRITE}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_WRITE}{SPI\_WRITE}}
+{\footnotesize\ttfamily \label{_gyro_8h_ad0b7528e75ba0db014b37ab470bd4996} 
+\#define SPI\+\_\+\+WRITE~(0 $<$$<$ 7)}
+
+\Hypertarget{_gyro_8h_ae6c5811c029a6ee1565195f9e17ddec2}\index{Gyro.h@{Gyro.h}!timeout@{timeout}}
+\index{timeout@{timeout}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{timeout}{timeout}}
+{\footnotesize\ttfamily \label{_gyro_8h_ae6c5811c029a6ee1565195f9e17ddec2} 
+\#define timeout~2600}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_gyro_8h_a983563144736f319a76de4da7ac4322e}\index{Gyro.h@{Gyro.h}!Gyro\_ConfigureReg@{Gyro\_ConfigureReg}}
+\index{Gyro\_ConfigureReg@{Gyro\_ConfigureReg}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_ConfigureReg()}{Gyro\_ConfigureReg()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a983563144736f319a76de4da7ac4322e} 
+void Gyro\+\_\+\+Configure\+Reg (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg}{, }\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+configures given register to the data provided 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reg} & register to be configures \\
+\hline
+{\em data} & data to write to register \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{_gyro_8h_ab2f8c2d55c38872d6b058cd2b1d913ae}\index{Gyro.h@{Gyro.h}!Gyro\_DisableSlaveConnection@{Gyro\_DisableSlaveConnection}}
+\index{Gyro\_DisableSlaveConnection@{Gyro\_DisableSlaveConnection}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_DisableSlaveConnection()}{Gyro\_DisableSlaveConnection()}}
+{\footnotesize\ttfamily \label{_gyro_8h_ab2f8c2d55c38872d6b058cd2b1d913ae} 
+void Gyro\+\_\+\+Disable\+Slave\+Connection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+disables chip select to disable communication through SPI 
+
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{_gyro_8h_a458aac68a5214cfaa23b08e42c8af9ec}\index{Gyro.h@{Gyro.h}!Gyro\_EnableSlaveConnection@{Gyro\_EnableSlaveConnection}}
+\index{Gyro\_EnableSlaveConnection@{Gyro\_EnableSlaveConnection}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_EnableSlaveConnection()}{Gyro\_EnableSlaveConnection()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a458aac68a5214cfaa23b08e42c8af9ec} 
+void Gyro\+\_\+\+Enable\+Slave\+Connection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+enables chip select to enable communication through SPI 
+
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{_gyro_8h_a4eb34e06690a00cb6046963f3e43cd48}\index{Gyro.h@{Gyro.h}!Gyro\_GetPrintID@{Gyro\_GetPrintID}}
+\index{Gyro\_GetPrintID@{Gyro\_GetPrintID}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_GetPrintID()}{Gyro\_GetPrintID()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a4eb34e06690a00cb6046963f3e43cd48} 
+void Gyro\+\_\+\+Get\+Print\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{_gyro_8h_a476507800fac6b49519a25651b003317}\index{Gyro.h@{Gyro.h}!Gyro\_GetPrintTemp@{Gyro\_GetPrintTemp}}
+\index{Gyro\_GetPrintTemp@{Gyro\_GetPrintTemp}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_GetPrintTemp()}{Gyro\_GetPrintTemp()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a476507800fac6b49519a25651b003317} 
+void Gyro\+\_\+\+Get\+Print\+Temp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+\Hypertarget{_gyro_8h_a3f23b9c98e52e23454d961ecbcaa97fd}\index{Gyro.h@{Gyro.h}!Gyro\_GetYLoc@{Gyro\_GetYLoc}}
+\index{Gyro\_GetYLoc@{Gyro\_GetYLoc}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_GetYLoc()}{Gyro\_GetYLoc()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a3f23b9c98e52e23454d961ecbcaa97fd} 
+int16\+\_\+t Gyro\+\_\+\+Get\+YLoc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+gets the change in y location 
+
+\begin{DoxyReturn}{Returns}
+change in y location 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{_gyro_8h_a43c12bfd8b1698dc230be585a8629c9a}\index{Gyro.h@{Gyro.h}!Gyro\_Init@{Gyro\_Init}}
+\index{Gyro\_Init@{Gyro\_Init}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_Init()}{Gyro\_Init()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a43c12bfd8b1698dc230be585a8629c9a} 
+void Gyro\+\_\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+starts up the gyro and enables all registers for gyro Y reading 
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{_gyro_8h_a9cf90d1ba4a81771f99c2a913609235e}\index{Gyro.h@{Gyro.h}!Gyro\_Power@{Gyro\_Power}}
+\index{Gyro\_Power@{Gyro\_Power}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_Power()}{Gyro\_Power()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a9cf90d1ba4a81771f99c2a913609235e} 
+void Gyro\+\_\+\+Power (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+powers on the board 
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{_gyro_8h_ac40c444b1ec53a450cdce8ca8f147237}\index{Gyro.h@{Gyro.h}!Gyro\_ReadReg@{Gyro\_ReadReg}}
+\index{Gyro\_ReadReg@{Gyro\_ReadReg}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_ReadReg()}{Gyro\_ReadReg()}}
+{\footnotesize\ttfamily \label{_gyro_8h_ac40c444b1ec53a450cdce8ca8f147237} 
+uint16\+\_\+t Gyro\+\_\+\+Read\+Reg (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg}{}\end{DoxyParamCaption})}
+
+
+
+reads a given register 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reg} & register to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data read from register 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{_gyro_8h_a76b0f183cf84f9c616c01b0902601e0c}\index{Gyro.h@{Gyro.h}!Gyro\_VerifyHAL@{Gyro\_VerifyHAL}}
+\index{Gyro\_VerifyHAL@{Gyro\_VerifyHAL}!Gyro.h@{Gyro.h}}
+\doxysubsubsection{\texorpdfstring{Gyro\_VerifyHAL()}{Gyro\_VerifyHAL()}}
+{\footnotesize\ttfamily \label{_gyro_8h_a76b0f183cf84f9c616c01b0902601e0c} 
+void Gyro\+\_\+\+Verify\+HAL (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ensures HAL is still ok 
+
+Here is the caller graph for this function\+:
+% FIG 16

@@ -1,0 +1,171 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Src/\+Gyro.c File Reference}
+\hypertarget{_gyro_8c}{}\label{_gyro_8c}\index{ECEN2370FinalProject/Core/Src/Gyro.c@{ECEN2370FinalProject/Core/Src/Gyro.c}}
+{\ttfamily \#include "{}Gyro.\+h"{}}\newline
+Include dependency graph for Gyro.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_gyro_8c_a43c12bfd8b1698dc230be585a8629c9a}{Gyro\+\_\+\+Init}} ()
+\begin{DoxyCompactList}\small\item\em starts up the gyro and enables all registers for gyro Y reading \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{_gyro_8c_a3f23b9c98e52e23454d961ecbcaa97fd}{Gyro\+\_\+\+Get\+YLoc}} ()
+\begin{DoxyCompactList}\small\item\em gets the change in y location \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8c_a4eb34e06690a00cb6046963f3e43cd48}{Gyro\+\_\+\+Get\+Print\+ID}} ()
+\item 
+void \mbox{\hyperlink{_gyro_8c_a9cf90d1ba4a81771f99c2a913609235e}{Gyro\+\_\+\+Power}} ()
+\begin{DoxyCompactList}\small\item\em powers on the board \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8c_a476507800fac6b49519a25651b003317}{Gyro\+\_\+\+Get\+Print\+Temp}} ()
+\item 
+void \mbox{\hyperlink{_gyro_8c_a983563144736f319a76de4da7ac4322e}{Gyro\+\_\+\+Configure\+Reg}} (uint16\+\_\+t Reg, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em configures given register to the data provided \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_gyro_8c_ac40c444b1ec53a450cdce8ca8f147237}{Gyro\+\_\+\+Read\+Reg}} (uint16\+\_\+t Reg)
+\begin{DoxyCompactList}\small\item\em reads a given register \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8c_a76b0f183cf84f9c616c01b0902601e0c}{Gyro\+\_\+\+Verify\+HAL}} ()
+\begin{DoxyCompactList}\small\item\em ensures HAL is still ok \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8c_a458aac68a5214cfaa23b08e42c8af9ec}{Gyro\+\_\+\+Enable\+Slave\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em enables chip select to enable communication through SPI \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_gyro_8c_ab2f8c2d55c38872d6b058cd2b1d913ae}{Gyro\+\_\+\+Disable\+Slave\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em disables chip select to disable communication through SPI \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_gyro_8c_a983563144736f319a76de4da7ac4322e}\index{Gyro.c@{Gyro.c}!Gyro\_ConfigureReg@{Gyro\_ConfigureReg}}
+\index{Gyro\_ConfigureReg@{Gyro\_ConfigureReg}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_ConfigureReg()}{Gyro\_ConfigureReg()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a983563144736f319a76de4da7ac4322e} 
+void Gyro\+\_\+\+Configure\+Reg (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg}{, }\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+configures given register to the data provided 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reg} & register to be configures \\
+\hline
+{\em data} & data to write to register \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{_gyro_8c_ab2f8c2d55c38872d6b058cd2b1d913ae}\index{Gyro.c@{Gyro.c}!Gyro\_DisableSlaveConnection@{Gyro\_DisableSlaveConnection}}
+\index{Gyro\_DisableSlaveConnection@{Gyro\_DisableSlaveConnection}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_DisableSlaveConnection()}{Gyro\_DisableSlaveConnection()}}
+{\footnotesize\ttfamily \label{_gyro_8c_ab2f8c2d55c38872d6b058cd2b1d913ae} 
+void Gyro\+\_\+\+Disable\+Slave\+Connection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+disables chip select to disable communication through SPI 
+
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{_gyro_8c_a458aac68a5214cfaa23b08e42c8af9ec}\index{Gyro.c@{Gyro.c}!Gyro\_EnableSlaveConnection@{Gyro\_EnableSlaveConnection}}
+\index{Gyro\_EnableSlaveConnection@{Gyro\_EnableSlaveConnection}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_EnableSlaveConnection()}{Gyro\_EnableSlaveConnection()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a458aac68a5214cfaa23b08e42c8af9ec} 
+void Gyro\+\_\+\+Enable\+Slave\+Connection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+enables chip select to enable communication through SPI 
+
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{_gyro_8c_a4eb34e06690a00cb6046963f3e43cd48}\index{Gyro.c@{Gyro.c}!Gyro\_GetPrintID@{Gyro\_GetPrintID}}
+\index{Gyro\_GetPrintID@{Gyro\_GetPrintID}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_GetPrintID()}{Gyro\_GetPrintID()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a4eb34e06690a00cb6046963f3e43cd48} 
+void Gyro\+\_\+\+Get\+Print\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{_gyro_8c_a476507800fac6b49519a25651b003317}\index{Gyro.c@{Gyro.c}!Gyro\_GetPrintTemp@{Gyro\_GetPrintTemp}}
+\index{Gyro\_GetPrintTemp@{Gyro\_GetPrintTemp}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_GetPrintTemp()}{Gyro\_GetPrintTemp()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a476507800fac6b49519a25651b003317} 
+void Gyro\+\_\+\+Get\+Print\+Temp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{_gyro_8c_a3f23b9c98e52e23454d961ecbcaa97fd}\index{Gyro.c@{Gyro.c}!Gyro\_GetYLoc@{Gyro\_GetYLoc}}
+\index{Gyro\_GetYLoc@{Gyro\_GetYLoc}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_GetYLoc()}{Gyro\_GetYLoc()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a3f23b9c98e52e23454d961ecbcaa97fd} 
+int16\+\_\+t Gyro\+\_\+\+Get\+YLoc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+gets the change in y location 
+
+\begin{DoxyReturn}{Returns}
+change in y location 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{_gyro_8c_a43c12bfd8b1698dc230be585a8629c9a}\index{Gyro.c@{Gyro.c}!Gyro\_Init@{Gyro\_Init}}
+\index{Gyro\_Init@{Gyro\_Init}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_Init()}{Gyro\_Init()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a43c12bfd8b1698dc230be585a8629c9a} 
+void Gyro\+\_\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+starts up the gyro and enables all registers for gyro Y reading 
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{_gyro_8c_a9cf90d1ba4a81771f99c2a913609235e}\index{Gyro.c@{Gyro.c}!Gyro\_Power@{Gyro\_Power}}
+\index{Gyro\_Power@{Gyro\_Power}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_Power()}{Gyro\_Power()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a9cf90d1ba4a81771f99c2a913609235e} 
+void Gyro\+\_\+\+Power (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+powers on the board 
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{_gyro_8c_ac40c444b1ec53a450cdce8ca8f147237}\index{Gyro.c@{Gyro.c}!Gyro\_ReadReg@{Gyro\_ReadReg}}
+\index{Gyro\_ReadReg@{Gyro\_ReadReg}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_ReadReg()}{Gyro\_ReadReg()}}
+{\footnotesize\ttfamily \label{_gyro_8c_ac40c444b1ec53a450cdce8ca8f147237} 
+uint16\+\_\+t Gyro\+\_\+\+Read\+Reg (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reg}{}\end{DoxyParamCaption})}
+
+
+
+reads a given register 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reg} & register to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data read from register 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{_gyro_8c_a76b0f183cf84f9c616c01b0902601e0c}\index{Gyro.c@{Gyro.c}!Gyro\_VerifyHAL@{Gyro\_VerifyHAL}}
+\index{Gyro\_VerifyHAL@{Gyro\_VerifyHAL}!Gyro.c@{Gyro.c}}
+\doxysubsubsection{\texorpdfstring{Gyro\_VerifyHAL()}{Gyro\_VerifyHAL()}}
+{\footnotesize\ttfamily \label{_gyro_8c_a76b0f183cf84f9c616c01b0902601e0c} 
+void Gyro\+\_\+\+Verify\+HAL (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ensures HAL is still ok 
+
+Here is the caller graph for this function\+:
+% FIG 15

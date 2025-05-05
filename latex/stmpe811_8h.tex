@@ -1,0 +1,680 @@
+\doxysection{ECEN2370\+Final\+Project/\+Core/\+Inc/stmpe811.h File Reference}
+\hypertarget{stmpe811_8h}{}\label{stmpe811_8h}\index{ECEN2370FinalProject/Core/Inc/stmpe811.h@{ECEN2370FinalProject/Core/Inc/stmpe811.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+Include dependency graph for stmpe811.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_s_t_m_p_e811__t}{STMPE811\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Main structure, which is passed into TM\+\_\+\+STMPE811\+\_\+\+Read\+Touch function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a421302b693870f9302b41587ad4ab065}{COMPILE\+\_\+\+TOUCH}}~1
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a278534a213301f66d72d47c30f8a9c9b}{STMPE811\+\_\+\+ADDRESS}}~0x82
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a259dcbe8e1229dc2641e84aea8327d9e}{STMPE811\+\_\+\+CHIP\+\_\+\+ID\+\_\+\+VALUE}}~0x0811
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a4672973fb8df74afefe246ccd6d8c2a2}{STMPE811\+\_\+\+CHIP\+\_\+\+ID}}~0x00
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a36bb231eec4b86f8402acbd039b5aad0}{STMPE811\+\_\+\+ID\+\_\+\+VER}}~0x02
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_aa1046f8a0705e68968668cb9f7e9d9b7}{STMPE811\+\_\+\+SYS\+\_\+\+CTRL1}}~0x03
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_aed4401abf617434fe266b22427aaf1ce}{STMPE811\+\_\+\+SYS\+\_\+\+CTRL2}}~0x04
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ae443cb8109744a7a7a7aff62e2d1dc59}{STMPE811\+\_\+\+SPI\+\_\+\+CFG}}~0x08
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_adae65c9d0129d1440e21a42748956b8e}{STMPE811\+\_\+\+INT\+\_\+\+CTRL}}~0x09
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a8000e06e8cae36cdb5eadf4aedab165b}{STMPE811\+\_\+\+INT\+\_\+\+EN}}~0x0A
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ab41414c42d186e9cd861a422c7480fb9}{STMPE811\+\_\+\+INT\+\_\+\+STA}}~0x0B
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a297a1b5b63ab2373a2728d55299674e3}{STMPE811\+\_\+\+GPIO\+\_\+\+EN}}~0x0C
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a97f7ff2bd1e33971906b71f3202f65e6}{STMPE811\+\_\+\+GPIO\+\_\+\+INT\+\_\+\+STA}}~0x0D
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_aa2aa19e04ac50c2c847dea9fef1a77b2}{STMPE811\+\_\+\+ADC\+\_\+\+INT\+\_\+\+EN}}~0x0E
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a6df8b51b552368efcb404b2d03570540}{STMPE811\+\_\+\+ADC\+\_\+\+INT\+\_\+\+STA}}~0x0F
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a4f87b0b75fd2c44b80dcce0e16dc83e9}{STMPE811\+\_\+\+GPIO\+\_\+\+SET\+\_\+\+PIN}}~0x10
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a8498da56ccd85173592f03b3627c9a88}{STMPE811\+\_\+\+GPIO\+\_\+\+CLR\+\_\+\+PIN}}~0x11
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a2906cf599ca4fd53f56f323e366875dd}{STMPE811\+\_\+\+MP\+\_\+\+STA}}~0x12
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a00129c988d0297fe170f1ccfc8d48e53}{STMPE811\+\_\+\+GPIO\+\_\+\+DIR}}~0x13
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a0abd7e15fb987f978e20641d6e586cb2}{STMPE811\+\_\+\+GPIO\+\_\+\+ED}}~0x14
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ab9821e0f856c0aa48422662babf25a6b}{STMPE811\+\_\+\+GPIO\+\_\+\+RE}}~0x15
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a5b81c9ff22c0267400a387337dbd1179}{STMPE811\+\_\+\+GPIO\+\_\+\+FE}}~0x16
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a8dedf215cfb056f976fb353f283b27e1}{STMPE811\+\_\+\+GPIO\+\_\+\+AF}}~0x17
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_af2e8e6d685cf89440db1dd2642c05ba2}{STMPE811\+\_\+\+ADC\+\_\+\+CTRL1}}~0x20
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ad1c42240b7dd14f5c04047d31d97a2e0}{STMPE811\+\_\+\+ADC\+\_\+\+CTRL2}}~0x21
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a93efa4b55d5049dc35c1e20601baaef2}{STMPE811\+\_\+\+ADC\+\_\+\+CAPT}}~0x22
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a7ce70a5c19ff8c5ab5583e9a4fb7c6e5}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CHO}}~0x30
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ac68499e62b9538baf1605de11fb07e0c}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH1}}~0x32
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a266beaf0e2ea4c38e036a98f98c22433}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH2}}~0x34
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ad92e0428ab1854638b1bc10546681690}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH3}}~0x36
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a655a6cdace4d33fc75ae1f43288db5b6}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH4}}~0x38
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a9936e2ebaad5c50fd8dd4c49d45bcef5}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH5}}~0x3A
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a3fb3f6ab4a11feedc91d7ec6e44a6f1d}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH6}}~0x3C
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a234f8475cd480e7bf40355b327934dfe}{STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH7}}~0x3E
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_aa67702fb560c5f0309d5906fe9ce092c}{STMPE811\+\_\+\+TSC\+\_\+\+CTRL}}~0x40
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a8c314285c1f1c563f661240c13250fae}{STMPE811\+\_\+\+TSC\+\_\+\+CFG}}~0x41
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a292e9e2a5db29af3cfadbe87561548f0}{STMPE811\+\_\+\+WDW\+\_\+\+TR\+\_\+X}}~0x42
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a6a90d0e16e06adeee807338958a9e259}{STMPE811\+\_\+\+WDW\+\_\+\+TR\+\_\+Y}}~0x44
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ae5e67d0cd8c59e058109383c7fe1cfcd}{STMPE811\+\_\+\+WDW\+\_\+\+BL\+\_\+X}}~0x46
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ae3786545a211924c9fee364ef702f75b}{STMPE811\+\_\+\+WDW\+\_\+\+BL\+\_\+Y}}~0x48
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ae66e30b3ba38fbf066337a183241b5bd}{STMPE811\+\_\+\+FIFO\+\_\+\+TH}}~0x4A
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_abce5e4f2c3225d0e951650697584ee76}{STMPE811\+\_\+\+FIFO\+\_\+\+STA}}~0x4B
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ac45293d071e9dcc63448a85688fb5bdc}{STMPE811\+\_\+\+FIFO\+\_\+\+SIZE}}~0x4C
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a57099d4934c3e1892125fb7a83c3282a}{STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+X}}~0x4D
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a6d33d6f003572d1383301314b6a89644}{STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+Y}}~0x4F
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a2e58ddfeb14dfd903a12af0aa50314dd}{STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+Z}}~0x51
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a4cf9f145fa132f54a63cfb480db63769}{STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+\+XYZ}}~0x52
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ade2e97554ad5d22ff1f9669fa8cddaa2}{STMPE811\+\_\+\+TSC\+\_\+\+FRACTION\+\_\+Z}}~0x56
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_abe12f1a94b2c0fed0ef05e780c6d0366}{STMPE811\+\_\+\+TSC\+\_\+\+DATA}}~0x57
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a9f1f700cd8b0fbe271963f022591ba87}{STMPE811\+\_\+\+TSC\+\_\+\+I\+\_\+\+DRIVE}}~0x58
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ab8c0db5b9d3fc80521786afb836b4e71}{STMPE811\+\_\+\+TSC\+\_\+\+SHIELD}}~0x59
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a52218fa4b9e0701432923baba0de4211}{STMPE811\+\_\+\+TEMP\+\_\+\+CTRL}}~0x60
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ac513b82ccb5c9ac24847afa6e9e8644a}{STMPE811\+\_\+\+TEMP\+\_\+\+DATA}}~0x61
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a1acd253ef59ad7b850a74cd65d361eec}{STMPE811\+\_\+\+TEMP\+\_\+\+TH}}~0x62
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a93a3956beb9281981df59ba67be45e08}{STMPE811\+\_\+\+I2C}}~I2\+C3
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_ad419d88923374fd52fbca9d38b47bd02}{STMPE811\+\_\+\+I2\+C\+\_\+\+CLOCK}}~100000
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a0339f1c35cb6710e8b44f0541744d18f}{I2\+C3\+\_\+\+SDA\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+9
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a20080de307fd70722c9f657604132f63}{I2\+C3\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+Port}}~GPIOC
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a55f7314bcb0e37070cb557e48c4e0774}{I2\+C3\+\_\+\+SCL\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+8
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a155b09911b4e79a6f5aef0ed6388da1b}{I2\+C3\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+Port}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{stmpe811_8h_a1a65a37804444ea14bb4f1f9b4a7351d}{TM\+\_\+\+STMPE811\+\_\+\+Touch\+In\+Rectangle}}(sd,  x\+Pos,  y\+Pos,  w,  h)
+\begin{DoxyCompactList}\small\item\em Checks if touch data is inside specific rectangle coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{struct_s_t_m_p_e811__t}{STMPE811\+\_\+t}} \mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\+\_\+\+Touch\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77}{STMPE811\+\_\+\+Orientation\+\_\+t}} \{ \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a905e7468808709a98cf097a703d5f3a3}{STMPE811\+\_\+\+Orientation\+\_\+\+Portrait\+\_\+1}}
+, \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a3252c2dde28d375f99bffb69e62bd3ee}{STMPE811\+\_\+\+Orientation\+\_\+\+Portrait\+\_\+2}}
+, \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a730a3b727076d7332be7c765ad4dd9f7}{STMPE811\+\_\+\+Orientation\+\_\+\+Landscape\+\_\+1}}
+, \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a078b71082a4b2ec162e662460cd27c18}{STMPE811\+\_\+\+Orientation\+\_\+\+Landscape\+\_\+2}}
+ \}
+\item 
+enum \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\+\_\+\+State\+\_\+t}} \{ \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caa3c26c18ed26c1dabfc86e8ec7215544}{STMPE811\+\_\+\+State\+\_\+\+Pressed}}
+, \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caec50fde459bf3aae63ccb0fd6ec3d1b2}{STMPE811\+\_\+\+State\+\_\+\+Released}}
+, \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca126638f919ea4377e1adfcc3d080c413}{STMPE811\+\_\+\+State\+\_\+\+Ok}}
+, \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca5b352730d1be368aaa7d8dd6e79338a2}{STMPE811\+\_\+\+State\+\_\+\+Error}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for touch pressed or released. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\+\_\+\+State\+\_\+t}} \mbox{\hyperlink{stmpe811_8h_a67ad0299dc8afb38a6add8b89992b74b}{STMPE811\+\_\+\+Read\+Touch}} (\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\+\_\+\+Touch\+Data}} \texorpdfstring{$\ast$}{*}data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{stmpe811_8h_ace7fce7ebc71e31b840e6a703c4a6d59}{STMPE811\+\_\+\+Read}} (uint8\+\_\+t reg)
+\item 
+void \mbox{\hyperlink{stmpe811_8h_ac0ef9700df67eb72c7b77543e16b7360}{STMPE811\+\_\+\+Write}} (uint8\+\_\+t reg, uint8\+\_\+t data\+To\+Write)
+\item 
+\mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\+\_\+\+State\+\_\+t}} \mbox{\hyperlink{stmpe811_8h_a8d6ada67989160aebff650c9a0a6a9b5}{STMPE811\+\_\+\+Init}} (void)
+\item 
+bool \mbox{\hyperlink{stmpe811_8h_a135115bd48f72dad8c9dfe428c156511}{is\+STMPE811\+\_\+\+Ready}} (void)
+\item 
+void \mbox{\hyperlink{stmpe811_8h_aafcdc403b9cf0af3743fdaa4617950b2}{STMPE811\+\_\+\+Determine\+Touch\+Position}} (\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\+\_\+\+Touch\+Data}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{stmpe811_8h_a421302b693870f9302b41587ad4ab065}\index{stmpe811.h@{stmpe811.h}!COMPILE\_TOUCH@{COMPILE\_TOUCH}}
+\index{COMPILE\_TOUCH@{COMPILE\_TOUCH}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{COMPILE\_TOUCH}{COMPILE\_TOUCH}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a421302b693870f9302b41587ad4ab065} 
+\#define COMPILE\+\_\+\+TOUCH~1}
+
+\Hypertarget{stmpe811_8h_a155b09911b4e79a6f5aef0ed6388da1b}\index{stmpe811.h@{stmpe811.h}!I2C3\_SCL\_GPIO\_Port@{I2C3\_SCL\_GPIO\_Port}}
+\index{I2C3\_SCL\_GPIO\_Port@{I2C3\_SCL\_GPIO\_Port}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{I2C3\_SCL\_GPIO\_Port}{I2C3\_SCL\_GPIO\_Port}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a155b09911b4e79a6f5aef0ed6388da1b} 
+\#define I2\+C3\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+Port~GPIOA}
+
+\Hypertarget{stmpe811_8h_a55f7314bcb0e37070cb557e48c4e0774}\index{stmpe811.h@{stmpe811.h}!I2C3\_SCL\_Pin@{I2C3\_SCL\_Pin}}
+\index{I2C3\_SCL\_Pin@{I2C3\_SCL\_Pin}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{I2C3\_SCL\_Pin}{I2C3\_SCL\_Pin}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a55f7314bcb0e37070cb557e48c4e0774} 
+\#define I2\+C3\+\_\+\+SCL\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+8}
+
+\Hypertarget{stmpe811_8h_a20080de307fd70722c9f657604132f63}\index{stmpe811.h@{stmpe811.h}!I2C3\_SDA\_GPIO\_Port@{I2C3\_SDA\_GPIO\_Port}}
+\index{I2C3\_SDA\_GPIO\_Port@{I2C3\_SDA\_GPIO\_Port}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{I2C3\_SDA\_GPIO\_Port}{I2C3\_SDA\_GPIO\_Port}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a20080de307fd70722c9f657604132f63} 
+\#define I2\+C3\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+Port~GPIOC}
+
+\Hypertarget{stmpe811_8h_a0339f1c35cb6710e8b44f0541744d18f}\index{stmpe811.h@{stmpe811.h}!I2C3\_SDA\_Pin@{I2C3\_SDA\_Pin}}
+\index{I2C3\_SDA\_Pin@{I2C3\_SDA\_Pin}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{I2C3\_SDA\_Pin}{I2C3\_SDA\_Pin}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a0339f1c35cb6710e8b44f0541744d18f} 
+\#define I2\+C3\+\_\+\+SDA\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+9}
+
+\Hypertarget{stmpe811_8h_a93efa4b55d5049dc35c1e20601baaef2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_CAPT@{STMPE811\_ADC\_CAPT}}
+\index{STMPE811\_ADC\_CAPT@{STMPE811\_ADC\_CAPT}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_CAPT}{STMPE811\_ADC\_CAPT}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a93efa4b55d5049dc35c1e20601baaef2} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+CAPT~0x22}
+
+\Hypertarget{stmpe811_8h_af2e8e6d685cf89440db1dd2642c05ba2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_CTRL1@{STMPE811\_ADC\_CTRL1}}
+\index{STMPE811\_ADC\_CTRL1@{STMPE811\_ADC\_CTRL1}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_CTRL1}{STMPE811\_ADC\_CTRL1}}
+{\footnotesize\ttfamily \label{stmpe811_8h_af2e8e6d685cf89440db1dd2642c05ba2} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+CTRL1~0x20}
+
+\Hypertarget{stmpe811_8h_ad1c42240b7dd14f5c04047d31d97a2e0}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_CTRL2@{STMPE811\_ADC\_CTRL2}}
+\index{STMPE811\_ADC\_CTRL2@{STMPE811\_ADC\_CTRL2}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_CTRL2}{STMPE811\_ADC\_CTRL2}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ad1c42240b7dd14f5c04047d31d97a2e0} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+CTRL2~0x21}
+
+\Hypertarget{stmpe811_8h_ac68499e62b9538baf1605de11fb07e0c}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH1@{STMPE811\_ADC\_DATA\_CH1}}
+\index{STMPE811\_ADC\_DATA\_CH1@{STMPE811\_ADC\_DATA\_CH1}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH1}{STMPE811\_ADC\_DATA\_CH1}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ac68499e62b9538baf1605de11fb07e0c} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH1~0x32}
+
+\Hypertarget{stmpe811_8h_a266beaf0e2ea4c38e036a98f98c22433}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH2@{STMPE811\_ADC\_DATA\_CH2}}
+\index{STMPE811\_ADC\_DATA\_CH2@{STMPE811\_ADC\_DATA\_CH2}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH2}{STMPE811\_ADC\_DATA\_CH2}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a266beaf0e2ea4c38e036a98f98c22433} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH2~0x34}
+
+\Hypertarget{stmpe811_8h_ad92e0428ab1854638b1bc10546681690}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH3@{STMPE811\_ADC\_DATA\_CH3}}
+\index{STMPE811\_ADC\_DATA\_CH3@{STMPE811\_ADC\_DATA\_CH3}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH3}{STMPE811\_ADC\_DATA\_CH3}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ad92e0428ab1854638b1bc10546681690} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH3~0x36}
+
+\Hypertarget{stmpe811_8h_a655a6cdace4d33fc75ae1f43288db5b6}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH4@{STMPE811\_ADC\_DATA\_CH4}}
+\index{STMPE811\_ADC\_DATA\_CH4@{STMPE811\_ADC\_DATA\_CH4}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH4}{STMPE811\_ADC\_DATA\_CH4}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a655a6cdace4d33fc75ae1f43288db5b6} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH4~0x38}
+
+\Hypertarget{stmpe811_8h_a9936e2ebaad5c50fd8dd4c49d45bcef5}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH5@{STMPE811\_ADC\_DATA\_CH5}}
+\index{STMPE811\_ADC\_DATA\_CH5@{STMPE811\_ADC\_DATA\_CH5}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH5}{STMPE811\_ADC\_DATA\_CH5}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a9936e2ebaad5c50fd8dd4c49d45bcef5} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH5~0x3A}
+
+\Hypertarget{stmpe811_8h_a3fb3f6ab4a11feedc91d7ec6e44a6f1d}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH6@{STMPE811\_ADC\_DATA\_CH6}}
+\index{STMPE811\_ADC\_DATA\_CH6@{STMPE811\_ADC\_DATA\_CH6}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH6}{STMPE811\_ADC\_DATA\_CH6}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a3fb3f6ab4a11feedc91d7ec6e44a6f1d} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH6~0x3C}
+
+\Hypertarget{stmpe811_8h_a234f8475cd480e7bf40355b327934dfe}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CH7@{STMPE811\_ADC\_DATA\_CH7}}
+\index{STMPE811\_ADC\_DATA\_CH7@{STMPE811\_ADC\_DATA\_CH7}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CH7}{STMPE811\_ADC\_DATA\_CH7}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a234f8475cd480e7bf40355b327934dfe} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CH7~0x3E}
+
+\Hypertarget{stmpe811_8h_a7ce70a5c19ff8c5ab5583e9a4fb7c6e5}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_DATA\_CHO@{STMPE811\_ADC\_DATA\_CHO}}
+\index{STMPE811\_ADC\_DATA\_CHO@{STMPE811\_ADC\_DATA\_CHO}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_DATA\_CHO}{STMPE811\_ADC\_DATA\_CHO}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a7ce70a5c19ff8c5ab5583e9a4fb7c6e5} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+DATA\+\_\+\+CHO~0x30}
+
+\Hypertarget{stmpe811_8h_aa2aa19e04ac50c2c847dea9fef1a77b2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_INT\_EN@{STMPE811\_ADC\_INT\_EN}}
+\index{STMPE811\_ADC\_INT\_EN@{STMPE811\_ADC\_INT\_EN}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_INT\_EN}{STMPE811\_ADC\_INT\_EN}}
+{\footnotesize\ttfamily \label{stmpe811_8h_aa2aa19e04ac50c2c847dea9fef1a77b2} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+INT\+\_\+\+EN~0x0E}
+
+\Hypertarget{stmpe811_8h_a6df8b51b552368efcb404b2d03570540}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADC\_INT\_STA@{STMPE811\_ADC\_INT\_STA}}
+\index{STMPE811\_ADC\_INT\_STA@{STMPE811\_ADC\_INT\_STA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADC\_INT\_STA}{STMPE811\_ADC\_INT\_STA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a6df8b51b552368efcb404b2d03570540} 
+\#define STMPE811\+\_\+\+ADC\+\_\+\+INT\+\_\+\+STA~0x0F}
+
+\Hypertarget{stmpe811_8h_a278534a213301f66d72d47c30f8a9c9b}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ADDRESS@{STMPE811\_ADDRESS}}
+\index{STMPE811\_ADDRESS@{STMPE811\_ADDRESS}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ADDRESS}{STMPE811\_ADDRESS}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a278534a213301f66d72d47c30f8a9c9b} 
+\#define STMPE811\+\_\+\+ADDRESS~0x82}
+
+\Hypertarget{stmpe811_8h_a4672973fb8df74afefe246ccd6d8c2a2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_CHIP\_ID@{STMPE811\_CHIP\_ID}}
+\index{STMPE811\_CHIP\_ID@{STMPE811\_CHIP\_ID}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_CHIP\_ID}{STMPE811\_CHIP\_ID}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a4672973fb8df74afefe246ccd6d8c2a2} 
+\#define STMPE811\+\_\+\+CHIP\+\_\+\+ID~0x00}
+
+\Hypertarget{stmpe811_8h_a259dcbe8e1229dc2641e84aea8327d9e}\index{stmpe811.h@{stmpe811.h}!STMPE811\_CHIP\_ID\_VALUE@{STMPE811\_CHIP\_ID\_VALUE}}
+\index{STMPE811\_CHIP\_ID\_VALUE@{STMPE811\_CHIP\_ID\_VALUE}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_CHIP\_ID\_VALUE}{STMPE811\_CHIP\_ID\_VALUE}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a259dcbe8e1229dc2641e84aea8327d9e} 
+\#define STMPE811\+\_\+\+CHIP\+\_\+\+ID\+\_\+\+VALUE~0x0811}
+
+\Hypertarget{stmpe811_8h_ac45293d071e9dcc63448a85688fb5bdc}\index{stmpe811.h@{stmpe811.h}!STMPE811\_FIFO\_SIZE@{STMPE811\_FIFO\_SIZE}}
+\index{STMPE811\_FIFO\_SIZE@{STMPE811\_FIFO\_SIZE}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_FIFO\_SIZE}{STMPE811\_FIFO\_SIZE}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ac45293d071e9dcc63448a85688fb5bdc} 
+\#define STMPE811\+\_\+\+FIFO\+\_\+\+SIZE~0x4C}
+
+\Hypertarget{stmpe811_8h_abce5e4f2c3225d0e951650697584ee76}\index{stmpe811.h@{stmpe811.h}!STMPE811\_FIFO\_STA@{STMPE811\_FIFO\_STA}}
+\index{STMPE811\_FIFO\_STA@{STMPE811\_FIFO\_STA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_FIFO\_STA}{STMPE811\_FIFO\_STA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_abce5e4f2c3225d0e951650697584ee76} 
+\#define STMPE811\+\_\+\+FIFO\+\_\+\+STA~0x4B}
+
+\Hypertarget{stmpe811_8h_ae66e30b3ba38fbf066337a183241b5bd}\index{stmpe811.h@{stmpe811.h}!STMPE811\_FIFO\_TH@{STMPE811\_FIFO\_TH}}
+\index{STMPE811\_FIFO\_TH@{STMPE811\_FIFO\_TH}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_FIFO\_TH}{STMPE811\_FIFO\_TH}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ae66e30b3ba38fbf066337a183241b5bd} 
+\#define STMPE811\+\_\+\+FIFO\+\_\+\+TH~0x4A}
+
+\Hypertarget{stmpe811_8h_a8dedf215cfb056f976fb353f283b27e1}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_AF@{STMPE811\_GPIO\_AF}}
+\index{STMPE811\_GPIO\_AF@{STMPE811\_GPIO\_AF}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_AF}{STMPE811\_GPIO\_AF}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a8dedf215cfb056f976fb353f283b27e1} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+AF~0x17}
+
+\Hypertarget{stmpe811_8h_a8498da56ccd85173592f03b3627c9a88}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_CLR\_PIN@{STMPE811\_GPIO\_CLR\_PIN}}
+\index{STMPE811\_GPIO\_CLR\_PIN@{STMPE811\_GPIO\_CLR\_PIN}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_CLR\_PIN}{STMPE811\_GPIO\_CLR\_PIN}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a8498da56ccd85173592f03b3627c9a88} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+CLR\+\_\+\+PIN~0x11}
+
+\Hypertarget{stmpe811_8h_a00129c988d0297fe170f1ccfc8d48e53}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_DIR@{STMPE811\_GPIO\_DIR}}
+\index{STMPE811\_GPIO\_DIR@{STMPE811\_GPIO\_DIR}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_DIR}{STMPE811\_GPIO\_DIR}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a00129c988d0297fe170f1ccfc8d48e53} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+DIR~0x13}
+
+\Hypertarget{stmpe811_8h_a0abd7e15fb987f978e20641d6e586cb2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_ED@{STMPE811\_GPIO\_ED}}
+\index{STMPE811\_GPIO\_ED@{STMPE811\_GPIO\_ED}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_ED}{STMPE811\_GPIO\_ED}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a0abd7e15fb987f978e20641d6e586cb2} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+ED~0x14}
+
+\Hypertarget{stmpe811_8h_a297a1b5b63ab2373a2728d55299674e3}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_EN@{STMPE811\_GPIO\_EN}}
+\index{STMPE811\_GPIO\_EN@{STMPE811\_GPIO\_EN}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_EN}{STMPE811\_GPIO\_EN}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a297a1b5b63ab2373a2728d55299674e3} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+EN~0x0C}
+
+\Hypertarget{stmpe811_8h_a5b81c9ff22c0267400a387337dbd1179}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_FE@{STMPE811\_GPIO\_FE}}
+\index{STMPE811\_GPIO\_FE@{STMPE811\_GPIO\_FE}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_FE}{STMPE811\_GPIO\_FE}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a5b81c9ff22c0267400a387337dbd1179} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+FE~0x16}
+
+\Hypertarget{stmpe811_8h_a97f7ff2bd1e33971906b71f3202f65e6}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_INT\_STA@{STMPE811\_GPIO\_INT\_STA}}
+\index{STMPE811\_GPIO\_INT\_STA@{STMPE811\_GPIO\_INT\_STA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_INT\_STA}{STMPE811\_GPIO\_INT\_STA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a97f7ff2bd1e33971906b71f3202f65e6} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+INT\+\_\+\+STA~0x0D}
+
+\Hypertarget{stmpe811_8h_ab9821e0f856c0aa48422662babf25a6b}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_RE@{STMPE811\_GPIO\_RE}}
+\index{STMPE811\_GPIO\_RE@{STMPE811\_GPIO\_RE}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_RE}{STMPE811\_GPIO\_RE}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ab9821e0f856c0aa48422662babf25a6b} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+RE~0x15}
+
+\Hypertarget{stmpe811_8h_a4f87b0b75fd2c44b80dcce0e16dc83e9}\index{stmpe811.h@{stmpe811.h}!STMPE811\_GPIO\_SET\_PIN@{STMPE811\_GPIO\_SET\_PIN}}
+\index{STMPE811\_GPIO\_SET\_PIN@{STMPE811\_GPIO\_SET\_PIN}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_GPIO\_SET\_PIN}{STMPE811\_GPIO\_SET\_PIN}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a4f87b0b75fd2c44b80dcce0e16dc83e9} 
+\#define STMPE811\+\_\+\+GPIO\+\_\+\+SET\+\_\+\+PIN~0x10}
+
+\Hypertarget{stmpe811_8h_a93a3956beb9281981df59ba67be45e08}\index{stmpe811.h@{stmpe811.h}!STMPE811\_I2C@{STMPE811\_I2C}}
+\index{STMPE811\_I2C@{STMPE811\_I2C}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_I2C}{STMPE811\_I2C}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a93a3956beb9281981df59ba67be45e08} 
+\#define STMPE811\+\_\+\+I2C~I2\+C3}
+
+\Hypertarget{stmpe811_8h_ad419d88923374fd52fbca9d38b47bd02}\index{stmpe811.h@{stmpe811.h}!STMPE811\_I2C\_CLOCK@{STMPE811\_I2C\_CLOCK}}
+\index{STMPE811\_I2C\_CLOCK@{STMPE811\_I2C\_CLOCK}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_I2C\_CLOCK}{STMPE811\_I2C\_CLOCK}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ad419d88923374fd52fbca9d38b47bd02} 
+\#define STMPE811\+\_\+\+I2\+C\+\_\+\+CLOCK~100000}
+
+\Hypertarget{stmpe811_8h_a36bb231eec4b86f8402acbd039b5aad0}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ID\_VER@{STMPE811\_ID\_VER}}
+\index{STMPE811\_ID\_VER@{STMPE811\_ID\_VER}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ID\_VER}{STMPE811\_ID\_VER}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a36bb231eec4b86f8402acbd039b5aad0} 
+\#define STMPE811\+\_\+\+ID\+\_\+\+VER~0x02}
+
+\Hypertarget{stmpe811_8h_adae65c9d0129d1440e21a42748956b8e}\index{stmpe811.h@{stmpe811.h}!STMPE811\_INT\_CTRL@{STMPE811\_INT\_CTRL}}
+\index{STMPE811\_INT\_CTRL@{STMPE811\_INT\_CTRL}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_INT\_CTRL}{STMPE811\_INT\_CTRL}}
+{\footnotesize\ttfamily \label{stmpe811_8h_adae65c9d0129d1440e21a42748956b8e} 
+\#define STMPE811\+\_\+\+INT\+\_\+\+CTRL~0x09}
+
+\Hypertarget{stmpe811_8h_a8000e06e8cae36cdb5eadf4aedab165b}\index{stmpe811.h@{stmpe811.h}!STMPE811\_INT\_EN@{STMPE811\_INT\_EN}}
+\index{STMPE811\_INT\_EN@{STMPE811\_INT\_EN}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_INT\_EN}{STMPE811\_INT\_EN}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a8000e06e8cae36cdb5eadf4aedab165b} 
+\#define STMPE811\+\_\+\+INT\+\_\+\+EN~0x0A}
+
+\Hypertarget{stmpe811_8h_ab41414c42d186e9cd861a422c7480fb9}\index{stmpe811.h@{stmpe811.h}!STMPE811\_INT\_STA@{STMPE811\_INT\_STA}}
+\index{STMPE811\_INT\_STA@{STMPE811\_INT\_STA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_INT\_STA}{STMPE811\_INT\_STA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ab41414c42d186e9cd861a422c7480fb9} 
+\#define STMPE811\+\_\+\+INT\+\_\+\+STA~0x0B}
+
+\Hypertarget{stmpe811_8h_a2906cf599ca4fd53f56f323e366875dd}\index{stmpe811.h@{stmpe811.h}!STMPE811\_MP\_STA@{STMPE811\_MP\_STA}}
+\index{STMPE811\_MP\_STA@{STMPE811\_MP\_STA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_MP\_STA}{STMPE811\_MP\_STA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a2906cf599ca4fd53f56f323e366875dd} 
+\#define STMPE811\+\_\+\+MP\+\_\+\+STA~0x12}
+
+\Hypertarget{stmpe811_8h_ae443cb8109744a7a7a7aff62e2d1dc59}\index{stmpe811.h@{stmpe811.h}!STMPE811\_SPI\_CFG@{STMPE811\_SPI\_CFG}}
+\index{STMPE811\_SPI\_CFG@{STMPE811\_SPI\_CFG}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_SPI\_CFG}{STMPE811\_SPI\_CFG}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ae443cb8109744a7a7a7aff62e2d1dc59} 
+\#define STMPE811\+\_\+\+SPI\+\_\+\+CFG~0x08}
+
+\Hypertarget{stmpe811_8h_aa1046f8a0705e68968668cb9f7e9d9b7}\index{stmpe811.h@{stmpe811.h}!STMPE811\_SYS\_CTRL1@{STMPE811\_SYS\_CTRL1}}
+\index{STMPE811\_SYS\_CTRL1@{STMPE811\_SYS\_CTRL1}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_SYS\_CTRL1}{STMPE811\_SYS\_CTRL1}}
+{\footnotesize\ttfamily \label{stmpe811_8h_aa1046f8a0705e68968668cb9f7e9d9b7} 
+\#define STMPE811\+\_\+\+SYS\+\_\+\+CTRL1~0x03}
+
+\Hypertarget{stmpe811_8h_aed4401abf617434fe266b22427aaf1ce}\index{stmpe811.h@{stmpe811.h}!STMPE811\_SYS\_CTRL2@{STMPE811\_SYS\_CTRL2}}
+\index{STMPE811\_SYS\_CTRL2@{STMPE811\_SYS\_CTRL2}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_SYS\_CTRL2}{STMPE811\_SYS\_CTRL2}}
+{\footnotesize\ttfamily \label{stmpe811_8h_aed4401abf617434fe266b22427aaf1ce} 
+\#define STMPE811\+\_\+\+SYS\+\_\+\+CTRL2~0x04}
+
+\Hypertarget{stmpe811_8h_a52218fa4b9e0701432923baba0de4211}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TEMP\_CTRL@{STMPE811\_TEMP\_CTRL}}
+\index{STMPE811\_TEMP\_CTRL@{STMPE811\_TEMP\_CTRL}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TEMP\_CTRL}{STMPE811\_TEMP\_CTRL}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a52218fa4b9e0701432923baba0de4211} 
+\#define STMPE811\+\_\+\+TEMP\+\_\+\+CTRL~0x60}
+
+\Hypertarget{stmpe811_8h_ac513b82ccb5c9ac24847afa6e9e8644a}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TEMP\_DATA@{STMPE811\_TEMP\_DATA}}
+\index{STMPE811\_TEMP\_DATA@{STMPE811\_TEMP\_DATA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TEMP\_DATA}{STMPE811\_TEMP\_DATA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ac513b82ccb5c9ac24847afa6e9e8644a} 
+\#define STMPE811\+\_\+\+TEMP\+\_\+\+DATA~0x61}
+
+\Hypertarget{stmpe811_8h_a1acd253ef59ad7b850a74cd65d361eec}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TEMP\_TH@{STMPE811\_TEMP\_TH}}
+\index{STMPE811\_TEMP\_TH@{STMPE811\_TEMP\_TH}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TEMP\_TH}{STMPE811\_TEMP\_TH}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a1acd253ef59ad7b850a74cd65d361eec} 
+\#define STMPE811\+\_\+\+TEMP\+\_\+\+TH~0x62}
+
+\Hypertarget{stmpe811_8h_a8c314285c1f1c563f661240c13250fae}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_CFG@{STMPE811\_TSC\_CFG}}
+\index{STMPE811\_TSC\_CFG@{STMPE811\_TSC\_CFG}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_CFG}{STMPE811\_TSC\_CFG}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a8c314285c1f1c563f661240c13250fae} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+CFG~0x41}
+
+\Hypertarget{stmpe811_8h_aa67702fb560c5f0309d5906fe9ce092c}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_CTRL@{STMPE811\_TSC\_CTRL}}
+\index{STMPE811\_TSC\_CTRL@{STMPE811\_TSC\_CTRL}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_CTRL}{STMPE811\_TSC\_CTRL}}
+{\footnotesize\ttfamily \label{stmpe811_8h_aa67702fb560c5f0309d5906fe9ce092c} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+CTRL~0x40}
+
+\Hypertarget{stmpe811_8h_abe12f1a94b2c0fed0ef05e780c6d0366}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_DATA@{STMPE811\_TSC\_DATA}}
+\index{STMPE811\_TSC\_DATA@{STMPE811\_TSC\_DATA}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_DATA}{STMPE811\_TSC\_DATA}}
+{\footnotesize\ttfamily \label{stmpe811_8h_abe12f1a94b2c0fed0ef05e780c6d0366} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+DATA~0x57}
+
+\Hypertarget{stmpe811_8h_a57099d4934c3e1892125fb7a83c3282a}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_DATA\_X@{STMPE811\_TSC\_DATA\_X}}
+\index{STMPE811\_TSC\_DATA\_X@{STMPE811\_TSC\_DATA\_X}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_DATA\_X}{STMPE811\_TSC\_DATA\_X}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a57099d4934c3e1892125fb7a83c3282a} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+X~0x4D}
+
+\Hypertarget{stmpe811_8h_a4cf9f145fa132f54a63cfb480db63769}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_DATA\_XYZ@{STMPE811\_TSC\_DATA\_XYZ}}
+\index{STMPE811\_TSC\_DATA\_XYZ@{STMPE811\_TSC\_DATA\_XYZ}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_DATA\_XYZ}{STMPE811\_TSC\_DATA\_XYZ}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a4cf9f145fa132f54a63cfb480db63769} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+\+XYZ~0x52}
+
+\Hypertarget{stmpe811_8h_a6d33d6f003572d1383301314b6a89644}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_DATA\_Y@{STMPE811\_TSC\_DATA\_Y}}
+\index{STMPE811\_TSC\_DATA\_Y@{STMPE811\_TSC\_DATA\_Y}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_DATA\_Y}{STMPE811\_TSC\_DATA\_Y}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a6d33d6f003572d1383301314b6a89644} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+Y~0x4F}
+
+\Hypertarget{stmpe811_8h_a2e58ddfeb14dfd903a12af0aa50314dd}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_DATA\_Z@{STMPE811\_TSC\_DATA\_Z}}
+\index{STMPE811\_TSC\_DATA\_Z@{STMPE811\_TSC\_DATA\_Z}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_DATA\_Z}{STMPE811\_TSC\_DATA\_Z}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a2e58ddfeb14dfd903a12af0aa50314dd} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+DATA\+\_\+Z~0x51}
+
+\Hypertarget{stmpe811_8h_ade2e97554ad5d22ff1f9669fa8cddaa2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_FRACTION\_Z@{STMPE811\_TSC\_FRACTION\_Z}}
+\index{STMPE811\_TSC\_FRACTION\_Z@{STMPE811\_TSC\_FRACTION\_Z}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_FRACTION\_Z}{STMPE811\_TSC\_FRACTION\_Z}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ade2e97554ad5d22ff1f9669fa8cddaa2} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+FRACTION\+\_\+Z~0x56}
+
+\Hypertarget{stmpe811_8h_a9f1f700cd8b0fbe271963f022591ba87}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_I\_DRIVE@{STMPE811\_TSC\_I\_DRIVE}}
+\index{STMPE811\_TSC\_I\_DRIVE@{STMPE811\_TSC\_I\_DRIVE}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_I\_DRIVE}{STMPE811\_TSC\_I\_DRIVE}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a9f1f700cd8b0fbe271963f022591ba87} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+I\+\_\+\+DRIVE~0x58}
+
+\Hypertarget{stmpe811_8h_ab8c0db5b9d3fc80521786afb836b4e71}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TSC\_SHIELD@{STMPE811\_TSC\_SHIELD}}
+\index{STMPE811\_TSC\_SHIELD@{STMPE811\_TSC\_SHIELD}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TSC\_SHIELD}{STMPE811\_TSC\_SHIELD}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ab8c0db5b9d3fc80521786afb836b4e71} 
+\#define STMPE811\+\_\+\+TSC\+\_\+\+SHIELD~0x59}
+
+\Hypertarget{stmpe811_8h_ae5e67d0cd8c59e058109383c7fe1cfcd}\index{stmpe811.h@{stmpe811.h}!STMPE811\_WDW\_BL\_X@{STMPE811\_WDW\_BL\_X}}
+\index{STMPE811\_WDW\_BL\_X@{STMPE811\_WDW\_BL\_X}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_WDW\_BL\_X}{STMPE811\_WDW\_BL\_X}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ae5e67d0cd8c59e058109383c7fe1cfcd} 
+\#define STMPE811\+\_\+\+WDW\+\_\+\+BL\+\_\+X~0x46}
+
+\Hypertarget{stmpe811_8h_ae3786545a211924c9fee364ef702f75b}\index{stmpe811.h@{stmpe811.h}!STMPE811\_WDW\_BL\_Y@{STMPE811\_WDW\_BL\_Y}}
+\index{STMPE811\_WDW\_BL\_Y@{STMPE811\_WDW\_BL\_Y}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_WDW\_BL\_Y}{STMPE811\_WDW\_BL\_Y}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ae3786545a211924c9fee364ef702f75b} 
+\#define STMPE811\+\_\+\+WDW\+\_\+\+BL\+\_\+Y~0x48}
+
+\Hypertarget{stmpe811_8h_a292e9e2a5db29af3cfadbe87561548f0}\index{stmpe811.h@{stmpe811.h}!STMPE811\_WDW\_TR\_X@{STMPE811\_WDW\_TR\_X}}
+\index{STMPE811\_WDW\_TR\_X@{STMPE811\_WDW\_TR\_X}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_WDW\_TR\_X}{STMPE811\_WDW\_TR\_X}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a292e9e2a5db29af3cfadbe87561548f0} 
+\#define STMPE811\+\_\+\+WDW\+\_\+\+TR\+\_\+X~0x42}
+
+\Hypertarget{stmpe811_8h_a6a90d0e16e06adeee807338958a9e259}\index{stmpe811.h@{stmpe811.h}!STMPE811\_WDW\_TR\_Y@{STMPE811\_WDW\_TR\_Y}}
+\index{STMPE811\_WDW\_TR\_Y@{STMPE811\_WDW\_TR\_Y}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_WDW\_TR\_Y}{STMPE811\_WDW\_TR\_Y}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a6a90d0e16e06adeee807338958a9e259} 
+\#define STMPE811\+\_\+\+WDW\+\_\+\+TR\+\_\+Y~0x44}
+
+\Hypertarget{stmpe811_8h_a1a65a37804444ea14bb4f1f9b4a7351d}\index{stmpe811.h@{stmpe811.h}!TM\_STMPE811\_TouchInRectangle@{TM\_STMPE811\_TouchInRectangle}}
+\index{TM\_STMPE811\_TouchInRectangle@{TM\_STMPE811\_TouchInRectangle}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{TM\_STMPE811\_TouchInRectangle}{TM\_STMPE811\_TouchInRectangle}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a1a65a37804444ea14bb4f1f9b4a7351d} 
+\#define TM\+\_\+\+STMPE811\+\_\+\+Touch\+In\+Rectangle(\begin{DoxyParamCaption}\item[{}]{sd}{, }\item[{}]{x\+Pos}{, }\item[{}]{y\+Pos}{, }\item[{}]{w}{, }\item[{}]{h}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((sd)-\/>x\ >=\ (xPos))\ \&\&\ ((sd)-\/>x\ <\ (xPos\ +\ w))\ \&\&\ ((sd)-\/>y\ >=\ (yPos))\ \&\&\ ((sd)-\/>y\ <\ (yPos\ +\ h)))}
+
+\end{DoxyCode}
+
+
+Checks if touch data is inside specific rectangle coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sd} & Pointer to TM\+\_\+\+STMPE811\+\_\+t to get data from \\
+\hline
+{\em x\+Pos} & Top-\/left X position of rectangle \\
+\hline
+{\em y\+Pos} & Top-\/left Y position of rectangle \\
+\hline
+{\em w} & Rectangle width \\
+\hline
+{\em h} & Rectangle height\+: \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Touch} & inside rectangle status\+:
+\begin{DoxyItemize}
+\item 0\+: Touch is outside rectangle
+\item \texorpdfstring{$>$}{>} 0\+: Touch is inside rectangle 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Defined as macro for faster execution 
+\end{DoxyNote}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}\index{stmpe811.h@{stmpe811.h}!STMPE811\_TouchData@{STMPE811\_TouchData}}
+\index{STMPE811\_TouchData@{STMPE811\_TouchData}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_TouchData}{STMPE811\_TouchData}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb} 
+typedef \mbox{\hyperlink{struct_s_t_m_p_e811__t}{STMPE811\+\_\+t}} \mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\+\_\+\+Touch\+Data}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Orientation\_t@{STMPE811\_Orientation\_t}}
+\index{STMPE811\_Orientation\_t@{STMPE811\_Orientation\_t}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_Orientation\_t}{STMPE811\_Orientation\_t}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77} 
+enum \mbox{\hyperlink{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77}{STMPE811\+\_\+\+Orientation\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_Orientation\_Portrait\_1@{STMPE811\_Orientation\_Portrait\_1}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Orientation\_Portrait\_1@{STMPE811\_Orientation\_Portrait\_1}}}\Hypertarget{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a905e7468808709a98cf097a703d5f3a3}\label{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a905e7468808709a98cf097a703d5f3a3} 
+STMPE811\+\_\+\+Orientation\+\_\+\+Portrait\+\_\+1&Portrait orientation mode 1 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_Orientation\_Portrait\_2@{STMPE811\_Orientation\_Portrait\_2}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Orientation\_Portrait\_2@{STMPE811\_Orientation\_Portrait\_2}}}\Hypertarget{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a3252c2dde28d375f99bffb69e62bd3ee}\label{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a3252c2dde28d375f99bffb69e62bd3ee} 
+STMPE811\+\_\+\+Orientation\+\_\+\+Portrait\+\_\+2&Portrait orientation mode 2 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_Orientation\_Landscape\_1@{STMPE811\_Orientation\_Landscape\_1}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Orientation\_Landscape\_1@{STMPE811\_Orientation\_Landscape\_1}}}\Hypertarget{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a730a3b727076d7332be7c765ad4dd9f7}\label{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a730a3b727076d7332be7c765ad4dd9f7} 
+STMPE811\+\_\+\+Orientation\+\_\+\+Landscape\+\_\+1&Landscape orientation mode 1 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_Orientation\_Landscape\_2@{STMPE811\_Orientation\_Landscape\_2}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Orientation\_Landscape\_2@{STMPE811\_Orientation\_Landscape\_2}}}\Hypertarget{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a078b71082a4b2ec162e662460cd27c18}\label{stmpe811_8h_a2cd97593e4db9f1a0153ab59b7077d77a078b71082a4b2ec162e662460cd27c18} 
+STMPE811\+\_\+\+Orientation\+\_\+\+Landscape\+\_\+2&Landscape orientation mode 2 \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}\index{stmpe811.h@{stmpe811.h}!STMPE811\_State\_t@{STMPE811\_State\_t}}
+\index{STMPE811\_State\_t@{STMPE811\_State\_t}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_State\_t}{STMPE811\_State\_t}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c} 
+enum \mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\+\_\+\+State\+\_\+t}}}
+
+
+
+Enumeration for touch pressed or released. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_State\_Pressed@{STMPE811\_State\_Pressed}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_State\_Pressed@{STMPE811\_State\_Pressed}}}\Hypertarget{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caa3c26c18ed26c1dabfc86e8ec7215544}\label{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caa3c26c18ed26c1dabfc86e8ec7215544} 
+STMPE811\+\_\+\+State\+\_\+\+Pressed&Touch detected as pressed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_State\_Released@{STMPE811\_State\_Released}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_State\_Released@{STMPE811\_State\_Released}}}\Hypertarget{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caec50fde459bf3aae63ccb0fd6ec3d1b2}\label{stmpe811_8h_a1d5792401b46fc9fba26f233b016319caec50fde459bf3aae63ccb0fd6ec3d1b2} 
+STMPE811\+\_\+\+State\+\_\+\+Released&Touch detected as released/not pressed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_State\_Ok@{STMPE811\_State\_Ok}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_State\_Ok@{STMPE811\_State\_Ok}}}\Hypertarget{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca126638f919ea4377e1adfcc3d080c413}\label{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca126638f919ea4377e1adfcc3d080c413} 
+STMPE811\+\_\+\+State\+\_\+\+Ok&Result OK. Used on initialization \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STMPE811\_State\_Error@{STMPE811\_State\_Error}!stmpe811.h@{stmpe811.h}}\index{stmpe811.h@{stmpe811.h}!STMPE811\_State\_Error@{STMPE811\_State\_Error}}}\Hypertarget{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca5b352730d1be368aaa7d8dd6e79338a2}\label{stmpe811_8h_a1d5792401b46fc9fba26f233b016319ca5b352730d1be368aaa7d8dd6e79338a2} 
+STMPE811\+\_\+\+State\+\_\+\+Error&Result error. Used on initialization \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{stmpe811_8h_a135115bd48f72dad8c9dfe428c156511}\index{stmpe811.h@{stmpe811.h}!isSTMPE811\_Ready@{isSTMPE811\_Ready}}
+\index{isSTMPE811\_Ready@{isSTMPE811\_Ready}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{isSTMPE811\_Ready()}{isSTMPE811\_Ready()}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a135115bd48f72dad8c9dfe428c156511} 
+bool is\+STMPE811\+\_\+\+Ready (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stmpe811_8h_aafcdc403b9cf0af3743fdaa4617950b2}\index{stmpe811.h@{stmpe811.h}!STMPE811\_DetermineTouchPosition@{STMPE811\_DetermineTouchPosition}}
+\index{STMPE811\_DetermineTouchPosition@{STMPE811\_DetermineTouchPosition}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_DetermineTouchPosition()}{STMPE811\_DetermineTouchPosition()}}
+{\footnotesize\ttfamily \label{stmpe811_8h_aafcdc403b9cf0af3743fdaa4617950b2} 
+void STMPE811\+\_\+\+Determine\+Touch\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\+\_\+\+Touch\+Data}} \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stmpe811_8h_a8d6ada67989160aebff650c9a0a6a9b5}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Init@{STMPE811\_Init}}
+\index{STMPE811\_Init@{STMPE811\_Init}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_Init()}{STMPE811\_Init()}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a8d6ada67989160aebff650c9a0a6a9b5} 
+\mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\+\_\+\+State\+\_\+t}} STMPE811\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stmpe811_8h_ace7fce7ebc71e31b840e6a703c4a6d59}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Read@{STMPE811\_Read}}
+\index{STMPE811\_Read@{STMPE811\_Read}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_Read()}{STMPE811\_Read()}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ace7fce7ebc71e31b840e6a703c4a6d59} 
+uint8\+\_\+t STMPE811\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stmpe811_8h_a67ad0299dc8afb38a6add8b89992b74b}\index{stmpe811.h@{stmpe811.h}!STMPE811\_ReadTouch@{STMPE811\_ReadTouch}}
+\index{STMPE811\_ReadTouch@{STMPE811\_ReadTouch}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_ReadTouch()}{STMPE811\_ReadTouch()}}
+{\footnotesize\ttfamily \label{stmpe811_8h_a67ad0299dc8afb38a6add8b89992b74b} 
+\mbox{\hyperlink{stmpe811_8h_a1d5792401b46fc9fba26f233b016319c}{STMPE811\+\_\+\+State\+\_\+t}} STMPE811\+\_\+\+Read\+Touch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stmpe811_8h_ac7c879c30ebf68a158c8e720f4d7a1bb}{STMPE811\+\_\+\+Touch\+Data}} \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stmpe811_8h_ac0ef9700df67eb72c7b77543e16b7360}\index{stmpe811.h@{stmpe811.h}!STMPE811\_Write@{STMPE811\_Write}}
+\index{STMPE811\_Write@{STMPE811\_Write}!stmpe811.h@{stmpe811.h}}
+\doxysubsubsection{\texorpdfstring{STMPE811\_Write()}{STMPE811\_Write()}}
+{\footnotesize\ttfamily \label{stmpe811_8h_ac0ef9700df67eb72c7b77543e16b7360} 
+void STMPE811\+\_\+\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t}]{data\+To\+Write}{}\end{DoxyParamCaption})}
+
