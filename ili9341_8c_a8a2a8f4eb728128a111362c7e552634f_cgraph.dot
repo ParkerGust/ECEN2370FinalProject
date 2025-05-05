@@ -1,0 +1,11 @@
+digraph "ili9341_ReadData"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="ili9341_ReadData",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Reads the selected LCD Register."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="LCD_IO_ReadData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$group___i_l_i9341___exported___functions.html#ga10fd152b0ec2326173d80e922d8635fc",tooltip="Reads register value."];
+}
